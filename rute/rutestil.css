@@ -10,7 +10,6 @@
   --transition: all 0.3s ease;
 }
 
-/* ===== RESET & BAZĂ ===== */
 * {
   margin: 0;
   padding: 0;
@@ -35,7 +34,7 @@ body {
   flex-direction: column;
 }
 
-/* ===== HEADER ===== */
+/* header */
 .top-bar {
   display: flex;
   align-items: center;
@@ -69,7 +68,7 @@ body {
   margin: 0;
 }
 
-/* ===== NAVBAR ===== */
+/* navbar*/
 .navbar {
   background-color: var(--primary);
   box-shadow: var(--shadow);
@@ -113,7 +112,7 @@ body {
   background-color: var(--primary-dark);
 }
 
-/* ===== DROPDOWN ===== */
+/* butondropdown */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -148,7 +147,7 @@ body {
   color: var(--primary-dark);
 }
 
-/* ===== SECȚIUNI RUTE ===== */
+/* sectiune */
 .rute {
   padding: 30px 20px;
   max-width: 1000px;
@@ -156,21 +155,24 @@ body {
 }
 
 .rute h2 {
-  font-size: 2rem;
+  font-size: 3rem;
   margin-bottom: 15px;
   text-align: center;
 }
 
 .rute p {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   text-align: center;
   color: #555;
+  font-size: 1.2rem;
 }
 
 .tara {
   margin-bottom: 40px;
   scroll-margin-top: 120px;
   display: block;
+  text-align: center;
+  font-size: 1.6rem;
 }
 
 .tara.hide {
@@ -178,7 +180,7 @@ body {
 }
 
 .tara h3 {
-  font-size: 1.5rem;
+  font-size: 3rem;
   margin-top: 20px;
   margin-bottom: 10px;
 }
@@ -208,143 +210,6 @@ body {
   object-fit: cover;
 }
 
-@media (max-width: 768px) {
-  .microbuz {
-    height: 160px;
-  }
-}
-
-/* ===== BUTOANE CONTACT (FLOATING) ===== */
-.floating-btn {
-  position: fixed;
-  bottom: 20px;
-  width: 50px;
-  height: 50px;
-  background-color: #25d366;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-  box-shadow: var(--shadow);
-}
-
-.call {
-  left: 20px;
-}
-
-.whatsapp {
-  right: 20px;
-}
-
-.floating-btn img {
-  width: 30px;
-  height: 30px;
-}
-
-/* ===== FOOTER ===== */
-footer {
-  background-color: #f1f1f1;
-  padding: 15px 20px;
-  text-align: center;
-  font-size: 14px;
-  color: #666;
-  border-top: 1px solid #ddd;
-}
-
-footer a {
-  color: var(--primary);
-  margin: 0 5px;
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
-}
-
-/* ===== RESPONSIVE NAV & CONTROLS ===== */
-@media (max-width: 768px) {
-  .top-bar {
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: left;
-  }
-
-  .navbar ul {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .navbar li > * {
-    justify-content: flex-start;
-  }
-
-  .dropdown-content {
-    position: static;
-    border: none;
-    box-shadow: none;
-    display: block !important;
-  }
-
-  .dropdown-content a {
-    padding-left: 30px;
-  }
-
-  .floating-btn {
-    bottom: 15px;
-    width: 45px;
-    height: 45px;
-  }
-
-  .floating-btn img {
-    width: 26px;
-    height: 26px;
-  }
-
-  [id^="harta-"] {
-    height: 320px;
-  }
-}
-
-/* ===== BUTOANE "REZERVĂ ACUM" ȘI "SUNĂ ACUM" ===== */
-.rezervaacum,
-.sunaacum {
-  display: flex;
-  justify-content: center;
-  margin-top: 1.5rem;
-}
-
-.btn-rezervaacum,
-.btn-sunaacum {
-  color: white;
-  text-decoration: none;
-  padding: 12px 24px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  display: inline-block;
-}
-
-.btn-rezervaacum {
-  background-color: var(--primary);
-}
-
-.btn-rezervaacum:hover {
-  background-color: var(--primary-dark);
-  transform: translateY(-2px);
-}
-
-.btn-sunaacum {
-  background-color: var(--primary-dark);
-}
-
-.btn-sunaacum:hover {
-  background-color: #005f5f;
-  transform: translateY(-2px);
-}
-
 /* ===== HĂRȚI INTERACTIVE ===== */
 [id^="harta-"] {
   width: 100%;
@@ -354,21 +219,7 @@ footer a:hover {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.leaflet-popup-content a.popup-btn {
-  display: inline-block;
-  margin-top: 5px;
-  padding: 6px 10px;
-  background-color: var(--primary);
-  color: white;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.2s ease;
-}
-
-.leaflet-popup-content a.popup-btn:hover {
-  background-color: var(--primary-dark);
-}
+/* ===== BUTOANE ===== */
 .buttons {
   display: flex;
   justify-content: center;
@@ -391,4 +242,213 @@ footer a:hover {
 .buttons .btn:hover {
   background-color: var(--primary-dark);
   transform: translateY(-2px);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background-color: #f1f1f1;
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #666;
+  border-top: 1px solid #ddd;
+}
+
+footer a {
+  color: var(--primary);
+  margin: 0 5px;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .brand-center h1 {
+    font-size: 1.4rem;
+  }
+
+  .brand-center p {
+    font-size: 1rem;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar li {
+    width: 100%;
+  }
+
+  .navbar li > a,
+  .navbar li > button.dropbtn {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  .microbuz {
+    height: 160px;
+    object-fit: cover;
+  }
+
+  .rute {
+    padding: 20px 10px;
+  }
+
+  .tara h3 {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .buttons .btn {
+    width: 80%;
+    text-align: center;
+    padding: 14px;
+    font-size: 1rem;
+  }
+
+  [id^="harta-"] {
+    height: 300px;
+  }
+}
+footer {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 2rem 1rem;
+  text-align: center;
+  margin-top: auto;
+}
+footer a {
+  color: #f6f5f3;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.plecari-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+.plecari-grid strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #009999;
+  font-size: 1.08em;
+}
+.plecari-grid ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.plecari-grid li {
+  margin-bottom: 0.4em;
+  padding-left: 1em;
+  position: relative;
+}
+.plecari-grid li:before {
+  content: "";
+  color: #009999;
+  position: absolute;
+  left: 0;
+}
+.popup-oras {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.popup-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+}
+.popup-content .btn {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  display: inline-block;
+  margin: 0.5rem;
+}
+
+.popup-content .btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.popup-content .close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}
+.popup-oras {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.popup-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+.popup-content .btn {
+  display: inline-block;
+  margin: 0.5rem;
+}
+.popup-content .close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.hidden {
+  display: none;
 }

@@ -140,3 +140,49 @@ document.addEventListener("DOMContentLoaded", function () {
     { nume: "Groningen", lat: 53.2194, lon: 6.5665 },
   ]);
 });
+// Închide dropdown-ul când se dă click pe orice link din dropdown
+document.querySelectorAll(".dropdown-content a").forEach((link) => {
+  link.addEventListener("click", () => {
+    const dropdown = document.querySelector(".dropdown");
+    dropdown.classList.remove("active");
+  });
+});
+window.addEventListener("scroll", () => {
+  const dropdown = document.querySelector(".dropdown");
+  dropdown.classList.remove("active");
+});
+document.querySelectorAll(".oras").forEach((item) => {
+  item.addEventListener("click", () => {
+    const oras = item.getAttribute("data-oras");
+    document.getElementById("oras-nume").textContent = oras;
+    document.getElementById("popup-oras").classList.remove("hidden");
+  });
+});
+
+document.getElementById("close-popup").addEventListener("click", () => {
+  document.getElementById("popup-oras").classList.add("hidden");
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const popup = document.getElementById("popup-oras");
+  const popupTitle = document.getElementById("oras-nume");
+  const closeBtn = document.getElementById("close-popup");
+
+  document.querySelectorAll(".oras").forEach((oras) => {
+    oras.style.cursor = "pointer";
+    oras.addEventListener("click", () => {
+      const orasName = oras.getAttribute("data-oras");
+      popupTitle.textContent = orasName;
+      popup.classList.remove("hidden");
+    });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    popup.classList.add("hidden");
+  });
+
+  popup.addEventListener("click", (e) => {
+    if (e.target === popup) {
+      popup.classList.add("hidden");
+    }
+  });
+});

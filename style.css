@@ -31,7 +31,7 @@ body {
   flex-direction: column;
 }
 
-/* ===== HEADER ===== */
+/* ===== header ===== */
 .top-bar {
   display: flex;
   align-items: center;
@@ -62,7 +62,7 @@ body {
 
 .brand-center p {
   font-size: 1rem;
-  color: var(--dark);
+  color: var(--primary);
 }
 
 /* ===== NAVBAR ===== */
@@ -114,7 +114,7 @@ body {
   color: var(--primary);
 }
 
-/* ===== DROPDOWN CONTENT ===== */
+/* ===== content dropdown ===== */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -150,9 +150,9 @@ body {
   color: var(--primary-dark);
 }
 
-/* ===== HERO IMAGE ===== */
+/* ===== background ===== */
 .hero-image {
-  background-image: url("microbuzbun.png");
+  background-image: url("Untitled\ design.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -209,7 +209,11 @@ body {
   text-align: center;
   background-color: var(--light);
 }
-
+.hero h2 {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
 .btn-hero {
   display: inline-block;
   margin-top: 1rem;
@@ -317,7 +321,11 @@ footer {
   margin-top: auto;
 }
 
-/* ===== BUTOANE FLOTANTE STICKY ===== */
+footer a {
+  color: #f6f5f3;
+  text-decoration: underline;
+  font-weight: 500;
+}
 .floating-btn {
   position: fixed;
   width: 50px;

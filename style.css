@@ -62,12 +62,12 @@ body {
 
 .brand-center p {
   font-size: 1rem;
-  color: var(--text);
+  color: var(--dark);
 }
 
 /* ===== NAVBAR ===== */
 .navbar {
-  background-color: var(--dark);
+  background-color: var(--primary);
   padding: 1rem 0;
   position: sticky;
   top: 0;
@@ -310,7 +310,7 @@ a.rute p {
 
 /* ===== FOOTER ===== */
 footer {
-  background-color: var(--dark);
+  background-color: var(--primary);
   color: var(--white);
   padding: 2rem 1rem;
   text-align: center;

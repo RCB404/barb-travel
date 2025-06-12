@@ -84,25 +84,146 @@ body {
   flex-wrap: wrap;
 }
 
-.navbar a {
-  color: var(--white);
-  text-decoration: none;
-  font-weight: 500;
+.navbar li {
+  position: relative;
+}
+
+.navbar li > a,
+.navbar li > button.dropbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  height: 100%;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  cursor: pointer;
   transition: var(--transition);
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 4px;
 }
 
-.navbar a:hover {
-  color: var(--primary);
+.navbar li > a:hover,
+.navbar li > button.dropbtn:hover {
   background-color: rgba(255, 255, 255, 0.1);
+  color: var(--primary);
 }
 
-/* ===== HERO ===== */
+/* ===== DROPDOWN CONTENT ===== */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--white);
+  min-width: 180px;
+  top: 100%;
+  left: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 4px 4px;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.dropdown.active .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  background-color: var(--white);
+  color: var(--text);
+  padding: 12px 16px;
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+  display: block;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-content a:hover,
+.dropdown-content a:focus {
+  background-color: #f1f1f1;
+  color: var(--primary-dark);
+}
+
+/* ===== HERO IMAGE ===== */
+.hero-image {
+  background-image: url("microbuzbun.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-image .overlay {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.hero-image h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-image p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-image .buttons .btn {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 12px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.hero-image .btn.call {
+  background-color: var(--primary-dark);
+}
+
+.hero-image .btn.reserve {
+  background-color: var(--primary);
+}
+
+.hero-image .btn:hover {
+  opacity: 0.9;
+}
+
+/* ===== HERO TEXT SECȚIUNE SECUNDARĂ ===== */
 .hero {
   padding: 4rem 2rem;
   text-align: center;
   background-color: var(--light);
+}
+
+.btn-hero {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.btn-hero:hover {
+  background-color: var(--primary-dark);
 }
 
 /* ===== RUTE POPULARE ===== */
@@ -125,19 +246,23 @@ body {
   gap: 1.5rem;
 }
 
-.rute {
+a.rute {
   background-color: var(--light);
   padding: 1rem;
   border-radius: 8px;
   box-shadow: var(--shadow);
   transition: var(--transition);
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
-.rute:hover {
+a.rute:hover {
   transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.rute img {
+a.rute img {
   width: 100%;
   height: auto;
   border-radius: 6px;
@@ -145,17 +270,17 @@ body {
   transition: transform 0.3s ease;
 }
 
-.rute:hover img {
+a.rute:hover img {
   transform: scale(1.02);
 }
 
-.rute h3 {
+a.rute h3 {
   font-size: 1.2rem;
   color: var(--primary);
   margin-bottom: 0.5rem;
 }
 
-.rute p {
+a.rute p {
   font-size: 0.95rem;
 }
 
@@ -237,6 +362,14 @@ footer {
     font-size: 1.5rem;
   }
 
+  .hero-image h1 {
+    font-size: 2rem;
+  }
+
+  .hero-image p {
+    font-size: 1rem;
+  }
+
   .floating-btn {
     width: 45px;
     height: 45px;
@@ -271,8 +404,17 @@ footer {
     padding: 0 0.5rem;
   }
 
-  .navbar a {
+  .navbar li > a,
+  .navbar li > button.dropbtn {
     padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .hero-image h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-image p {
     font-size: 0.9rem;
   }
 }

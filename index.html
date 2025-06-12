@@ -6,7 +6,7 @@
     <title>Barb Travel - Transport persoane și colete</title>
     <meta
       name="description"
-      content="Transport persoane și colete în Germania, Cehia, Olanda și Belgia. Plecări zilnice, microbuze moderne, șoferi cu experiență."
+      content="Transport persoane și colete în Germania, Austria, Olanda și Belgia. Plecări zilnice, microbuze moderne, șoferi cu experiență."
     />
     <meta
       name="keywords"
@@ -23,7 +23,6 @@
   </head>
 
   <body>
-    <!-- HEADER -->
     <header>
       <div class="top-bar">
         <div class="logo">
@@ -32,7 +31,7 @@
         <div class="brand-center">
           <h1><strong>Barb Travel</strong></h1>
           <p>
-            Transport persoane și colete în Germania, Cehia, Olanda și Belgia
+            Transport persoane și colete în Germania, Austria, Olanda și Belgia
           </p>
         </div>
       </div>
@@ -40,14 +39,36 @@
       <nav class="navbar">
         <ul>
           <li><a href="index.html">Acasă</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Rute</a></li>
-          <li><a href="#">Calculator Preț</a></li>
+          <li><a href="contact/contact.html">Contact</a></li>
+          <li class="dropdown">
+            <button class="dropbtn" type="button">Rute ▾</button>
+            <div class="dropdown-content">
+              <a href="rute/rute.html#romania">România</a>
+              <a href="rute/rute.html#austria">Austria</a>
+              <a href="rute/rute.html#germania">Germania</a>
+              <a href="rute/rute.html#belgia">Belgia</a>
+              <a href="rute/rute.html#olanda">Olanda</a>
+            </div>
+          </li>
+          <li><a href="preturi/calculatorpret.html">Calculator Preț</a></li>
         </ul>
       </nav>
     </header>
 
-    <!-- MAIN CONTENT -->
+    <!-- HERO IMAGE CU FUNDAL ȘI TEXT + BUTOANE -->
+    <section class="hero-image">
+      <div class="overlay">
+        <h1>Transport persoane de la adresă la adresă</h1>
+        <p>Germania • Austria • Olanda • Belgia</p>
+        <div class="buttons">
+          <a href="tel:+40759967696" class="btn call">Sună acum</a>
+          <a href="https://wa.me/40759967696" class="btn reserve"
+            >Rezervă acum</a
+          >
+        </div>
+      </div>
+    </section>
+
     <main>
       <section class="hero">
         <h2>Mergi în Europa sau ai un colet de trimis? Contactează-ne!</h2>
@@ -63,7 +84,7 @@
       <section class="rute-populare">
         <h2>Rutele Populare</h2>
         <div class="rute-container">
-          <div class="rute">
+          <a href="rute/rute.html#germania" class="rute">
             <h3>Germania</h3>
             <img
               src="romania-germania.jpeg"
@@ -72,33 +93,37 @@
             <p>
               Transport persoane și colete din România în Germania și retur.
             </p>
-          </div>
-          <div class="rute">
-            <h3>Cehia</h3>
+          </a>
+
+          <a href="rute/rute.html#austria" class="rute">
+            <h3>Austria</h3>
             <img
-              src="romania-cehia.jpg"
-              alt="Transport persoane și colete Cehia"
+              src="romania-austria.jpeg"
+              alt="Transport persoane și colete Austria"
             />
-            <p>Transport persoane și colete din România în Cehia și retur.</p>
-          </div>
-          <div class="rute">
+            <p>Transport persoane și colete din România în Austria și retur.</p>
+          </a>
+
+          <a href="rute/rute.html#belgia" class="rute">
             <h3>Belgia</h3>
             <img
               src="romania-belgia.jpeg"
               alt="Transport persoane și colete Belgia"
             />
             <p>Transport persoane și colete din România în Belgia și retur.</p>
-          </div>
-          <div class="rute">
+          </a>
+
+          <a href="rute/rute.html#olanda" class="rute">
             <h3>Olanda</h3>
             <img
               src="romania-olanda.jpeg"
               alt="Transport persoane și colete Olanda"
             />
             <p>Transport persoane și colete din România în Olanda și retur.</p>
-          </div>
+          </a>
         </div>
       </section>
+
       <section class="avantaje">
         <h2>De ce să alegi BarbTravel?</h2>
         <ul>
@@ -118,7 +143,7 @@
             <strong>Șoferi cu experiență</strong> – vorbitori de germană și
             română
           </li>
-          <li>Plecări zilnice în Germania, Cehia, Belgia, Olanda și retur</li>
+          <li>Plecări zilnice în Germania, Austria, Belgia, Olanda și retur</li>
           <li>Transportăm și <strong>colete</strong></li>
         </ul>
       </section>
@@ -139,7 +164,7 @@
     <!-- FOOTER -->
     <footer>
       <div class="footer-content">
-        <p>&copy; 2023 Barb Travel. Toate drepturile rezervate.</p>
+        <p>&copy; 2025 Barb Travel. Toate drepturile rezervate.</p>
         <p>
           E-mail:
           <a href="mailto:transportbrbtravel@gmail.com"
@@ -148,5 +173,23 @@
         </p>
       </div>
     </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const dropBtn = document.querySelector(".dropbtn");
+        const dropdown = document.querySelector(".dropdown");
+
+        dropBtn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          dropdown.classList.toggle("active");
+        });
+
+        window.addEventListener("click", function (e) {
+          if (!e.target.closest(".dropdown")) {
+            dropdown.classList.remove("active");
+          }
+        });
+      });
+    </script>
   </body>
 </html>

@@ -314,6 +314,67 @@ a.rute p {
   font-size: 1rem;
 }
 
+/* ===== TESTIMONIALE - VERSIUNE SIMPLIFICATĂ ===== */
+.testimoniale {
+  background-color: #f8f9fa;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.testimoniale h3 {
+  color: #009999;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.testimonial-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.testimonial {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.testimonial::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 30px;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid white;
+}
+
+.testimonial p {
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.testimonial span {
+  display: block;
+  text-align: right;
+  font-weight: 500;
+  color: #007777;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .testimonial-container {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ===== BUTOANE PLUTITOARE (Global) ===== */
 @keyframes pulse {
   0% {

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Curse BRB-Travel | Transport persoane și colete</title>
+    <meta
+      name="description"
+      content="BRB-Travel oferă transport persoane și colete în Germania, Austria, Olanda și Belgia. Plecări zilnice din România, siguranță și confort garantat."
+    />
+    <meta
+      name="keywords"
+      content="BRB-Travel, transport persoane, transport colete, Germania, Austria, Olanda, Belgia, curse regulate, microbuze Europa"
+    />
+    <meta name="author" content="BRB-Travel" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#009999" />
+
+    <!-- Open Graph (Facebook, WhatsApp etc.) -->
+    <meta
+      property="og:title"
+      content="Curse BRB-Travel | Transport persoane și colete"
+    />
+    <meta
+      property="og:description"
+      content="Transport internațional din România în Germania, Austria, Belgia și Olanda. Microbuze moderne, plecări zilnice."
+    />
+    <meta
+      property="og:image"
+      content="https://rcb404.github.io/barb-travel/barb-travel-logo.jpeg"
+    />
+    <meta
+      property="og:url"
+      content="https://rcb404.github.io/barb-travel/rute/rute.html"
+    />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="BRB-Travel - Transport persoane și colete Europa"
+    />
+    <meta
+      name="twitter:description"
+      content="Plecări zilnice în Germania, Austria, Belgia și Olanda. Vezi rutele complete și contactează-ne!"
+    />
+    <meta
+      name="twitter:image"
+      content="https://rcb404.github.io/barb-travel/barb-travel-logo.jpeg"
+    />
+
+    <!-- CSS + Hartă Leaflet -->
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="rutestil.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Iconițe (FontAwesome) -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="top-bar">
+        <div class="logo">
+          <img src="../barb-travel-logo.jpeg" alt="Logo Barb Travel" />
+        </div>
+        <div class="brand-center">
+          <h1>Barb Travel</h1>
+          <p>
+            Transport persoane și colete în Germania, Austria, Olanda și Belgia
+          </p>
+        </div>
+      </div>
+      <nav class="navbar">
+        <ul>
+          <li><a href="../index.html">Acasă</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn">Rute ▾</a>
+            <div class="dropdown-content">
+              <a href="#romania">România</a>
+              <a href="#austria">Austria</a>
+              <a href="#germania">Germania</a>
+              <a href="#belgia">Belgia</a>
+              <a href="#olanda">Olanda</a>
+            </div>
+          </li>
+
+          <li><a href="../contact/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <img src="microbuzbun.png" alt="Microbuz Barb Travel" class="microbuz" />
+    </header>
+
+    <main>
+      <section class="rute">
+        <h2>Cursele noastre zilnice</h2>
+        <p>
+          Oferim curse regulate pentru transport persoane, colete și autoturisme
+          în Austria, Germania, Belgia și Olanda, cu plecări zilnice din România
+          și retur.
+        </p>
+
+        <section class="tara" id="romania">
+          <h3>Plecări din România</h3>
+          <div class="plecari-grid">
+            <div>
+              <strong>Vest:</strong>
+              <ul>
+                <li class="oras" data-oras="Arad">Arad</li>
+                <li class="oras" data-oras="Timișoara">Timișoara</li>
+                <li class="oras" data-oras="Deta">Deta</li>
+                <li class="oras" data-oras="Lugoj">Lugoj</li>
+                <li class="oras" data-oras="Bocșa">Bocșa</li>
+                <li class="oras" data-oras="Reșița">Reșița</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Centru &amp; Nord:</strong>
+              <ul>
+                <li class="oras" data-oras="Deva">Deva</li>
+                <li class="oras" data-oras=" Alba Iulia">Alba Iulia</li>
+                <li class="oras" data-oras="Sibiu">Sibiu</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Sud &amp; Sud-Vest:</strong>
+              <ul>
+                <li class="oras" data-oras="Orșova">Orșova</li>
+                <li class="oras" data-oras="Drobeta Turnu Severin">
+                  Drobeta Turnu Severin
+                </li>
+                <li class="oras" data-oras="Târgu Jiu">Târgu Jiu</li>
+                <li class="oras" data-oras="Craiova">Craiova</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Sud &amp; Est:</strong>
+              <ul>
+                <li class="oras" data-oras="Pitești">Pitești</li>
+                <li class="oras" data-oras="Ploiești">Ploiești</li>
+                <li class="oras" data-oras="București">București</li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="harta-romania" class="map-section"></div>
+          <div class="buttons">
+            <a href="tel:+40759967696" class="btn call" target="_blank"
+              >Sună acum</a
+            >
+            <a
+              href="https://wa.me/40759967696"
+              class="btn reserve"
+              target="_blank"
+              >Rezervă acum</a
+            >
+          </div>
+        </section>
+
+        <section class="tara" id="austria">
+          <h3>Austria</h3>
+          <div class="plecari-grid">
+            <div>
+              <ul>
+                <li class="oras" data-oras="Viena">Viena</li>
+                <li class="oras" data-oras="St. Pölten">St. Pölten</li>
+                <li class="oras" data-oras="Linz">Linz</li>
+                <li class="oras" data-oras="Graz">Graz</li>
+                <li class="oras" data-oras="Localități limitrofe">
+                  Localități limitrofe
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div id="harta-austria" class="map-section"></div>
+          <div class="buttons">
+            <a href="tel:+40759967696" class="btn call" target="_blank"
+              >Sună acum</a
+            >
+            <a
+              href="https://wa.me/40759967696"
+              class="btn reserve"
+              target="_blank"
+              >Rezervă acum</a
+            >
+          </div>
+        </section>
+
+        <section class="tara" id="germania">
+          <h3>Germania</h3>
+          <div class="plecari-grid">
+            <div>
+              <strong>Sud:</strong>
+              <ul>
+                <li class="oras" data-oras="Munchen">Munchen</li>
+                <li class="oras" data-oras="Stuttgart">Stuttgart</li>
+                <li class="oras" data-oras="Nurenberg">Nurenberg</li>
+                <li class="oras" data-oras="Freiburg">Freiburg</li>
+                <li class="oras" data-oras="Konstanz">Konstanz</li>
+                <li class="oras" data-oras="Passau">Passau</li>
+                <li class="oras" data-oras="Heilbronn">Heilbronn</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Vest:</strong>
+              <ul>
+                <li class="oras" data-oras="Frankfurt">Frankfurt</li>
+                <li class="oras" data-oras="Dortmund">Dortmund</li>
+                <li class="oras" data-oras="Köln">Köln</li>
+                <li class="oras" data-oras="Essen">Essen</li>
+                <li class="oras" data-oras="Duisburg">Duisburg</li>
+                <li class="oras" data-oras="Düsseldorf">Düsseldorf</li>
+                <li class="oras" data-oras="Saarbrücken">Saarbrücken</li>
+                <li class="oras" data-oras="Mannheim">Mannheim</li>
+                <li class="oras" data-oras="Mainz">Mainz</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Nord &amp; Est:</strong>
+              <ul>
+                <li class="oras" data-oras="Hamburg">Hamburg</li>
+                <li class="oras" data-oras="Bremen">Bremen</li>
+                <li class="oras" data-oras="Hannover">Hannover</li>
+                <li class="oras" data-oras="Berlin">Berlin</li>
+                <li class="oras" data-oras="Leipzig">Leipzig</li>
+                <li class="oras" data-oras="Magdeburg">Magdeburg</li>
+                <li class="oras" data-oras="Halle">Halle</li>
+                <li class="oras" data-oras="Jena">Jena</li>
+                <li class="oras" data-oras="Erfurt">Erfurt</li>
+                <li class="oras" data-oras="Oldenburg">Oldenburg</li>
+              </ul>
+            </div>
+          </div>
+          <div id="harta-germania" class="map-section"></div>
+          <div class="buttons">
+            <a href="tel:+40759967696" class="btn call" target="_blank"
+              >Sună acum</a
+            >
+            <a
+              href="https://wa.me/40759967696"
+              class="btn reserve"
+              target="_blank"
+              >Rezervă acum</a
+            >
+          </div>
+        </section>
+
+        <section class="tara" id="belgia">
+          <h3>Belgia</h3>
+          <div class="plecari-grid">
+            <div>
+              <ul>
+                <li class="oras" data-oras="Bruxelles">Bruxelles</li>
+                <li class="oras" data-oras="Anvers">Anvers</li>
+                <li class="oras" data-oras="Gent">Gent</li>
+                <li class="oras" data-oras="Charleroi">Charleroi</li>
+                <li class="oras" data-oras="Liège">Liège</li>
+                <li class="oras" data-oras="Bruges">Bruges</li>
+              </ul>
+            </div>
+          </div>
+          <div id="harta-belgia" class="map-section"></div>
+          <div class="buttons">
+            <a href="tel:+40759967696" class="btn call" target="_blank"
+              >Sună acum</a
+            >
+            <a
+              href="https://wa.me/40759967696"
+              class="btn reserve"
+              target="_blank"
+              >Rezervă acum</a
+            >
+          </div>
+        </section>
+
+        <section class="tara" id="olanda">
+          <h3>Olanda</h3>
+          <div class="plecari-grid">
+            <div>
+              <ul>
+                <li class="oras" data-oras="Amsterdam">Amsterdam</li>
+                <li class="oras" data-oras="Rotterdam">Rotterdam</li>
+                <li class="oras" data-oras="Haga">Haga</li>
+                <li class="oras" data-oras="Utrecht">Utrecht</li>
+                <li class="oras" data-oras="Eindhoven">Eindhoven</li>
+                <li class="oras" data-oras="Groningen">Groningen</li>
+              </ul>
+            </div>
+          </div>
+          <div id="harta-olanda" class="map-section"></div>
+          <div class="buttons">
+            <a href="tel:+40759967696" class="btn call" target="_blank"
+              >Sună acum</a
+            >
+            <a
+              href="https://wa.me/40759967696"
+              class="btn reserve"
+              target="_blank"
+              >Rezervă acum</a
+            >
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <style>
+      .map-section {
+        width: 100%;
+        height: 500px;
+        border-radius: 12px;
+        margin: 2rem auto;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+      .leaflet-popup-content a.popup-btn {
+        display: inline-block;
+        margin-top: 5px;
+        padding: 6px 10px;
+        background-color: #009999;
+        color: white;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .leaflet-popup-content a.popup-btn:hover {
+        background-color: #007777;
+      }
+    </style>
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2025 Barb Travel. Toate drepturile rezervate.</p>
+        <p>
+          E-mail:
+          <a href="mailto:transportbrbtravel@gmail.com" target="_blank"
+            >transportbrbtravel@gmail.com</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://www.facebook.com/TRANSPORTBRB"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Facebook</a
+          >
+        </p>
+      </div>
+    </footer>
+    <script src="scriptrute.js" defer></script>
+    <div id="popup-oras" class="popup-oras hidden">
+      <div class="popup-content">
+        <span id="close-popup" class="close">&times;</span>
+        <h4 id="oras-nume">Oraș</h4>
+        <a href="tel:+40759967696" class="btn call" target="_blank"
+          >Sună acum</a
+        >
+        <a href="https://wa.me/40759967696" class="btn reserve" target="_blank"
+          >Scrie pe WhatsApp</a
+        >
+      </div>
+    </div>
+  </body>
+</html>

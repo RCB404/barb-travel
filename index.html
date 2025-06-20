@@ -3,36 +3,161 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Barb Travel - Transport persoane și colete</title>
+    <title>BRB-Travel – Transport persoane & colete & autoturisme Europa</title>
     <meta
       name="description"
-      content="Transport persoane și colete în Germania, Cehia, Olanda și Belgia. Plecări zilnice, microbuze moderne, șoferi cu experiență."
+      content="BRB-Travel oferă transport persoane și colete din România spre Germania, Austria, Belgia și Olanda. Plecări zilnice, siguranță și confort."
     />
+
     <meta
       name="keywords"
-      content="transport persoane Germania, colete Belgia, transport Olanda, Barb Travel"
+      content="transport persoane Germania, transport colete Belgia, microbuze Austria, plecări zilnice, BRB-Travel, transport de la adresă la adresă"
     />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="BRB-Travel" />
     <meta name="theme-color" content="#009999" />
+
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="BRB-Travel - Transport persoane și colete Europa"
+    />
+    <meta
+      property="og:description"
+      content="Transport rapid și sigur de persoane și colete către Germania, Austria, Belgia și Olanda. Plecări zilnice din România."
+    />
+    <meta
+      property="og:image"
+      content="https://rcb404.github.io/barb-travel/barb-travel-logo.jpeg"
+    />
+    <meta
+      property="og:url"
+      content="https://rcb404.github.io/barb-travel/index.html"
+    />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="BRB-Travel - Transport persoane și colete Europa"
+    />
+    <meta
+      name="twitter:description"
+      content="Transport zilnic de la adresă la adresă. WhatsApp +40759967696"
+    />
+    <meta
+      name="twitter:image"
+      content="https://rcb404.github.io/barb-travel/barb-travel-logo.jpeg"
+    />
+
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
       rel="stylesheet"
     />
-  </head>
+    <link rel="icon" type="image/png" href="barb-travel-logo.jpeg" />
 
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": ["TravelAgency", "Organization"],
+            "name": "BRB-Travel",
+            "url": "https://rcb404.github.io/barb-travel/",
+            "logo": "https://rcb404.github.io/barb-travel/barb-travel-logo.jpeg",
+            "description": "Transport persoane, colete și autoturisme în Europa",
+            "serviceType": "Transport persoane, colete și autoturisme",
+            "provider": {
+              "@type": "Organization",
+              "name": "BRB-Travel"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+40-759-967-696",
+              "contactType": "customer service",
+              "areaServed": ["RO", "DE", "AT", "BE", "NL"],
+              "availableLanguage": ["ro", "de"]
+            },
+            "sameAs": ["https://www.facebook.com/TRANSPORTBRB"],
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Servicii de Transport",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Transport România - Germania",
+                    "price": "de la 100€"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Transport România - Austria",
+                    "price": "de la 100€"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Transport România - Belgia",
+                    "price ": "de la 100€"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Transport România - Olanda",
+                    "price": "de la 100€"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Acasă",
+                "item": "https://rcb404.github.io/barb-travel/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Rute",
+                "item": "https://rcb404.github.io/barb-travel/rute/rute.html"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
   <body>
-    <!-- HEADER -->
     <header>
       <div class="top-bar">
         <div class="logo">
-          <img src="barb-travel-logo.jpeg" alt="Logo BarbTravel" />
+          <img src="barb-travel-logo.jpeg" alt="Logo BRB-Travel" />
         </div>
         <div class="brand-center">
-          <h1><strong>Barb Travel</strong></h1>
+          <h1><strong>BRB-Travel</strong></h1>
           <p>
-            Transport persoane și colete în Germania, Cehia, Olanda și Belgia
+            Transport persoane, colete și autoturisme in Austria, Germania,
+            Belgia și Olanda.
           </p>
         </div>
       </div>
@@ -40,14 +165,39 @@
       <nav class="navbar">
         <ul>
           <li><a href="index.html">Acasă</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Rute</a></li>
-          <li><a href="#">Calculator Preț</a></li>
+          <li class="dropdown">
+            <button class="dropbtn" type="button">Rute ▾</button>
+            <div class="dropdown-content">
+              <a href="rute/rute.html#romania">România</a>
+              <a href="rute/rute.html#austria">Austria</a>
+              <a href="rute/rute.html#germania">Germania</a>
+              <a href="rute/rute.html#belgia">Belgia</a>
+              <a href="rute/rute.html#olanda">Olanda</a>
+            </div>
+          </li>
+          <li><a href="contact/contact.html">Contact</a></li>
         </ul>
       </nav>
     </header>
 
-    <!-- MAIN CONTENT -->
+    <section class="hero-image">
+      <div class="overlay">
+        <h1>Transport persoane de la adresă la adresă</h1>
+        <p>Austria • Germania • Belgia • Olanda</p>
+        <div class="buttons">
+          <a href="tel:+40759967696" class="btn call" target="_blank"
+            >Sună acum</a
+          >
+          <a
+            href="https://wa.me/40759967696"
+            class="btn reserve"
+            target="_blank"
+            >Rezervă acum</a
+          >
+        </div>
+      </div>
+    </section>
+
     <main>
       <section class="hero">
         <h2>Mergi în Europa sau ai un colet de trimis? Contactează-ne!</h2>
@@ -55,7 +205,11 @@
           Transport zilnic, sigur și rapid. Microbuze moderne, masă caldă și
           cafea pe drum.
         </p>
-        <a href="https://wa.me/40759967696" class="btn-hero"
+        <a
+          href="https://wa.me/40759967696"
+          class="btn-hero"
+          title="Rezervă acum pe WhatsApp"
+          target="_blank"
           >Rezervă acum pe WhatsApp</a
         >
       </section>
@@ -63,44 +217,42 @@
       <section class="rute-populare">
         <h2>Rutele Populare</h2>
         <div class="rute-container">
-          <div class="rute">
+          <a href="rute/rute.html#germania" class="rute">
             <h3>Germania</h3>
             <img
               src="romania-germania.jpeg"
-              alt="Transport persoane și colete Germania"
+              alt="Transport persoane în Germania"
             />
             <p>
               Transport persoane și colete din România în Germania și retur.
             </p>
-          </div>
-          <div class="rute">
-            <h3>Cehia</h3>
+          </a>
+
+          <a href="rute/rute.html#austria" class="rute">
+            <h3>Austria</h3>
             <img
-              src="romania-cehia.jpg"
-              alt="Transport persoane și colete Cehia"
+              src="romania-austria.jpeg"
+              alt="Transport persoane în Austria"
             />
-            <p>Transport persoane și colete din România în Cehia și retur.</p>
-          </div>
-          <div class="rute">
+            <p>Transport persoane și colete din România în Austria și retur.</p>
+          </a>
+
+          <a href="rute/rute.html#belgia" class="rute">
             <h3>Belgia</h3>
-            <img
-              src="romania-belgia.jpeg"
-              alt="Transport persoane și colete Belgia"
-            />
+            <img src="romania-belgia.jpeg" alt="Transport persoane în Belgia" />
             <p>Transport persoane și colete din România în Belgia și retur.</p>
-          </div>
-          <div class="rute">
+          </a>
+
+          <a href="rute/rute.html#olanda" class="rute">
             <h3>Olanda</h3>
-            <img
-              src="romania-olanda.jpeg"
-              alt="Transport persoane și colete Olanda"
-            />
+            <img src="romania-olanda.jpeg" alt="Transport persoane în Olanda" />
             <p>Transport persoane și colete din România în Olanda și retur.</p>
-          </div>
+          </a>
         </div>
       </section>
+
       <section class="avantaje">
-        <h2>De ce să alegi BarbTravel?</h2>
+        <h2>De ce să alegi BRB-Travel?</h2>
         <ul>
           <li>Prețuri accesibile – începând de la <strong>100€</strong></li>
           <li>Transport <strong>de la adresă la adresă</strong></li>
@@ -118,35 +270,71 @@
             <strong>Șoferi cu experiență</strong> – vorbitori de germană și
             română
           </li>
-          <li>Plecări zilnice în Germania, Cehia, Belgia, Olanda și retur</li>
-          <li>Transportăm și <strong>colete</strong></li>
+          <li>Plecări zilnice în Germania, Austria, Belgia, Olanda și retur</li>
+          <li>
+            Transportăm și <strong>colete</strong> sau
+            <strong>autoturisme</strong>
+          </li>
         </ul>
       </section>
     </main>
 
-    <!-- BUTOANE FLOTANTE -->
-    <a href="tel:+40759967696" class="floating-btn call" title="Sună acum">
-      <img src="telefon.png" alt="Sună" />
+    <!-- Butoane plutitoare -->
+    <a
+      href="tel:+40759967696"
+      class="floating-btn call"
+      title="Sună acum"
+      aria-label="Sună acum"
+      target="_blank"
+    >
+      <i class="fas fa-phone-alt"></i>
     </a>
     <a
       href="https://wa.me/40759967696"
       class="floating-btn whatsapp"
       title="WhatsApp"
+      aria-label="Contact pe WhatsApp"
+      target="_blank"
     >
-      <img src="whatsapp-94.png" alt="WhatsApp" />
+      <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- FOOTER -->
     <footer>
       <div class="footer-content">
-        <p>&copy; 2023 Barb Travel. Toate drepturile rezervate.</p>
+        <p>&copy; 2025 BRB-Travel. Toate drepturile rezervate.</p>
         <p>
           E-mail:
-          <a href="mailto:transportbrbtravel@gmail.com"
+          <a href="mailto:transportbrbtravel@gmail.com" target="_blank"
             >transportbrbtravel@gmail.com</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://www.facebook.com/TRANSPORTBRB"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Facebook</a
           >
         </p>
       </div>
     </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const dropBtn = document.querySelector(".dropbtn");
+        const dropdown = document.querySelector(".dropdown");
+
+        dropBtn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          dropdown.classList.toggle("active");
+        });
+
+        window.addEventListener("click", function (e) {
+          if (!e.target.closest(".dropdown")) {
+            dropdown.classList.remove("active");
+          }
+        });
+      });
+    </script>
   </body>
 </html>

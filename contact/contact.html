@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | BRB-Travel - Transport persoane și colete</title>
+    <meta
+      name="description"
+      content="Contactează-ne pentru transport persoane și colete în Germania, Austria, Olanda și Belgia. Sună acum sau trimite mesaj pe WhatsApp."
+    />
+    <meta name="theme-color" content="#009999" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header>
+      <div class="top-bar">
+        <div class="logo">
+          <img src="../barb-travel-logo.jpeg" alt="Logo BRB-Travel" />
+        </div>
+        <div class="brand-center">
+          <h1><strong>BRB-Travel</strong></h1>
+          <p>
+            Transport persoane și colete în Austria, Germania, Belgia și Olanda.
+          </p>
+        </div>
+      </div>
+
+      <nav class="navbar">
+        <ul>
+          <li><a href="../index.html">Acasă</a></li>
+          <li class="dropdown">
+            <button class="dropbtn" type="button">Rute ▾</button>
+            <div class="dropdown-content">
+              <a href="../rute/rute.html#romania">România</a>
+              <a href="../rute/rute.html#austria">Austria</a>
+              <a href="../rute/rute.html#germania">Germania</a>
+              <a href="../rute/rute.html#belgia">Belgia</a>
+              <a href="../rute/rute.html#olanda">Olanda</a>
+            </div>
+          </li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="contact-page">
+      <section class="hero">
+        <h2>Contactează-ne acum</h2>
+        <p>
+          Disponibili 24/7 pentru rezervări și informații. Răspundem rapid la
+          apeluri și mesaje!
+        </p>
+      </section>
+
+      <section class="contact-methods">
+        <div class="contact-card">
+          <i class="fas fa-phone-alt"></i>
+          <div>
+            <h3>Telefon direct</h3>
+            <p><a href="tel:+40759967696">+40 759 967 696</a></p>
+            <small>Apel non-stop</small>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <i class="fab fa-whatsapp"></i>
+          <div>
+            <h3>WhatsApp</h3>
+            <p><a href="https://wa.me/40759967696">Trimite mesaj</a></p>
+            <small>Răspundem în maxim 5 minute</small>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <h3>Email</h3>
+            <p>
+              <a href="mailto:transportbrbtravel@gmail.com"
+                >transportbrbtravel@gmail.com</a
+              >
+            </p>
+            <small>Răspuns în 24 de ore</small>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <i class="fab fa-facebook-f"></i>
+          <div>
+            <h3>Facebook</h3>
+            <p>
+              <a href="https://www.facebook.com/TRANSPORTBRB" target="_blank"
+                >TRANSPORTBRB</a
+              >
+            </p>
+            <small>Mesaje și recenzii</small>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- footer -->
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2025 BRB-Travel. Toate drepturile rezervate.</p>
+        <p>
+          E-mail:
+          <a href="mailto:transportbrbtravel@gmail.com"
+            >transportbrbtravel@gmail.com</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://www.facebook.com/TRANSPORTBRB"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Facebook</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const dropBtn = document.querySelector(".dropbtn");
+        const dropdown = document.querySelector(".dropdown");
+
+        if (dropBtn && dropdown) {
+          dropBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            dropdown.classList.toggle("active");
+          });
+
+          window.addEventListener("click", function (e) {
+            if (!e.target.closest(".dropdown")) {
+              dropdown.classList.remove("active");
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

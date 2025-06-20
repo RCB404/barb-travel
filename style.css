@@ -1,3 +1,7 @@
+/* ======================================================
+   ===============  STYLE.CSS UNIFICAT  ==================
+   =====================================================*/
+
 /* ===== VARIABILE & RESET ===== */
 :root {
   --primary: #009999;
@@ -62,12 +66,12 @@ body {
 
 .brand-center p {
   font-size: 1rem;
-  color: var(--text);
+  color: var(--primary);
 }
 
 /* ===== NAVBAR ===== */
 .navbar {
-  background-color: var(--dark);
+  background-color: var(--primary);
   padding: 1rem 0;
   position: sticky;
   top: 0;
@@ -84,28 +88,152 @@ body {
   flex-wrap: wrap;
 }
 
-.navbar a {
-  color: var(--white);
-  text-decoration: none;
-  font-weight: 500;
+.navbar li {
+  position: relative;
+}
+
+.navbar li > a,
+.navbar li > button.dropbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  cursor: pointer;
   transition: var(--transition);
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 4px;
 }
 
-.navbar a:hover {
-  color: var(--primary);
+.navbar li > a:hover,
+.navbar li > button.dropbtn:hover {
   background-color: rgba(255, 255, 255, 0.1);
+  color: var(--primary);
 }
 
-/* ===== HERO ===== */
+/* ===== DROPDOWN ===== */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--white);
+  min-width: 180px;
+  top: 100%;
+  left: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 4px 4px;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+.dropdown.active .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  background-color: var(--white);
+  color: var(--text);
+  padding: 12px 16px;
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+  display: block;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  color: var(--primary-dark);
+}
+
+/* ===== HERO ACASĂ ===== */
+.hero-image {
+  background-image: url("microbuzbun.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-image .overlay {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.hero-image h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero-image p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-image .buttons .btn {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 12px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.hero-image .btn.call {
+  background-color: var(--primary-dark);
+}
+.hero-image .btn.reserve {
+  background-color: var(--primary);
+}
+
+.hero-image .btn:hover {
+  opacity: 0.9;
+}
+
+/* ===== SECȚIUNE HERO 2 (Acasă) ===== */
 .hero {
   padding: 4rem 2rem;
   text-align: center;
   background-color: var(--light);
 }
 
-/* ===== RUTE POPULARE ===== */
+.hero h2 {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.btn-hero {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.btn-hero:hover {
+  background-color: var(--primary-dark);
+}
+
+/* ===== RUTE POPULARE (Acasă) ===== */
 .rute-populare {
   padding: 3rem 1rem;
   max-width: 1200px;
@@ -125,19 +253,23 @@ body {
   gap: 1.5rem;
 }
 
-.rute {
+a.rute {
   background-color: var(--light);
   padding: 1rem;
   border-radius: 8px;
   box-shadow: var(--shadow);
   transition: var(--transition);
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
-.rute:hover {
+a.rute:hover {
   transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.rute img {
+a.rute img {
   width: 100%;
   height: auto;
   border-radius: 6px;
@@ -145,21 +277,21 @@ body {
   transition: transform 0.3s ease;
 }
 
-.rute:hover img {
+a.rute:hover img {
   transform: scale(1.02);
 }
 
-.rute h3 {
+a.rute h3 {
   font-size: 1.2rem;
   color: var(--primary);
   margin-bottom: 0.5rem;
 }
 
-.rute p {
+a.rute p {
   font-size: 0.95rem;
 }
 
-/* ===== AVANTAJE ===== */
+/* ===== AVANTAJE (Acasă) ===== */
 .avantaje {
   padding: 3rem 1rem;
   max-width: 800px;
@@ -177,76 +309,100 @@ body {
   list-style-type: disc;
   padding-left: 1.5rem;
 }
-
 .avantaje li {
   margin-bottom: 0.75rem;
   font-size: 1rem;
 }
 
+/* ===== BUTOANE PLUTITOARE (Global) ===== */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.25);
+  }
+  70% {
+    transform: scale(1.12);
+    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.floating-btn {
+  position: fixed;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 55px;
+  z-index: 999;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+  animation: pulse 2.5s infinite;
+}
+
+.floating-btn:hover {
+  transform: scale(1.1);
+}
+
+.floating-btn i {
+  font-size: 24px;
+}
+
+/* Culori + poziționare */
+.floating-btn.call {
+  background-color: #009999;
+  left: 20px;
+  bottom: 20px;
+}
+.floating-btn.whatsapp {
+  background-color: #25d366;
+  right: 20px;
+  bottom: 20px;
+}
+
 /* ===== FOOTER ===== */
 footer {
-  background-color: var(--dark);
+  background-color: var(--primary);
   color: var(--white);
   padding: 2rem 1rem;
   text-align: center;
   margin-top: auto;
 }
 
-/* ===== BUTOANE FLOTANTE STICKY ===== */
-.floating-btn {
-  position: fixed;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: var(--primary);
-  box-shadow: var(--shadow);
-  transition: var(--transition);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
+footer a {
+  color: #f6f5f3;
+  text-decoration: underline;
+  font-weight: 500;
 }
 
-.floating-btn:hover {
-  background-color: var(--primary-dark);
-  transform: scale(1.1);
-}
-
-.floating-btn img {
-  width: 24px;
-  height: 24px;
-}
-
-.floating-btn.call {
-  left: 20px;
-  bottom: 20px;
-}
-
-.floating-btn.whatsapp {
-  right: 20px;
-  bottom: 20px;
-}
-
-/* ===== MEDIA QUERIES ===== */
+/* ======= MEDIA QUERIES (Global) ======= */
 @media (max-width: 768px) {
   .logo img {
     height: 60px;
   }
-
   .brand-center h1 {
     font-size: 1.5rem;
   }
-
+  .hero-image h1 {
+    font-size: 2rem;
+  }
+  .hero-image p {
+    font-size: 1rem;
+  }
   .floating-btn {
     width: 45px;
     height: 45px;
   }
-
   .floating-btn.call {
     left: 15px;
     bottom: 15px;
   }
-
   .floating-btn.whatsapp {
     right: 15px;
     bottom: 15px;
@@ -257,22 +413,309 @@ footer {
   .logo img {
     height: 50px;
   }
-
   .brand-center h1 {
     font-size: 1.3rem;
   }
-
   .brand-center p {
     font-size: 0.9rem;
   }
-
   .navbar ul {
     gap: 0.5rem;
     padding: 0 0.5rem;
   }
-
-  .navbar a {
+  .navbar li > a,
+  .navbar li > button.dropbtn {
     padding: 0.5rem;
     font-size: 0.9rem;
+  }
+  .hero-image h1 {
+    font-size: 1.5rem;
+  }
+  .hero-image p {
+    font-size: 0.9rem;
+  }
+}
+
+/* ======================================================
+   ========== SECȚIUNE SPECIFICĂ PAGINII CONTACT =========
+   =====================================================*/
+.contact-page {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.contact-page .hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.contact-page .hero h2 {
+  font-size: 2.2rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+.contact-page .hero p {
+  font-size: 1.1rem;
+  color: var(--text);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact-methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.contact-card {
+  background: var(--white);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: var(--transition);
+}
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+.contact-card i {
+  font-size: 2rem;
+  color: var(--primary);
+  min-width: 40px;
+  text-align: center;
+}
+.contact-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-dark);
+}
+.contact-card p {
+  margin-bottom: 0.3rem;
+}
+.contact-card a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+.contact-card a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+.contact-card small {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .contact-methods {
+    grid-template-columns: 1fr;
+  }
+  .contact-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+    padding: 1.2rem;
+  }
+  .contact-card i {
+    margin-bottom: 0.5rem;
+  }
+  .contact-page .hero h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* ======================================================
+   ========== SECȚIUNE SPECIFICĂ PAGINII RUTE ============
+   =====================================================*/
+/* Header imagine microbuz */
+.microbuz {
+  width: 100%;
+  height: 220px;
+  display: block;
+  object-fit: cover;
+}
+
+/* Titluri + text */
+.rute {
+  padding: 30px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+.rute h2 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.rute p {
+  margin-bottom: 30px;
+  text-align: center;
+  color: #555;
+  font-size: 1.2rem;
+}
+
+.tara {
+  margin-bottom: 40px;
+  scroll-margin-top: 120px;
+  text-align: center;
+  font-size: 1.6rem;
+}
+.tara h3 {
+  font-size: 3rem;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.plecari-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+.plecari-grid strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+  font-size: 1.08em;
+}
+.plecari-grid ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.plecari-grid li {
+  margin-bottom: 0.4em;
+  padding-left: 1em;
+  position: relative;
+}
+
+/* Hărți Leaflet */
+[id^="harta-"] {
+  width: 100%;
+  height: 500px;
+  border-radius: 12px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Butoane rute */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+.buttons .btn {
+  background-color: var(--primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+.buttons .btn:hover {
+  background-color: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* Popup oraș */
+.popup-oras {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.popup-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+.popup-content .btn {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  margin: 0.5rem;
+}
+.popup-content .btn:hover {
+  background-color: var(--primary-dark);
+}
+.popup-content .close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.hidden {
+  display: none;
+}
+
+/* Responsive pentru Rute */
+@media (max-width: 768px) {
+  .top-bar {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .brand-center h1 {
+    font-size: 1.4rem;
+  }
+  .brand-center p {
+    font-size: 1rem;
+  }
+  .navbar ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  .navbar li {
+    width: 100%;
+  }
+  .navbar li > a,
+  .navbar li > button.dropbtn {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+  .microbuz {
+    height: 160px;
+  }
+  .rute {
+    padding: 20px 10px;
+  }
+  .tara h3 {
+    font-size: 1.3rem;
+  }
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .buttons .btn {
+    width: 80%;
+    text-align: center;
+    padding: 14px;
+    font-size: 1rem;
+  }
+  [id^="harta-"] {
+    height: 300px;
   }
 }

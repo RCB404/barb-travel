@@ -1003,3 +1003,30 @@ body {
   display: flex;
   align-items: center;
 }
+:root {
+  --primary: #007a7a;
+  --primary-dark: #005f5f;
+}
+.navbar {
+  background: var(--primary);
+}
+.navbar a,
+.dropbtn {
+  color: #fff;
+}
+
+.btn,
+.btn-hero,
+.btn.call,
+.btn.reserve {
+  background: var(--primary-dark);
+  color: #fff;
+}
+.btn:hover,
+.btn-hero:hover {
+  background: var(--primary);
+}
+footer {
+  background: var(--primary-dark);
+  color: #fff;
+}

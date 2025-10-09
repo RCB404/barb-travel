@@ -838,3 +838,22 @@ footer a {
   height: 18px;
   stroke: var(--primary);
 }
+svg.icon-svg {
+  width: 1.6em;
+  height: 1.6em;
+  min-width: 24px;
+  min-height: 24px;
+  flex-shrink: 0;
+  vertical-align: middle;
+  aspect-ratio: 1/1;
+}
+svg.icon-svg use {
+  pointer-events: none;
+}
+svg.icon-svg {
+  width: 1.6em;
+  height: 1.6em;
+  min-width: 24px;
+  min-height: 24px;
+  aspect-ratio: 1/1;
+}

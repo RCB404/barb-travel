@@ -981,3 +981,48 @@ footer a {
 .btn-hero:hover {
   background: #007070;
 }
+/* --- Avantaje: layout stabil pe mobil (icon + text) --- */
+.avantaje ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.avantaje li {
+  display: grid;
+  grid-template-columns: 26px 1fr; /* icon fix, text fluid */
+  align-items: center; /* aliniere pe mijloc */
+  gap: 0.6rem;
+  line-height: 1.35;
+}
+
+.avantaje .icon-svg {
+  width: 26px;
+  height: 26px;
+  flex: none; /* nu se comprimă */
+  margin-top: 0; /* fără „cădere” vizuală */
+}
+
+.avantaje .li-text {
+  /* toată propoziția e o singură „coloană” */
+  display: inline; /* comportament de text, se înfășoară natural */
+  word-break: keep-all; /* nu rupe cuvintele românești */
+  hyphens: manual;
+}
+
+/* expresiile-cheie stau împreună (nu „Masă” pe rândul 1 și „caldă” pe rândul 2) */
+.nb,
+.avantaje .li-text strong {
+  white-space: nowrap;
+}
+
+/* pe telefoane înguste, un pic mai „aerat”, dar fără decalaje */
+@media (max-width: 480px) {
+  .avantaje li {
+    gap: 0.5rem;
+  }
+}
+@media (max-width: 380px) {
+  .avantaje li {
+    font-size: 0.95rem;
+  }
+}

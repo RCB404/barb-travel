@@ -19,7 +19,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 html,
 body {
   height: 100%;
@@ -46,24 +45,20 @@ body {
   min-height: 100px;
   z-index: 999;
 }
-
 .logo img {
   height: 80px;
   width: auto;
 }
-
 .brand-center {
   flex-grow: 1;
   text-align: center;
   margin-left: 1rem;
 }
-
 .brand-center h1 {
   color: var(--primary);
   font-size: 1.8rem;
   margin-bottom: 0.5rem;
 }
-
 .brand-center p {
   font-size: 1rem;
   color: var(--primary);
@@ -79,7 +74,6 @@ body {
   z-index: 1000;
   box-shadow: var(--shadow);
 }
-
 .navbar ul {
   display: flex;
   justify-content: center;
@@ -87,11 +81,9 @@ body {
   gap: 1.5rem;
   flex-wrap: wrap;
 }
-
 .navbar li {
   position: relative;
 }
-
 .navbar li > a,
 .navbar li > button.dropbtn {
   display: flex;
@@ -110,11 +102,9 @@ body {
   line-height: 1.5;
   border-radius: 4px;
 }
-
 .navbar li > a:hover,
 .navbar li > button.dropbtn:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: var(--primary);
+  background-color: rgba(255, 255, 255, 0.12);
 }
 
 /* ===== DROPDOWN ===== */
@@ -131,11 +121,9 @@ body {
   z-index: 9999;
   overflow: hidden;
 }
-
 .dropdown.active .dropdown-content {
   display: block;
 }
-
 .dropdown-content a {
   background-color: var(--white);
   color: var(--text);
@@ -146,60 +134,70 @@ body {
   text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
-
 .dropdown-content a:hover {
   background-color: #f1f1f1;
   color: var(--primary-dark);
 }
 
-/* ===== HERO ACASĂ ===== */
+/* ===== HERO ACASĂ – imagine în HTML ===== */
 .hero-image {
-  background-image: url("microbuzbun.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  min-height: 70vh;
+  height: clamp(60vh, 70vh, 90vh);
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  color: white;
+  overflow: hidden;
 }
-
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+/* overlay pe text */
 .hero-image .overlay {
-  background: rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.45)
+  );
   padding: 2rem;
   border-radius: 10px;
+  max-width: 900px;
+  margin: 0 1rem;
 }
-
 .hero-image h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
-
 .hero-image p {
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
 }
-
 .hero-image .buttons .btn {
   display: inline-block;
   margin: 0 10px;
   padding: 12px 20px;
   font-weight: bold;
   border-radius: 5px;
-  color: white;
+  color: #fff;
   text-decoration: none;
   transition: background 0.3s;
 }
-
 .hero-image .btn.call {
   background-color: var(--primary-dark);
 }
 .hero-image .btn.reserve {
   background-color: var(--primary);
 }
-
 .hero-image .btn:hover {
   opacity: 0.9;
 }
@@ -210,25 +208,22 @@ body {
   text-align: center;
   background-color: var(--light);
 }
-
 .hero h2 {
   font-size: 2rem;
   color: var(--primary);
   margin-bottom: 1rem;
 }
-
 .btn-hero {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
   background-color: var(--primary);
-  color: white;
+  color: #fff;
   border-radius: 5px;
   font-weight: bold;
   text-decoration: none;
   transition: var(--transition);
 }
-
 .btn-hero:hover {
   background-color: var(--primary-dark);
 }
@@ -240,19 +235,16 @@ body {
   margin: 0 auto;
   text-align: center;
 }
-
 .rute-populare h2 {
   font-size: 2rem;
   margin-bottom: 2rem;
   color: var(--primary);
 }
-
 .rute-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1.5rem;
 }
-
 a.rute {
   background-color: var(--light);
   padding: 1rem;
@@ -263,12 +255,10 @@ a.rute {
   color: inherit;
   display: block;
 }
-
 a.rute:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
-
 a.rute img {
   width: 100%;
   height: auto;
@@ -276,17 +266,14 @@ a.rute img {
   margin-bottom: 1rem;
   transition: transform 0.3s ease;
 }
-
 a.rute:hover img {
   transform: scale(1.02);
 }
-
 a.rute h3 {
   font-size: 1.2rem;
   color: var(--primary);
   margin-bottom: 0.5rem;
 }
-
 a.rute p {
   font-size: 0.95rem;
 }
@@ -297,36 +284,52 @@ a.rute p {
   max-width: 800px;
   margin: 0 auto;
 }
-
 .avantaje h2 {
   text-align: center;
   font-size: 2rem;
   margin-bottom: 1.5rem;
   color: var(--primary);
 }
-
 .avantaje ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
+  list-style: none;
+  padding-left: 0;
 }
 .avantaje li {
   margin-bottom: 0.75rem;
   font-size: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
 }
 
-/* ===== TESTIMONIALE - VERSIUNE SIMPLIFICATĂ ===== */
+/* Iconuri Lucide (stroke) */
+.avantaje .icon-svg {
+  width: 26px;
+  height: 26px;
+  stroke: #009999;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: 0 0 26px;
+  transition: transform 0.18s ease;
+  margin-top: 2px;
+}
+.avantaje li:hover .icon-svg {
+  transform: scale(1.08);
+}
+
+/* ===== TESTIMONIALE ===== */
 .testimoniale {
   background-color: #f8f9fa;
   padding: 3rem 1rem;
   text-align: center;
 }
-
 .testimoniale h3 {
   color: #009999;
   font-size: 1.5rem;
   margin-bottom: 2rem;
 }
-
 .testimonial-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -334,15 +337,13 @@ a.rute p {
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .testimonial {
-  background: white;
+  background: #fff;
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: relative;
 }
-
 .testimonial::after {
   content: "";
   position: absolute;
@@ -352,15 +353,13 @@ a.rute p {
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-top: 10px solid white;
+  border-top: 10px solid #fff;
 }
-
 .testimonial p {
   margin-bottom: 1rem;
   line-height: 1.5;
   color: #333;
 }
-
 .testimonial span {
   display: block;
   text-align: right;
@@ -368,14 +367,13 @@ a.rute p {
   color: #007777;
   font-size: 0.9rem;
 }
-
 @media (max-width: 768px) {
   .testimonial-container {
     grid-template-columns: 1fr;
   }
 }
 
-/* ===== BUTOANE PLUTITOARE (Global) ===== */
+/* ===== BUTOANE PLUTITOARE ===== */
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -389,13 +387,12 @@ a.rute p {
     transform: scale(1);
   }
 }
-
 .floating-btn {
   position: fixed;
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  color: white;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -406,16 +403,12 @@ a.rute p {
   transition: transform 0.2s ease;
   animation: pulse 2.5s infinite;
 }
-
 .floating-btn:hover {
   transform: scale(1.1);
 }
-
 .floating-btn i {
   font-size: 24px;
 }
-
-/* Culori + poziționare */
 .floating-btn.call {
   background-color: #009999;
   left: 20px;
@@ -435,20 +428,22 @@ footer {
   text-align: center;
   margin-top: auto;
 }
-
 footer a {
   color: #f6f5f3;
   text-decoration: underline;
   font-weight: 500;
 }
 
-/* ======= MEDIA QUERIES (Global) ======= */
+/* ===== MEDIA QUERIES (Global) ===== */
 @media (max-width: 768px) {
   .logo img {
     height: 60px;
   }
   .brand-center h1 {
     font-size: 1.5rem;
+  }
+  .hero-image {
+    min-height: 60vh;
   }
   .hero-image h1 {
     font-size: 2rem;
@@ -469,7 +464,6 @@ footer a {
     bottom: 15px;
   }
 }
-
 @media (max-width: 480px) {
   .logo img {
     height: 50px;
@@ -490,15 +484,15 @@ footer a {
     font-size: 0.9rem;
   }
   .hero-image h1 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
   }
   .hero-image p {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
   }
 }
 
 /* ======================================================
-   ========== SECȚIUNE SPECIFICĂ PAGINII CONTACT =========
+   ========== PAGINA CONTACT =============================
    =====================================================*/
 .contact-page {
   max-width: 1200px;
@@ -520,7 +514,6 @@ footer a {
   max-width: 800px;
   margin: 0 auto;
 }
-
 .contact-methods {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -528,7 +521,7 @@ footer a {
   margin-bottom: 3rem;
 }
 .contact-card {
-  background: var(--white);
+  background: #fff;
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: var(--shadow);
@@ -569,7 +562,6 @@ footer a {
   color: #666;
   font-size: 0.85rem;
 }
-
 @media (max-width: 768px) {
   .contact-methods {
     grid-template-columns: 1fr;
@@ -589,17 +581,14 @@ footer a {
 }
 
 /* ======================================================
-   ========== SECȚIUNE SPECIFICĂ PAGINII RUTE ============
+   ========== PAGINA RUTE ================================
    =====================================================*/
-/* Header imagine microbuz */
 .microbuz {
   width: 100%;
   height: 220px;
   display: block;
   object-fit: cover;
 }
-
-/* Titluri + text */
 .rute {
   padding: 30px 20px;
   max-width: 1000px;
@@ -672,7 +661,7 @@ footer a {
 }
 .buttons .btn {
   background-color: var(--primary);
-  color: white;
+  color: #fff;
   padding: 12px 20px;
   border-radius: 8px;
   text-decoration: none;
@@ -708,7 +697,7 @@ footer a {
 }
 .popup-content .btn {
   background-color: var(--primary);
-  color: var(--white);
+  color: #fff;
   padding: 12px 20px;
   border-radius: 8px;
   text-decoration: none;
@@ -730,7 +719,7 @@ footer a {
   display: none;
 }
 
-/* Responsive pentru Rute */
+/* Responsive Rute */
 @media (max-width: 768px) {
   .top-bar {
     flex-direction: column;
@@ -779,4 +768,73 @@ footer a {
   [id^="harta-"] {
     height: 300px;
   }
+}
+.how-it-works {
+  padding: 2.5rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.how-it-works h2 {
+  font-size: 2rem;
+  color: var(--primary);
+}
+.how-it-works .how-sub {
+  margin: 0.5rem auto 1.5rem;
+  max-width: 700px;
+  color: #555;
+}
+.how-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-bottom: 1.25rem;
+}
+.how-card {
+  background: var(--light);
+  border-radius: 10px;
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+}
+.how-card .icon-svg {
+  width: 32px;
+  height: 32px;
+  stroke: var(--primary);
+  fill: none;
+  stroke-width: 2;
+  margin-bottom: 0.5rem;
+}
+.how-card h3 {
+  font-size: 1.1rem;
+  color: var(--primary-dark);
+  margin: 0.25rem 0 0.35rem;
+}
+.how-card p {
+  color: #444;
+  font-size: 0.98rem;
+}
+
+.trust-strip {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+  list-style: none;
+}
+.trust-strip li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #333;
+}
+.trust-strip .icon-svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--primary);
 }

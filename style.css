@@ -976,3 +976,30 @@ img {
   font-style: normal;
   font-display: optional;
 }
+html,
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+}
+body {
+  position: relative;
+}
+
+.hero-image .overlay {
+  min-height: 270px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.hero-image h1 {
+  line-height: 1.2;
+  font-weight: 600;
+  min-height: 2.8em; /* rezervă spațiu ca să nu sară textul */
+}
+
+.navbar {
+  min-height: 56px; /* rezervă spațiu fix pentru bară */
+  display: flex;
+  align-items: center;
+}

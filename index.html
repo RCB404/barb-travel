@@ -56,6 +56,7 @@
 
     <link rel="icon" type="image/png" href="barb-travel-logo.jpeg" />
 
+    <!-- Fonts: preconnect + swap -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -63,11 +64,24 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="style.css" />
+    <!-- Preload LCP image (as responsive). NOTE: ensure slep-800.webp / slep-1200.webp exist -->
+    <link
+      rel="preload"
+      as="image"
+      href="slep-1200.webp"
+      imagesrcset="slep-800.webp 800w, slep-1200.webp 1200w"
+      imagesizes="(max-width: 768px) 100vw, 1200px"
+    />
+
+    <!-- CSS non-blocking + versioning via query param -->
+    <link rel="preload" href="style.css?v=1" as="style" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      href="style.css?v=1"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript><link rel="stylesheet" href="style.css?v=1" /></noscript>
 
     <!-- JSON-LD -->
     <script type="application/ld+json">
@@ -233,6 +247,13 @@
           transition: none;
         }
       }
+
+      /* Floating buttons use SVG now */
+      .floating-btn .icon-svg {
+        width: 20px;
+        height: 20px;
+        stroke: currentColor;
+      }
     </style>
   </head>
 
@@ -241,12 +262,15 @@
 
     <header>
       <section class="hero-image">
+        <!-- LCP image: ensure slep-800.webp / slep-1200.webp exist. Keep old slep.webp as last-resort fallback if vrei -->
         <img
-          src="slep.webp"
+          src="slep-1200.webp"
+          srcset="slep-800.webp 800w, slep-1200.webp 1200w"
+          sizes="(max-width: 768px) 100vw, 1200px"
           alt="Microbuz BRB-Travel cu platformă auto"
           class="hero-img"
-          width="1600"
-          height="900"
+          width="1200"
+          height="675"
           loading="eager"
           fetchpriority="high"
         />
@@ -296,11 +320,13 @@
       xmlns="http://www.w3.org/2000/svg"
       style="display: none"
       aria-hidden="true"
-      <!--
-      Simboluri
-      extra
-      --
     >
+      <!-- Simboluri extra -->
+      <symbol id="lucide-phone" viewBox="0 0 24 24">
+        <path
+          d="M22 16.92v2a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07A19.5 19.5 0 0 1 3.15 8.81a19.8 19.8 0 0 1-3.07-8.63A2 2 0 0 1 2.08 0h2A2 2 0 0 1 6 1.72l1.2 2.8a2 2 0 0 1-.45 2.18L5.4 8.05a16 16 0 0 0 6.55 6.55l1.35-1.35a2 2 0 0 1 2.18-.45l2.8 1.2A2 2 0 0 1 22 16.92z"
+        />
+      </symbol>
       <symbol id="lucide-whatsapp" viewBox="0 0 24 24">
         <path
           d="M20.5 11.5a8.5 8.5 0 1 1-3.1-6.6l.1.1a8.5 8.5 0 0 1 3 6.5Z"
@@ -330,8 +356,6 @@
           d="m12 17.3-5.5 3 1.1-6.3L3 9.8l6.3-.9L12 3l2.7 5.9 6.3.9-4.6 4.2 1.1 6.3-5.5-3Z"
         ></path>
       </symbol>
-
-      >
       <symbol id="lucide-award" viewBox="0 0 24 24">
         <circle cx="12" cy="8" r="5"></circle>
         <path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5"></path>
@@ -355,9 +379,8 @@
       </symbol>
       <symbol id="lucide-bus" viewBox="0 0 24 24">
         <rect x="3" y="5" width="18" height="12" rx="2"></rect>
+        <path d="M3 13h18M7 9h5"></path>
         <path d="M7 17v1m10-1v1"></path>
-        <path d="M3 13h18"></path>
-        <path d="M7 9h5"></path>
       </symbol>
       <symbol id="lucide-coffee" viewBox="0 0 24 24">
         <path d="M3 8h14v5a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Z"></path>
@@ -409,6 +432,7 @@
           >Rezervă acum pe WhatsApp</a
         >
       </section>
+
       <section class="how-it-works" aria-labelledby="how-title">
         <h2 id="how-title">Cum funcționează</h2>
         <p class="how-sub">Simplu și rapid în 3 pași</p>
@@ -462,7 +486,6 @@
             </svg>
             Licență transport UE
           </li>
-
           <li>
             <svg class="icon-svg" aria-hidden="true">
               <use href="#lucide-route"></use>
@@ -483,11 +506,17 @@
         <div class="rute-container">
           <a href="rute/rute.html#germania" class="rute">
             <h3>Germania</h3>
+            <!-- NOTE: pregătește romania-germania-360.webp și -720.webp -->
             <img
-              src="romania-germania.webp"
+              src="romania-germania-360.webp"
+              srcset="
+                romania-germania-360.webp 360w,
+                romania-germania-720.webp 720w
+              "
+              sizes="(max-width: 600px) 48vw, (max-width: 1024px) 33vw, 360px"
               alt="Transport persoane în Germania"
               loading="lazy"
-              width="480"
+              width="360"
               height="270"
             />
             <p>
@@ -498,10 +527,15 @@
           <a href="rute/rute.html#austria" class="rute">
             <h3>Austria</h3>
             <img
-              src="romania-austria.webp"
+              src="romania-austria-360.webp"
+              srcset="
+                romania-austria-360.webp 360w,
+                romania-austria-720.webp 720w
+              "
+              sizes="(max-width: 600px) 48vw, (max-width: 1024px) 33vw, 360px"
               alt="Transport persoane în Austria"
               loading="lazy"
-              width="480"
+              width="360"
               height="270"
             />
             <p>Transport persoane și colete din România în Austria și retur.</p>
@@ -510,10 +544,15 @@
           <a href="rute/rute.html#belgia" class="rute">
             <h3>Belgia</h3>
             <img
-              src="romania-belgia.webp"
+              src="romania-belgia-360.webp"
+              srcset="
+                romania-belgia-360.webp 360w,
+                romania-belgia-720.webp 720w
+              "
+              sizes="(max-width: 600px) 48vw, (max-width: 1024px) 33vw, 360px"
               alt="Transport persoane în Belgia"
               loading="lazy"
-              width="480"
+              width="360"
               height="270"
             />
             <p>Transport persoane și colete din România în Belgia și retur.</p>
@@ -522,10 +561,15 @@
           <a href="rute/rute.html#olanda" class="rute">
             <h3>Olanda</h3>
             <img
-              src="romania-olanda.webp"
+              src="romania-olanda-360.webp"
+              srcset="
+                romania-olanda-360.webp 360w,
+                romania-olanda-720.webp 720w
+              "
+              sizes="(max-width: 600px) 48vw, (max-width: 1024px) 33vw, 360px"
               alt="Transport persoane în Olanda"
               loading="lazy"
-              width="480"
+              width="360"
               height="270"
             />
             <p>Transport persoane și colete din România în Olanda și retur.</p>
@@ -700,14 +744,16 @@
       </section>
     </main>
 
-    <!-- Butoane plutitoare -->
+    <!-- Butoane plutitoare (SVG, fără Font Awesome) -->
     <a
       href="tel:+40759967696"
       class="floating-btn call"
       title="Sună acum"
       aria-label="Sună acum"
     >
-      <i class="fas fa-phone-alt" aria-hidden="true"></i>
+      <svg class="icon-svg" aria-hidden="true">
+        <use href="#lucide-phone"></use>
+      </svg>
     </a>
     <a
       href="https://wa.me/40759967696"
@@ -717,7 +763,9 @@
       target="_blank"
       rel="noopener"
     >
-      <i class="fab fa-whatsapp" aria-hidden="true"></i>
+      <svg class="icon-svg" aria-hidden="true">
+        <use href="#lucide-whatsapp"></use>
+      </svg>
     </a>
 
     <footer>
@@ -744,23 +792,19 @@
       document.addEventListener("DOMContentLoaded", function () {
         const dropBtn = document.querySelector(".dropbtn");
         const dropdown = document.querySelector(".dropdown");
-
         function closeMenu() {
           dropdown.classList.remove("active");
           dropBtn.setAttribute("aria-expanded", "false");
         }
-
         if (dropBtn) {
           dropBtn.addEventListener("click", function (e) {
             e.stopPropagation();
             const isOpen = dropdown.classList.toggle("active");
             dropBtn.setAttribute("aria-expanded", String(isOpen));
           });
-
           window.addEventListener("click", function (e) {
             if (!e.target.closest(".dropdown")) closeMenu();
           });
-
           document.addEventListener("keydown", function (e) {
             if (e.key === "Escape") closeMenu();
           });

@@ -1,35 +1,11 @@
-/* ====== FONT LOCAL + ANTI-CLS ====== */
-@font-face {
-  font-family: "Poppins";
-  src: url("fonts/poppins-400.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap; /* instant fallback -> no layout shift */
-}
-@font-face {
-  font-family: "Poppins";
-  src: url("fonts/poppins-600.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-html {
-  text-rendering: optimizeLegibility;
-}
+/* ======================================================
+   ===============  STYLE.CSS UNIFICAT  ==================
+   =====================================================*/
 
-/* Păstrează LCP-ul stabil vizual chiar dacă se întârzie fontul */
-.hero-image .overlay {
-  min-height: 260px;
-}
-
-/* Utility: nu rupe cuvintele/expresiile critice */
-.nb {
-  white-space: nowrap;
-}
-
+/* ===== VARIABILE & RESET ===== */
 :root {
-  --primary: #009999;
-  --primary-dark: #007777;
+  --primary: #008585; /* mai închis pt contrast mai bun */
+  --primary-dark: #006d6d; /* hover/active mai închis */
   --text: #333333;
   --light: #f8f9fa;
   --dark: #212529;
@@ -48,13 +24,36 @@ body {
   height: 100%;
   scroll-behavior: smooth;
 }
+
+/* ===== FONT LOCAL + ANTI-CLS ===== */
+@font-face {
+  font-family: "Poppins";
+  src: url("fonts/poppins-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: optional; /* evită reflow vizibil dacă fontul vine târziu */
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("fonts/poppins-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: optional;
+}
+
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+    sans-serif;
   line-height: 1.6;
   color: var(--text);
   background: #fff;
   display: flex;
   flex-direction: column;
+
+  /* reduce diferența dintre fallback și Poppins -> CLS mai mic */
+  font-size-adjust: 0.52;
+  text-rendering: optimizeLegibility;
+  font-synthesis-weight: none;
 }
 
 /* ===== UTILITARE SVG (înlocuiește Font Awesome) ===== */
@@ -150,7 +149,6 @@ svg.icon-svg use {
   border: 0;
   color: #fff;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
   text-decoration: none;
   cursor: pointer;
   transition: var(--transition);
@@ -216,7 +214,7 @@ svg.icon-svg use {
   object-position: center;
   z-index: 0;
 }
-/* overlay cu contrast mai bun pe mobil */
+/* overlay cu contrast mai bun pe mobil + rezervă spațiu (anti-CLS) */
 .hero-image .overlay {
   position: relative;
   z-index: 1;
@@ -229,9 +227,11 @@ svg.icon-svg use {
   border-radius: 10px;
   max-width: 900px;
   margin: 0 1rem;
+  min-height: 260px;
 }
 .hero-image h1 {
   font-size: 2.5rem;
+  line-height: 1.2;
   margin-bottom: 1rem;
 }
 .hero-image p {
@@ -332,6 +332,7 @@ a.rute h3 {
   font-size: 1.2rem;
   color: var(--primary);
   margin-bottom: 0.5rem;
+  min-height: 1.2em;
 }
 a.rute p {
   font-size: 0.95rem;
@@ -353,12 +354,16 @@ a.rute p {
   list-style: none;
   padding-left: 0;
 }
+
+/* Layout stabil pe mobil: 2 coloane (icon fix, text fluid) */
 .avantaje li {
-  margin-bottom: 0.75rem;
-  font-size: 1rem;
-  display: flex;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  align-items: center;
   gap: 0.6rem;
+  line-height: 1.35;
+  word-break: keep-all;
+  hyphens: manual;
 }
 .avantaje .icon-svg {
   width: 26px;
@@ -368,12 +373,30 @@ a.rute p {
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  flex: 0 0 26px;
+  flex: none;
+  margin-top: 0;
   transition: transform 0.18s ease;
-  margin-top: 2px;
 }
 .avantaje li:hover .icon-svg {
   transform: scale(1.08);
+}
+/* nu rupe expresiile-cheie */
+.avantaje li strong {
+  white-space: nowrap;
+}
+.nb {
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .avantaje ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .avantaje li {
+    padding: 0.35rem 0.25rem;
+  }
 }
 
 /* ===== TESTIMONIALE ===== */
@@ -444,11 +467,11 @@ a.rute p {
   align-items: center;
   gap: 0.4rem;
   background: #fff;
-  border: 1px solid #eee;
+  border: 1px solid #e6e6e6;
   padding: 0.5rem 0.75rem;
   border-radius: 999px;
   font-weight: 600;
-  color: #333;
+  color: #222;
 }
 .trust-strip .icon-svg {
   width: 18px;
@@ -493,7 +516,7 @@ a.rute p {
   stroke: currentColor;
 }
 .floating-btn.call {
-  background: #009999;
+  background: var(--primary);
   left: 20px;
   bottom: 20px;
 }
@@ -519,14 +542,14 @@ a.rute p {
 
 /* ===== FOOTER ===== */
 footer {
-  background: var(--primary);
+  background: var(--primary-dark);
   color: #fff;
   padding: 2rem 1rem;
   text-align: center;
   margin-top: auto;
 }
 footer a {
-  color: #f6f5f3;
+  color: #ffffff;
   text-decoration: underline;
   font-weight: 500;
 }
@@ -619,7 +642,6 @@ footer a {
   transform: translateY(-5px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
-/* înlocuiește <i> cu SVG */
 .contact-card .icon-svg {
   width: 32px;
   height: 32px;
@@ -847,7 +869,10 @@ footer a {
     height: 300px;
   }
 }
-/* === FIX "Cum funcționează" centrat + layout curat === */
+
+/* ======================================================
+   === FIX "Cum funcționează" centrat + layout curat ====
+   =====================================================*/
 .how-it-works {
   padding: 2.75rem 1rem;
   max-width: 1200px;
@@ -870,7 +895,7 @@ footer a {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.25rem;
-  justify-items: center; /* centrează conținutul pe coloană */
+  justify-items: center;
   align-items: stretch;
 }
 
@@ -882,7 +907,7 @@ footer a {
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  align-items: center; /* centru orizontal */
+  align-items: center;
   justify-content: flex-start;
   gap: 0.5rem;
   text-align: center;
@@ -890,26 +915,21 @@ footer a {
   height: 100%;
   max-width: 420px;
 }
-
 .how-card .icon-svg {
   width: 32px;
   height: 32px;
   stroke: var(--primary);
   margin-bottom: 0.25rem;
 }
-
 .how-card h3 {
   font-size: 1.15rem;
   color: var(--primary-dark);
   margin: 0.2rem 0 0.35rem;
 }
-
 .how-card p {
   color: #444;
   font-size: 0.98rem;
 }
-
-/* butonul din primul card – centrat frumos */
 .how-card .btn-hero {
   align-self: center;
   margin-top: 0.35rem;
@@ -935,94 +955,9 @@ footer a {
     padding: 1rem 1.1rem;
   }
 }
-/* Avantaje — aliniere curată + fără „dantelă” la wrap */
-.avantaje li {
-  display: flex;
-  align-items: center; /* pe mobil vrem centrare verticală */
-  gap: 0.6rem;
-  line-height: 1.35;
-  word-break: keep-all; /* nu despica cuvinte românești */
-  hyphens: manual; /* evită silabisirea automată */
-  flex-wrap: wrap; /* permite 2 rânduri elegante la nevoie */
-}
 
-.avantaje .icon-svg {
-  width: 26px;
-  height: 26px;
-  margin-top: 0; /* elimină „căderea” iconului */
-  flex: 0 0 26px;
-}
-
-/* Nu rupe expresiile evidențiate (ex: „Masă caldă”, „Șoferi cu experiență”) */
-.avantaje li strong {
-  white-space: nowrap;
-}
-
-/* Telefon — mai mult spațiu respirat, rânduri uniforme */
-@media (max-width: 480px) {
-  .avantaje ul {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-  }
-  .avantaje li {
-    padding: 0.35rem 0.25rem;
-  }
-}
-.hero-image .btn.call {
-  background: #007070;
-} /* era #007777, ușor mai închis */
-.hero-image .btn.reserve {
-  background: #008585;
-} /* era #009999 pe unele butoane */
-.btn-hero {
-  background: #008585;
-}
-.btn-hero:hover {
-  background: #007070;
-}
-/* --- Avantaje: layout stabil pe mobil (icon + text) --- */
-.avantaje ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.avantaje li {
-  display: grid;
-  grid-template-columns: 26px 1fr; /* icon fix, text fluid */
-  align-items: center; /* aliniere pe mijloc */
-  gap: 0.6rem;
-  line-height: 1.35;
-}
-
-.avantaje .icon-svg {
-  width: 26px;
-  height: 26px;
-  flex: none; /* nu se comprimă */
-  margin-top: 0; /* fără „cădere” vizuală */
-}
-
-.avantaje .li-text {
-  /* toată propoziția e o singură „coloană” */
-  display: inline; /* comportament de text, se înfășoară natural */
-  word-break: keep-all; /* nu rupe cuvintele românești */
-  hyphens: manual;
-}
-
-/* expresiile-cheie stau împreună (nu „Masă” pe rândul 1 și „caldă” pe rândul 2) */
-.nb,
-.avantaje .li-text strong {
-  white-space: nowrap;
-}
-
-/* pe telefoane înguste, un pic mai „aerat”, dar fără decalaje */
-@media (max-width: 480px) {
-  .avantaje li {
-    gap: 0.5rem;
-  }
-}
-@media (max-width: 380px) {
-  .avantaje li {
-    font-size: 0.95rem;
-  }
+/* ===== IMAGINI GLOBALE ===== */
+img {
+  max-width: 100%;
+  height: auto;
 }

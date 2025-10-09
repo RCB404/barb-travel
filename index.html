@@ -57,8 +57,19 @@
     <link rel="icon" type="image/png" href="barb-travel-logo.jpeg" />
 
     <!-- Fonts: preconnect + swap -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Font local Poppins 400/600 (no render-block, no CLS) -->
+<link rel="preload" href="fonts/poppins-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/poppins-600.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- LCP image preload (păstrat) -->
+<link
+  rel="preload"
+  as="image"
+  href="slep-1200.webp"
+  imagesrcset="slep-800.webp 800w, slep-1200.webp 1200w"
+  imagesizes="(max-width: 768px) 100vw, 1200px"
+/>
+
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
       rel="stylesheet"
@@ -277,16 +288,6 @@
         <div class="overlay">
           <h1>Transport persoane de la adresă la adresă</h1>
           <p>Austria • Germania • Belgia • Olanda</p>
-          <div class="buttons">
-            <a href="tel:+40759967696" class="btn call">Sună acum</a>
-            <a
-              href="https://wa.me/40759967696"
-              class="btn reserve"
-              target="_blank"
-              rel="noopener"
-              >Rezervă acum</a
-            >
-          </div>
         </div>
       </section>
 
@@ -576,7 +577,16 @@
           </a>
         </div>
       </section>
-
+      <div class="buttons">
+        <a href="tel:+40759967696" class="btn call">Sună acum</a>
+        <a
+          href="https://wa.me/40759967696"
+          class="btn reserve"
+          target="_blank"
+          rel="noopener"
+          >Rezervă acum</a
+        >
+      </div>
       <section
         class="avantaje"
         id="avantaje_brb"
@@ -624,8 +634,8 @@
             <svg class="icon-svg" aria-hidden="true">
               <use href="#lucide-coffee"></use>
             </svg>
-            <strong>Masă caldă</strong> la plecare și <strong>cafea</strong> pe
-            drum
+            <span class="nb"><strong>Masă caldă</strong></span> la plecare și
+            <span class="nb"><strong>cafea</strong></span> pe drum
           </li>
           <li id="opriri">
             <svg class="icon-svg" aria-hidden="true">
@@ -637,8 +647,8 @@
             <svg class="icon-svg" aria-hidden="true">
               <use href="#lucide-steering-wheel"></use>
             </svg>
-            <strong>Șoferi cu experiență</strong> — vorbitori de germană și
-            română
+            <span class="nb"><strong>Șoferi cu experiență</strong></span> —
+            vorbitori de germană și română
           </li>
           <li id="plecari_zilnice">
             <svg class="icon-svg" aria-hidden="true">
@@ -662,7 +672,16 @@
           </li>
         </ul>
       </section>
-
+      <div class="buttons">
+        <a href="tel:+40759967696" class="btn call">Sună acum</a>
+        <a
+          href="https://wa.me/40759967696"
+          class="btn reserve"
+          target="_blank"
+          rel="noopener"
+          >Rezervă acum</a
+        >
+      </div>
       <section
         id="testimoniale"
         class="testimoniale"

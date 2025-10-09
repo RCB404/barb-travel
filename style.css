@@ -1,8 +1,32 @@
-/* ======================================================
-   ===============  STYLE.CSS UNIFICAT  ==================
-   =====================================================*/
+/* ====== FONT LOCAL + ANTI-CLS ====== */
+@font-face {
+  font-family: "Poppins";
+  src: url("fonts/poppins-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; /* instant fallback -> no layout shift */
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("fonts/poppins-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+html {
+  text-rendering: optimizeLegibility;
+}
 
-/* ===== VARIABILE & RESET ===== */
+/* Păstrează LCP-ul stabil vizual chiar dacă se întârzie fontul */
+.hero-image .overlay {
+  min-height: 260px;
+}
+
+/* Utility: nu rupe cuvintele/expresiile critice */
+.nb {
+  white-space: nowrap;
+}
+
 :root {
   --primary: #009999;
   --primary-dark: #007777;
@@ -910,4 +934,50 @@ footer a {
   .how-card {
     padding: 1rem 1.1rem;
   }
+}
+/* Avantaje — aliniere curată + fără „dantelă” la wrap */
+.avantaje li {
+  display: flex;
+  align-items: center; /* pe mobil vrem centrare verticală */
+  gap: 0.6rem;
+  line-height: 1.35;
+  word-break: keep-all; /* nu despica cuvinte românești */
+  hyphens: manual; /* evită silabisirea automată */
+  flex-wrap: wrap; /* permite 2 rânduri elegante la nevoie */
+}
+
+.avantaje .icon-svg {
+  width: 26px;
+  height: 26px;
+  margin-top: 0; /* elimină „căderea” iconului */
+  flex: 0 0 26px;
+}
+
+/* Nu rupe expresiile evidențiate (ex: „Masă caldă”, „Șoferi cu experiență”) */
+.avantaje li strong {
+  white-space: nowrap;
+}
+
+/* Telefon — mai mult spațiu respirat, rânduri uniforme */
+@media (max-width: 480px) {
+  .avantaje ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .avantaje li {
+    padding: 0.35rem 0.25rem;
+  }
+}
+.hero-image .btn.call {
+  background: #007070;
+} /* era #007777, ușor mai închis */
+.hero-image .btn.reserve {
+  background: #008585;
+} /* era #009999 pe unele butoane */
+.btn-hero {
+  background: #008585;
+}
+.btn-hero:hover {
+  background: #007070;
 }

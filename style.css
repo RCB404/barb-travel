@@ -887,3 +887,114 @@ footer {
     margin-top: 0;
   }
 }
+/* =======================
+   MOBILE OVERFLOW FIX PACK
+   (lipeste blocul acesta la FINALUL style.css)
+   ======================= */
+
+/* 1) Garda universală anti-scroll orizontal pe mobil */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip; /* mai sigur decât hidden pe iOS */
+}
+
+/* 2) Niciun element să nu forțeze lățimea pe X (fără să stricăm layout-ul) */
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+:where(h1, h2, h3, h4, h5, h6, p, li, a, button, small) {
+  overflow-wrap: anywhere; /* rupe cuvinte/URL-uri prea lungi */
+}
+
+/* 3) Dropdown „Rute”: rămâne în viewport pe mobil */
+@media (max-width: 640px) {
+  .navbar .dropdown-content {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+    width: max-content;
+    max-width: calc(100vw - 24px); /* 12px margine pe stânga/dreapta */
+    overflow-wrap: anywhere;
+  }
+
+  /* Micșorăm puțin densitatea în navbar ca să nu împingă în lateral */
+  .navbar ul {
+    padding-inline: 8px;
+    gap: 8px;
+  }
+}
+
+/* 4) Butoanele plutitoare respectă safe-area pe iPhone (nu împing layout-ul) */
+.floating-btn.call {
+  left: max(16px, env(safe-area-inset-left));
+}
+.floating-btn.whatsapp {
+  right: max(16px, env(safe-area-inset-right));
+}
+.floating-btn {
+  bottom: max(18px, env(safe-area-inset-bottom));
+}
+
+/* 5) Hover/scale doar pe dispozitive cu mouse.
+      Pe touch dezactivăm scale ca să nu apară „painting” în afara viewport-ului. */
+@media (hover: hover) and (pointer: fine) {
+  .btn:hover,
+  .btn-hero:hover,
+  .floating-btn:hover,
+  .rute:hover,
+  .navbar a:hover,
+  .navbar .dropbtn:hover {
+    /* comportamentul tău existent rămâne valabil pe desktop */
+    /* (nu redefinim nimic aici, doar îi permitem să ruleze pe hover real) */
+  }
+}
+@media (hover: none) and (pointer: coarse) {
+  .btn,
+  .btn-hero,
+  .floating-btn,
+  .rute,
+  .navbar a,
+  .navbar .dropbtn {
+    transition: background 0.25s, color 0.25s; /* fără scale pe touch */
+  }
+}
+
+/* 6) Sticky navbar: eliminăm eventuale „1px jumps” care pot crea scroll */
+.navbar {
+  contain: paint; /* izolează efectele vizuale (shadow/filters) */
+  will-change: transform; /* hint pt. performanță pe mobil */
+}
+
+/* 7) Grilele principale: asigurăm încadrarea perfectă în ecran */
+.how-grid,
+.rute-container,
+.testimonial-container,
+.avantaje ul,
+.trust-strip,
+.buttons {
+  margin-inline: auto;
+  max-width: min(var(--container), 100%);
+  padding-inline: 0; /* deja ai padding în secțiuni */
+}
+
+/* 8) Efecte de puls (box-shadow mare) – prevenim overflow vizual pe mobil */
+@media (max-width: 640px) {
+  .floating-btn.whatsapp,
+  .floating-btn.call {
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+    /* pulsul rămâne, dar cu „halo” mai mic implicit din animație */
+  }
+}
+
+/* 9) Asigurăm că erorile de calcul 100vw nu apar dacă vei folosi secțiuni full-bleed */
+.full-bleed {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}

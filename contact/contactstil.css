@@ -357,3 +357,26 @@ footer {
     font-size: 1.6rem;
   }
 }
+/* ==== FORCE-CLOSE DROPDOWN după selectarea unei rute (#romania/#austria/#germania/#belgia/#olanda) ==== */
+/* taie absolut TOATE stările posibile (focus-within + hover) și orice eveniment de pointer */
+body:has(.tara:target) .navbar .dropdown .dropdown-content {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* redundant defensiv: chiar dacă rămâne :focus-within sau :hover pe buton/meniu */
+body:has(.tara:target) .navbar .dropdown:focus-within .dropdown-content,
+body:has(.tara:target) .navbar .dropdown:hover .dropdown-content {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* opțional: elimină highlight-ul butonului după navigare (doar efect vizual) */
+body:has(.tara:target) .navbar .dropbtn {
+  outline: none !important;
+  box-shadow: none !important;
+}

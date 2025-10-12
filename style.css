@@ -2214,4 +2214,106 @@ img {
 /* 15. Debug border pentru development */
 .debug * {
   border: 1px solid red !important;
+} /* === MOBILE HOTFIX PACK ================================= */
+
+/* 0) Debug rapid: permite scroll orizontal până verifici; apoi îl poți scoate */
+html,
+body {
+  overflow-x: auto !important;
+}
+
+/* 1) NAV – permite împachetarea și micșorează paddingul pe mobil */
+@media (max-width: 768px) {
+  .navbar ul {
+    flex-wrap: wrap !important;
+    overflow-x: hidden !important;
+  }
+  .navbar li > a,
+  .navbar li > button.dropbtn {
+    white-space: normal !important;
+    padding: 0.8rem 1rem !important;
+  }
+}
+@media (max-width: 480px) {
+  .navbar li > a,
+  .navbar li > button.dropbtn {
+    padding: 0.7rem 0.85rem !important;
+    font-size: 0.95rem !important;
+  }
+}
+
+/* 2) Grile – fă-le “fluid” pe ecrane mici ca să nu sară peste 100vw */
+@media (max-width: 480px) {
+  /* orașe */
+  .orase-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.5rem !important;
+  }
+  .oras-card,
+  .orase-grid .oras {
+    padding: 0.75rem 0.9rem !important;
+  }
+
+  /* plecări */
+  .plecari-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 0.6rem !important;
+  }
+}
+
+/* 3) Heading-uri și texte – rupe cuvintele prea lungi, evită overflow */
+h1,
+h2,
+h3,
+h4,
+p,
+li,
+.oras-card,
+.rute p,
+.brand-center h1 {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* 4) Hero & microbuz – sigur nu depășesc lățimea */
+.hero-image,
+.hero-image .overlay,
+.hero-image picture,
+.hero-image .hero-img,
+.microbuz {
+  max-width: 100% !important;
+}
+
+/* 5) Trust strip / badge-uri – mai puțin padding pe mobil */
+@media (max-width: 480px) {
+  .trust-strip li {
+    padding: 0.6rem 0.9rem !important;
+  }
+}
+
+/* 6) Butoane – previne umflarea din cauza textelor lungi */
+.buttons .btn,
+.popup-content .btn,
+.hero-image .btn {
+  max-width: 100%;
+  white-space: normal;
+}
+
+/* 7) Footer – asigură-te că nu forțează lățimea */
+footer,
+.footer-content {
+  max-width: 100% !important;
+}
+
+/* 8) Hărți – fără overflow pe mobil mic */
+@media (max-width: 480px) {
+  .map-section,
+  [id^="harta-"] {
+    height: 260px !important;
+  }
+}
+
+/* 9) Elimină ultimele urme de “nowrap” care pot scăpa */
+* {
+  text-wrap: pretty;
 }

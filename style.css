@@ -998,3 +998,101 @@ canvas {
   max-width: 100%;
   overflow-x: clip;
 }
+/* ===========================
+   🔧 HARD FIX – NO SIDE SCROLL
+   =========================== */
+
+/* 1️⃣ Blochează tot overflow-ul orizontal */
+html,
+body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  position: relative;
+}
+
+/* 2️⃣ Elimină glitch-urile provocate de transform / scale */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  transform-origin: center center;
+}
+
+/* 3️⃣ Carduri și secțiuni — forțăm încadrarea în viewport */
+section,
+div,
+header,
+footer,
+main,
+article,
+nav {
+  max-width: 100vw;
+  overflow-x: clip;
+}
+
+/* 4️⃣ Dropdown-ul Rute – centrat 100%, fără să iasă */
+.navbar .dropdown-content {
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  max-width: calc(100vw - 20px) !important;
+  overflow-wrap: anywhere;
+}
+
+/* 5️⃣ Hero / imagini full width – forțăm să nu iasă */
+.hero-image,
+.hero-image img {
+  width: 100vw !important;
+  max-width: 100% !important;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* 6️⃣ Efectele hover care folosesc translate/scale nu mai împing layout-ul */
+@media (hover: none) and (pointer: coarse) {
+  .btn:hover,
+  .btn-hero:hover,
+  .floating-btn:hover,
+  .rute:hover {
+    transform: none !important;
+  }
+}
+
+/* 7️⃣ Box-shadow-urile mari (pulse) sunt tăiate la margine pe mobil */
+@media (max-width: 768px) {
+  .floating-btn.whatsapp,
+  .floating-btn.call {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+  }
+}
+
+/* 8️⃣ Prevenim eroarea tipică 100vw (scrollbar width) pe iOS/Safari */
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 9️⃣ Asigură-te că toate grilele rămân centrate */
+.how-grid,
+.rute-container,
+.avantaje ul,
+.testimonial-container,
+.trust-strip {
+  margin: 0 auto;
+  max-width: min(var(--container), 100%);
+  padding: 0 8px;
+}
+
+/* ✅ 10️⃣ Verificare finală – absolut nimic nu poate depăși viewport-ul */
+body::after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: -1;
+}

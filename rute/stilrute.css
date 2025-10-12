@@ -10,25 +10,29 @@
   --muted: #6b7280;
   --bg: #ffffff;
   --bg-soft: #f6f8f9;
-  --card: #ffffff;
   --border: #e6e8eb;
   --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   --radius: 14px;
   --transition: 0.25s ease;
   --container: 1120px;
+  --nav-h: 64px; /* înălțimea navbar pe mobil */
+}
+@media (min-width: 768px) {
+  :root {
+    --nav-h: 74px;
+  } /* înălțime ușor mai mare pe desktop */
 }
 
 /* ---------------------- RESET ------------------------ */
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
-html,
-body {
-  height: 100%;
+
+html {
   scroll-behavior: smooth;
-  text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--nav-h) + 12px);
 }
 body {
   font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial,
@@ -37,6 +41,7 @@ body {
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
+  text-size-adjust: 100%;
 }
 img {
   display: block;
@@ -61,7 +66,7 @@ button {
   outline-offset: 2px;
 }
 
-/* -------- utilitare -------- */
+/* -------- UTILITARE -------- */
 .container {
   max-width: var(--container);
   margin-inline: auto;
@@ -73,11 +78,12 @@ button {
 .hidden {
   display: none !important;
 }
-[id] {
-  scroll-margin-top: 88px;
-} /* ancore vizibile sub navbar sticky */
+/* ascunde orice .overlay rătăcită în afara hero-ului */
+body > .overlay {
+  display: none;
+}
 
-/* ================= HEADER (ca pe index) ================ */
+/* ================= HEADER ================= */
 header {
   background: linear-gradient(135deg, #008585, #00a3a3);
   color: #fff;
@@ -120,7 +126,7 @@ header {
   }
 }
 
-/* ================= NAVBAR (ca pe index) ================ */
+/* ================= NAVBAR ================= */
 .navbar {
   position: sticky;
   top: 0;
@@ -144,7 +150,8 @@ header {
   padding: 10px 16px;
   border-radius: 10px;
   font-weight: 500;
-  transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+  transition: background var(--transition), color var(--transition),
+    box-shadow var(--transition);
 }
 .navbar > ul > li > a:hover,
 .navbar > ul > li > .dropbtn:hover {
@@ -155,50 +162,60 @@ header {
   );
   box-shadow: inset 0 0 8px rgba(0, 255, 200, 0.3);
 }
-.navbar a[aria-current="page"] {
-  background: rgba(255, 255, 255, 0.28);
-  font-weight: 600;
-}
 
+/* ===== DROPDOWN ===== */
 .dropdown {
   position: relative;
 }
+.dropbtn {
+  cursor: pointer;
+}
 .dropdown-content {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
   display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
   background: #fff;
   color: #0f172a;
   border: 1px solid var(--border);
   border-radius: 10px;
   box-shadow: var(--shadow);
-  min-width: 220px;
   padding: 6px;
-  z-index: 60;
-}
-.dropdown.active .dropdown-content {
-  display: block;
+  z-index: 1000;
 }
 .dropdown-content a {
-  color: #0f172a !important;
   display: block;
   padding: 10px 12px;
   border-radius: 8px;
+  color: #0f172a !important;
+  transition: background var(--transition);
 }
 .dropdown-content a:hover {
   background: var(--bg-soft);
-  color: #0b3b3b;
+  color: #008585 !important;
+}
+/* deschidere pe focus (tastatură / touch) */
+.dropdown:focus-within .dropdown-content {
+  display: block;
+}
+/* deschidere pe hover doar dacă există mouse; pe touch nu rămâne "lipit" */
+@media (hover: hover) {
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+}
+/* după ce ai navigat la o țară (#romania/#austria/...), forțează închiderea meniului */
+body:has(.tara:target) .navbar .dropdown .dropdown-content {
+  display: none !important;
 }
 
-/* ===================== HERO ========================= */
-/* Scope strict: overlay doar când e în .hero-image */
+/* ================= HERO ================= */
 .hero-image {
   position: relative;
 }
 .hero-image .hero-img {
   width: 100%;
-  height: auto;
   object-fit: cover;
 }
 .hero-image .overlay {
@@ -222,7 +239,7 @@ header {
   }
 }
 
-/* ========= CTA BUTOANE (gradient albastru → verde) = */
+/* ========== BUTOANE CTA ========== */
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -244,8 +261,7 @@ header {
   gap: 10px;
   margin-top: 10px;
 }
-.btn,
-.btn-hero {
+.btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -256,21 +272,16 @@ header {
   font-weight: 600;
   color: #fff;
   background: linear-gradient(135deg, #009999, #00c3a3);
-  border: 0;
   box-shadow: 0 6px 20px rgba(0, 153, 153, 0.25);
   transition: all 0.25s ease;
 }
-.btn:hover,
-.btn-hero:hover {
+.btn:hover {
   background: linear-gradient(135deg, #00c3a3, #00e6a8);
   transform: translateY(-2px);
   box-shadow: 0 10px 26px rgba(0, 230, 168, 0.4);
 }
 .btn.call {
   background: linear-gradient(135deg, #00a8a8, #00d4a4);
-}
-.btn.call:hover {
-  background: linear-gradient(135deg, #00d4a4, #00f0b5);
 }
 .btn.reserve {
   background: #25d366;
@@ -296,6 +307,17 @@ main .rute > h2 {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  animation: taraFade 0.24s ease;
+}
+@keyframes taraFade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .tara h3 {
   font-size: 1.25rem;
@@ -306,66 +328,141 @@ main .rute > h2 {
   margin: 6px 0 8px;
 }
 
-/* headere de țară (badge colorat) */
+/* ======== TITLURI ȚĂRI ======== */
 .romania-header h3,
 .austria-header h3,
 .germania-header h3,
 .belgia-header h3,
 .olanda-header h3 {
-  display: inline-block;
-  background: linear-gradient(135deg, #008585, #00a3a3);
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 10px;
-  box-shadow: 0 8px 18px rgba(0, 153, 153, 0.25);
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #222;
+  margin: 40px auto 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
+  display: block;
+  border-bottom: 3px solid #00a3a3;
+  padding-bottom: 6px;
+}
+@media (min-width: 768px) {
+  .romania-header h3,
+  .austria-header h3,
+  .germania-header h3,
+  .belgia-header h3,
+  .olanda-header h3 {
+    font-size: 2.6rem;
+  }
 }
 
-/* blocuri de text/beneficii */
+/* ======== INTRO (text promo) ======== */
 .tara-intro,
 .austria-intro,
 .germania-intro,
 .belgia-intro,
-.olanda-intro,
-.tara-beneficii,
-.austria-beneficii,
-.germania-beneficii,
-.belgia-highlight,
-.olanda-beneficii,
-.romania-orase,
-.austria-orase,
-.germania-orase,
-.belgia-orase,
-.olanda-orase {
-  margin-bottom: 16px;
+.olanda-intro {
+  text-align: center;
+  background: #fff;
+  padding: 24px 18px;
+  margin-bottom: 22px;
+}
+.tara-intro h4,
+.austria-intro h4,
+.germania-intro h4,
+.belgia-intro h4,
+.olanda-intro h4 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #006d6d;
+  margin-bottom: 10px;
+}
+.tara-intro p,
+.austria-intro p,
+.germania-intro p,
+.belgia-intro p,
+.olanda-intro p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #222;
+  margin-bottom: 8px;
+}
+@media (min-width: 768px) {
+  .tara-intro h4,
+  .austria-intro h4,
+  .germania-intro h4,
+  .belgia-intro h4,
+  .olanda-intro h4 {
+    font-size: 1.9rem;
+  }
+  .tara-intro p,
+  .austria-intro p,
+  .germania-intro p,
+  .belgia-intro p,
+  .olanda-intro p {
+    font-size: 1.25rem;
+  }
 }
 
+/* ======== BENEFICII ======== */
 .beneficii-lista {
   display: grid;
   gap: 6px;
   margin-top: 6px;
 }
 .beneficii-lista li {
-  padding: 6px 10px;
-  border: 1px dashed var(--border);
-  border-radius: 10px;
-  background: var(--bg-soft);
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px 10px 44px;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.beneficii-lista li::before {
+  content: "✓";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fff;
+  background: linear-gradient(135deg, #009999, #00c3a3);
+  box-shadow: 0 3px 10px rgba(0, 153, 153, 0.25);
+  transition: transform var(--transition);
+}
+@media (hover: hover) {
+  .beneficii-lista li:hover {
+    transform: translateY(-2px);
+    border-color: #cfe9e7;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+  }
+  .beneficii-lista li:hover::before {
+    transform: translateY(-50%) scale(1.06);
+    box-shadow: 0 6px 16px rgba(0, 230, 168, 0.35);
+  }
 }
 
-/* grila de orașe */
+/* ======== GRILĂ ORAȘE ======== */
 .orase-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   margin-top: 8px;
 }
 @media (min-width: 640px) {
   .orase-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 @media (min-width: 960px) {
   .orase-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 .oras-card {
@@ -388,7 +485,7 @@ main .rute > h2 {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
 }
 
-/* CTA info box */
+/* ======== CTA INFO BOX ======== */
 .tara-cta,
 .austria-cta,
 .germania-cta,
@@ -423,9 +520,6 @@ main .rute > h2 {
   .map-section {
     height: 420px;
   }
-}
-.leaflet-container {
-  font: inherit;
 }
 
 /* ===================== POPUP ORAȘ ==================== */
@@ -463,7 +557,6 @@ main .rute > h2 {
   display: grid;
   place-items: center;
   font-size: 1.6rem;
-  line-height: 1;
   background: #f3f4f6;
   transition: background 0.2s ease, transform 0.2s ease;
 }
@@ -503,381 +596,23 @@ footer {
   }
 }
 
-/* ====== Mic „guard” pentru .overlay rătăcite în afara .hero-image ====== */
-body > .overlay {
-  display: none;
-}
-/* Dropdown accesibil + deasupra hero */
-.navbar .dropdown {
-  position: relative;
-}
-.navbar .dropdown-content {
-  z-index: 999;
-}
-
-/* Deschidere și pe focus în interior (bun pentru tastatură) */
-.navbar .dropdown:focus-within .dropdown-content {
-  display: block;
-}
-
-/* Cursor clar pe buton */
-.navbar .dropbtn {
-  cursor: pointer;
-}
-/* === Dropdown corect 100% CSS === */
-.dropdown {
-  position: relative;
-}
-
-.dropbtn {
-  cursor: pointer;
-}
-
-/* ascuns implicit */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 220px;
-  background: #fff;
-  color: #0f172a;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  box-shadow: var(--shadow);
-  padding: 6px;
-  z-index: 1000;
-}
-
-/* se afișează când meniul are focus sau hover */
-.dropdown:hover .dropdown-content,
-.dropdown:focus-within .dropdown-content {
-  display: block;
-}
-
-/* linkurile din meniu */
-.dropdown-content a {
-  display: block;
-  padding: 10px 12px;
-  border-radius: 8px;
-  color: #0f172a !important;
-  transition: background 0.25s;
-}
-.dropdown-content a:hover {
-  background: var(--bg-soft);
-  color: #008585 !important;
-}
-/* ==== ROUTING LOGIC (CSS-only): România implicit, apoi comută pe :target ==== */
-
-/* 1) Bază: toate vizibile (fallback pentru browsere vechi fără :has) */
+/* ===================== LOGICĂ RUTE (CSS-only) ======================== */
+/* 1) fallback: toate vizibile */
 .tara {
   display: block;
 }
-
-/* 2) Dacă există O SECȚIUNE .tara în :target, ascunde-le pe toate... */
+/* 2) dacă există un :target pe o țară, ascunde toate... */
 body:has(.tara:target) .tara {
   display: none;
 }
-/* ... și arată DOAR secțiunea țintă */
+/* ...și arată doar ținta */
 .tara:target {
   display: block;
 }
-
-/* 3) Dacă NU există nicio .tara în :target (ex: prima încărcare sau #rute),
-      arată România implicit și ascunde restul */
+/* 3) dacă nu e nicio țară țintă, arată România implicit */
 body:not(:has(.tara:target)) .tara {
   display: none;
 }
 body:not(:has(.tara:target)) #romania {
   display: block;
-}
-
-/* 4) Îmbunătățire UX: mică animație la comutare (opțional) */
-.tara {
-  animation: taraFade 0.24s ease;
-}
-@keyframes taraFade {
-  from {
-    opacity: 0;
-    transform: translateY(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* ==== STILURI TEXTE PROMOȚIONALE (ȚĂRILE) ==== */
-
-.tara-intro,
-.austria-intro,
-.germania-intro,
-.belgia-intro,
-.olanda-intro {
-  text-align: center;
-  background: linear-gradient(180deg, #f9ffff, #e8fefe);
-  border: 1px solid #c8f0ee;
-  border-radius: 16px;
-  padding: 24px 18px;
-  margin-bottom: 22px;
-  box-shadow: 0 10px 20px rgba(0, 153, 153, 0.1);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.tara-intro:hover,
-.austria-intro:hover,
-.germania-intro:hover,
-.belgia-intro:hover,
-.olanda-intro:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 16px 30px rgba(0, 153, 153, 0.15);
-}
-
-/* === Titluri mari și subtitluri clare === */
-.tara-intro h4,
-.austria-intro h4,
-.germania-intro h4,
-.belgia-intro h4,
-.olanda-intro h4 {
-  font-size: 1.45rem;
-  font-weight: 700;
-  color: #006d6d;
-  margin-bottom: 10px;
-}
-.tara-intro p,
-.austria-intro p,
-.germania-intro p,
-.belgia-intro p,
-.olanda-intro p {
-  font-size: 1.05rem;
-  line-height: 1.75;
-  color: #004f4f;
-  margin-bottom: 8px;
-}
-
-/* === Emoji/steaguri mai mari pentru vibe vizual === */
-.tara-intro h4::before,
-.austria-intro h4::before,
-.germania-intro h4::before,
-.belgia-intro h4::before,
-.olanda-intro h4::before {
-  content: "🌍 ";
-  font-size: 1.4rem;
-}
-.olanda-intro h4::before {
-  content: "🇳🇱 ";
-}
-.belgia-intro h4::before {
-  content: "🇧🇪 ";
-}
-.germania-intro h4::before {
-  content: "🇩🇪 ";
-}
-.austria-intro h4::before {
-  content: "🇦🇹 ";
-}
-.tara-intro h4::before {
-  content: "🇷🇴 ";
-}
-
-/* === Textul promo să „iasă în ochi” === */
-.tara-intro strong,
-.austria-intro strong,
-.germania-intro strong,
-.belgia-intro strong,
-.olanda-intro strong {
-  color: #007a7a;
-  font-weight: 700;
-}
-
-/* === Versiune responsive (mai mare pe desktop) === */
-@media (min-width: 768px) {
-  .tara-intro h4,
-  .austria-intro h4,
-  .germania-intro h4,
-  .belgia-intro h4,
-  .olanda-intro h4 {
-    font-size: 1.7rem;
-  }
-  .tara-intro p,
-  .austria-intro p,
-  .germania-intro p,
-  .belgia-intro p,
-  .olanda-intro p {
-    font-size: 1.2rem;
-  }
-}
-/* ====== TITLURI ȚĂRI — CENTRATE, MARI, CURATE ====== */
-.romania-header h3,
-.austria-header h3,
-.germania-header h3,
-.belgia-header h3,
-.olanda-header h3 {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #008585;
-  margin: 30px auto 20px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-bottom: 3px solid #00a3a3;
-  display: inline-block;
-  padding-bottom: 6px;
-}
-
-/* Versiune mai mare pe ecrane largi */
-@media (min-width: 768px) {
-  .romania-header h3,
-  .austria-header h3,
-  .germania-header h3,
-  .belgia-header h3,
-  .olanda-header h3 {
-    font-size: 2.4rem;
-  }
-}
-
-/* ====== TEXTE PROMO (ALBE, CURATE, CENTRATE) ====== */
-.tara-intro,
-.austria-intro,
-.germania-intro,
-.belgia-intro,
-.olanda-intro {
-  text-align: center;
-  background: #fff; /* fundal alb curat */
-  border: none;
-  border-radius: 0;
-  padding: 24px 18px;
-  margin-bottom: 22px;
-}
-
-.tara-intro h4,
-.austria-intro h4,
-.germania-intro h4,
-.belgia-intro h4,
-.olanda-intro h4 {
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: #006d6d;
-  margin-bottom: 10px;
-}
-
-.tara-intro p,
-.austria-intro p,
-.germania-intro p,
-.belgia-intro p,
-.olanda-intro p {
-  font-size: 1.15rem;
-  line-height: 1.8;
-  color: #222;
-  margin-bottom: 8px;
-}
-
-@media (min-width: 768px) {
-  .tara-intro h4,
-  .austria-intro h4,
-  .germania-intro h4,
-  .belgia-intro h4,
-  .olanda-intro h4 {
-    font-size: 1.9rem;
-  }
-
-  .tara-intro p,
-  .austria-intro p,
-  .germania-intro p,
-  .belgia-intro p,
-  .olanda-intro p {
-    font-size: 1.25rem;
-  }
-}
-/* ======== TITLURI ȚĂRI — CENTRAT CURAT, NEGRU ELEGANT ======== */
-.romania-header h3,
-.austria-header h3,
-.germania-header h3,
-.belgia-header h3,
-.olanda-header h3 {
-  text-align: center; /* centrează pe mijloc */
-  font-size: 2.2rem; /* titlu mare și clar */
-  font-weight: 700;
-  color: #222222; /* negru curat, fără tentă turcoaz */
-  margin: 40px auto 25px; /* spațiu aerisit sus-jos */
-  text-transform: uppercase; /* majuscule pentru impact */
-  letter-spacing: 1px; /* spațiere ușoară */
-  width: 100%;
-  display: block;
-}
-
-@media (min-width: 768px) {
-  .romania-header h3,
-  .austria-header h3,
-  .germania-header h3,
-  .belgia-header h3,
-  .olanda-header h3 {
-    font-size: 2.6rem; /* și mai vizibil pe desktop */
-  }
-}
-/* ===== Hover pentru beneficiile din liste ===== */
-.beneficii-lista li {
-  position: relative;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 10px 12px 10px 44px; /* loc pentru iconiță */
-  transition: transform var(--transition), box-shadow var(--transition),
-    border-color var(--transition), background-color var(--transition);
-}
-
-/* bifa din stânga (pseudo-element, fără HTML suplimentar) */
-.beneficii-lista li::before {
-  content: "✓";
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-weight: 700;
-  font-size: 0.9rem;
-  color: #fff;
-  background: linear-gradient(135deg, #009999, #00c3a3);
-  box-shadow: 0 3px 10px rgba(0, 153, 153, 0.25);
-  transition: transform var(--transition), box-shadow var(--transition),
-    filter var(--transition);
-}
-
-/* efect la hover: mic lift + highlight border + glow bifa */
-@media (hover: hover) {
-  .beneficii-lista li:hover {
-    transform: translateY(-2px);
-    border-color: #cfe9e7;
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
-    background-color: #fcfefd;
-  }
-  .beneficii-lista li:hover::before {
-    transform: translateY(-50%) scale(1.06);
-    box-shadow: 0 6px 16px rgba(0, 230, 168, 0.35);
-    filter: brightness(1.05);
-  }
-}
-
-/* accesibilitate: dacă ai linkuri/butoane în interior, evidențiază la focus */
-.beneficii-lista li:focus-within {
-  outline: 2px solid rgba(0, 195, 163, 0.6);
-  outline-offset: 2px;
-}
-
-/* respectă preferința de reducere a animațiilor */
-@media (prefers-reduced-motion: reduce) {
-  .beneficii-lista li,
-  .beneficii-lista li::before {
-    transition: none;
-  }
-}
-@media (max-width: 420px) {
-  .beneficii-lista li {
-    padding: 10px 10px 10px 40px;
-  }
-  .beneficii-lista li::before {
-    left: 10px;
-  }
 }

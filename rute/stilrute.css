@@ -1,6 +1,6 @@
 /* ======================================================
-   ===============  BRB-TRAVEL • STIL RUTE  =============
-   =====================================================*/
+   ===============  BRB-TRAVEL • RUTE.CSS  ==============
+   ======================================================*/
 
 /* -------------------- VARIABILE ---------------------- */
 :root {
@@ -10,17 +10,18 @@
   --muted: #6b7280;
   --bg: #ffffff;
   --bg-soft: #f6f8f9;
+  --card: #ffffff;
   --border: #e6e8eb;
   --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   --radius: 14px;
   --transition: 0.25s ease;
   --container: 1120px;
-  --nav-h: 64px; /* înălțimea navbar pe mobil */
+  --nav-h: 64px; /* mobil */
 }
 @media (min-width: 768px) {
   :root {
     --nav-h: 74px;
-  } /* înălțime ușor mai mare pe desktop */
+  }
 }
 
 /* ---------------------- RESET ------------------------ */
@@ -29,10 +30,8 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-h) + 12px);
 }
 body {
   font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial,
@@ -40,10 +39,14 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
-  overflow-x: hidden;
   text-size-adjust: 100%;
+  overflow-x: hidden;
 }
-img {
+img,
+svg,
+video,
+canvas,
+iframe {
   display: block;
   max-width: 100%;
   height: auto;
@@ -66,7 +69,7 @@ button {
   outline-offset: 2px;
 }
 
-/* -------- UTILITARE -------- */
+/* ----------------- UTILITARE / LAYOUT ---------------- */
 .container {
   max-width: var(--container);
   margin-inline: auto;
@@ -78,12 +81,11 @@ button {
 .hidden {
   display: none !important;
 }
-/* ascunde orice .overlay rătăcită în afara hero-ului */
-body > .overlay {
-  display: none;
+html {
+  scroll-padding-top: calc(var(--nav-h) + 12px);
 }
 
-/* ================= HEADER ================= */
+/* ================ HEADER (ALBASTRU) ================== */
 header {
   background: linear-gradient(135deg, #008585, #00a3a3);
   color: #fff;
@@ -126,14 +128,16 @@ header {
   }
 }
 
-/* ================= NAVBAR ================= */
+/* ================= NAVBAR & DROPDOWN ================= */
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 55;
+  z-index: 10000 !important;
   background: #006d6d;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  overflow: visible !important;
+  contain: none !important;
 }
 .navbar ul {
   display: flex;
@@ -163,18 +167,21 @@ header {
   box-shadow: inset 0 0 8px rgba(0, 255, 200, 0.3);
 }
 
-/* ===== DROPDOWN ===== */
 .dropdown {
   position: relative;
+  overflow: visible !important;
 }
 .dropbtn {
   cursor: pointer;
 }
+
+/* — dropdown controlat de JS: .dropdown.active — */
 .dropdown-content {
   display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  left: 0 !important;
+  z-index: 10001 !important;
   min-width: 220px;
   background: #fff;
   color: #0f172a;
@@ -182,8 +189,21 @@ header {
   border-radius: 10px;
   box-shadow: var(--shadow);
   padding: 6px;
-  z-index: 1000;
 }
+.dropdown.active > .dropdown-content {
+  display: block !important;
+}
+
+/* fallback: hover/focus (nu deranjează JS) */
+@media (hover: hover) and (pointer: fine) {
+  .dropdown:hover > .dropdown-content {
+    display: block;
+  }
+}
+.dropdown:focus-within > .dropdown-content {
+  display: block;
+}
+
 .dropdown-content a {
   display: block;
   padding: 10px 12px;
@@ -195,22 +215,21 @@ header {
   background: var(--bg-soft);
   color: #008585 !important;
 }
-/* deschidere pe focus (tastatură / touch) */
-.dropdown:focus-within .dropdown-content {
-  display: block;
-}
-/* deschidere pe hover doar dacă există mouse; pe touch nu rămâne "lipit" */
-@media (hover: hover) {
-  .dropdown:hover .dropdown-content {
-    display: block;
+
+/* mobil: centrat + încape în ecran */
+@media (max-width: 640px) {
+  .dropdown-content {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: max-content;
+    max-width: calc(100vw - 24px) !important;
+    max-height: min(60vh, 420px);
+    overflow: auto;
+    pointer-events: auto;
   }
 }
-/* după ce ai navigat la o țară (#romania/#austria/...), forțează închiderea meniului */
-body:has(.tara:target) .navbar .dropdown .dropdown-content {
-  display: none !important;
-}
 
-/* ================= HERO ================= */
+/* ================ HERO IMAGINE & OVERLAY ============= */
 .hero-image {
   position: relative;
 }
@@ -227,6 +246,7 @@ body:has(.tara:target) .navbar .dropdown .dropdown-content {
   padding: 16px;
   color: #fff;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35));
+  z-index: 1 !important; /* sub navbar */
 }
 .hero-image .overlay h1,
 .hero-image .overlay h2 {
@@ -239,7 +259,7 @@ body:has(.tara:target) .navbar .dropdown .dropdown-content {
   }
 }
 
-/* ========== BUTOANE CTA ========== */
+/* ================== BUTOANE / CTA ==================== */
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -290,7 +310,7 @@ body:has(.tara:target) .navbar .dropdown .dropdown-content {
   background: #1ebe5d;
 }
 
-/* ================== SECTIUNI RUTE =================== */
+/* ================== ZONA RUTE ======================== */
 main .rute {
   padding: 32px 16px;
 }
@@ -300,13 +320,14 @@ main .rute > h2 {
 }
 
 .tara {
-  max-width: var(--container);
+  max-width: min(var(--container), 100%);
   margin: 18px auto;
   padding: 18px;
   background: #fff;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  scroll-margin-top: calc(var(--nav-h) + 12px);
   animation: taraFade 0.24s ease;
 }
 @keyframes taraFade {
@@ -328,7 +349,7 @@ main .rute > h2 {
   margin: 6px 0 8px;
 }
 
-/* ======== TITLURI ȚĂRI ======== */
+/* ===== TITLURI ȚĂRI ===== */
 .romania-header h3,
 .austria-header h3,
 .germania-header h3,
@@ -356,7 +377,7 @@ main .rute > h2 {
   }
 }
 
-/* ======== INTRO (text promo) ======== */
+/* ===== INTRO PROMO ===== */
 .tara-intro,
 .austria-intro,
 .germania-intro,
@@ -404,7 +425,7 @@ main .rute > h2 {
   }
 }
 
-/* ======== BENEFICII ======== */
+/* ===== BENEFICII ===== */
 .beneficii-lista {
   display: grid;
   gap: 6px;
@@ -448,7 +469,7 @@ main .rute > h2 {
   }
 }
 
-/* ======== GRILĂ ORAȘE ======== */
+/* ===== GRILĂ ORAȘE ===== */
 .orase-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -465,6 +486,7 @@ main .rute > h2 {
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
 .oras-card {
   background: #fff;
   border: 1px solid var(--border);
@@ -485,7 +507,7 @@ main .rute > h2 {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
 }
 
-/* ======== CTA INFO BOX ======== */
+/* ===== BOX CTA INFO ===== */
 .tara-cta,
 .austria-cta,
 .germania-cta,
@@ -522,14 +544,14 @@ main .rute > h2 {
   }
 }
 
-/* ===================== POPUP ORAȘ ==================== */
+/* ================= POPUP ORAȘ ======================= */
 .popup-oras {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
   display: grid;
   place-items: center;
-  z-index: 100;
+  z-index: 100000;
 }
 .popup-content {
   position: relative;
@@ -596,55 +618,35 @@ footer {
   }
 }
 
-/* ===================== LOGICĂ RUTE (CSS-only) ======================== */
-/* 1) fallback: toate vizibile */
+/* ============== LOGICA DE AFIȘARE A ȚĂRILOR ============== */
+/* Implicit afișăm România dacă nu e hash */
 .tara {
-  display: block;
-}
-/* 2) dacă există un :target pe o țară, ascunde toate... */
-body:has(.tara:target) .tara {
   display: none;
 }
-/* ...și arată doar ținta */
-.tara:target {
+#romania {
   display: block;
 }
-/* 3) dacă nu e nicio țară țintă, arată România implicit */
-body:not(:has(.tara:target)) .tara {
-  display: none;
-}
-body:not(:has(.tara:target)) #romania {
-  display: block;
-}
-/* Forțează închiderea dropdown-ului după ce ai navigat la o țintă (#romania etc.) */
-html:has(.tara:target) .navbar .dropdown .dropdown-content {
-  display: none !important;
-}
 
-/* Pe mobil, dropdownul NU se ține deschis pe :hover */
-@media (hover: none) and (pointer: coarse) {
-  .dropdown:hover .dropdown-content {
-    display: none !important;
-  }
-}
-/* ===== RUTE: fix "nu mai merge după ce intru pe ancoră" ===== */
-/* Permite redeschiderea meniului chiar dacă există .tara:target */
-html:has(.tara:target) .navbar .dropdown.active > .dropdown-content,
-html:has(.tara:target) .navbar .dropdown:focus-within > .dropdown-content {
-  display: block !important;
-}
+/* Dacă există hash (#germania etc.), lasă JS-ul să schimbe clasa/scrollul.
+   Dacă vrei pur CSS și browserul suportă :target, decomentează mai jos:
 
-/* Dacă vrei să păstrezi auto-close doar când NU e activ/focusat: */
-@supports selector(:has(*)) {
-  html:has(.tara:target)
-    .navbar
-    .dropdown:not(.active):not(:focus-within)
-    > .dropdown-content {
-    display: none !important;
-  }
-}
+:target.tara { display: block; }
+body:has(.tara:target) #romania { display: none; }
 
-/* Siguranță: menține stacking/poziționarea corectă pe mobil */
+*/
+
+/* ============== SIGURANȚĂ ANTI-OVERFLOW ============== */
+header,
+.top-bar,
+.navbar,
+main,
+.rute,
+.tara,
+.map-section,
+footer {
+  overflow-x: clip;
+}
+/* Dropdown anti-tăiere + încape în ecran (siguranță) */
 .navbar {
   z-index: 10000 !important;
   overflow: visible !important;
@@ -652,6 +654,7 @@ html:has(.tara:target) .navbar .dropdown:focus-within > .dropdown-content {
 }
 .navbar .dropdown {
   position: relative;
+  overflow: visible !important;
 }
 .navbar .dropdown-content {
   position: absolute !important;
@@ -659,12 +662,62 @@ html:has(.tara:target) .navbar .dropdown:focus-within > .dropdown-content {
   left: 0 !important;
   z-index: 10001 !important;
 }
+@media (max-width: 640px) {
+  .navbar .dropdown-content {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: max-content;
+    max-width: calc(100vw - 24px) !important;
+    max-height: min(60vh, 420px);
+    overflow: auto;
+    pointer-events: auto;
+  }
+}
+/* RUTE – dropdown sigur pe mobil + deasupra hero */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10000 !important;
+  overflow: visible !important;
+  contain: none !important;
+}
+.navbar .dropdown {
+  position: relative;
+  overflow: visible !important;
+}
+.navbar .dropdown-content {
+  position: absolute !important;
+  top: calc(100% + 8px) !important;
+  left: 0 !important;
+  z-index: 10001 !important;
+  display: none;
+  min-width: 220px;
+  background: #fff;
+  color: #0f172a;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 6px;
+}
+.navbar .dropdown.active > .dropdown-content {
+  display: block !important;
+}
 
 @media (max-width: 640px) {
   .navbar .dropdown-content {
     left: 50% !important;
     transform: translateX(-50%) !important;
-    max-width: calc(100vw - 24px) !important;
     width: max-content;
+    max-width: calc(100vw - 24px) !important;
+    max-height: min(60vh, 420px);
+    overflow: auto;
+    pointer-events: auto;
   }
 }
+
+.hero-image {
+  position: relative;
+}
+.hero-image .overlay {
+  z-index: 1 !important;
+} /* sub navbar */

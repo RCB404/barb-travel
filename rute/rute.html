@@ -2,25 +2,21 @@
 <html lang="ro">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Curse BRB-Travel | Transport persoane și colete</title>
+    <title>Curse BRB-TRAVEL | Transport persoane și colete</title>
     <meta
       name="description"
-      content="BRB-Travel oferă transport persoane și colete în Germania, Austria, Olanda și Belgia. Plecări zilnice din România, siguranță și confort garantat."
+      content="BRB-TRAVEL oferă transport persoane și colete în Germania, Austria, Olanda și Belgia. Plecări zilnice din România, siguranță și confort garantat."
     />
-    <meta
-      name="keywords"
-      content="BRB-Travel, transport persoane, transport colete, Germania, Austria, Olanda, Belgia, curse regulate, microbuze Europa"
-    />
-    <meta name="author" content="BRB-Travel" />
     <meta name="robots" content="index, follow" />
+    <meta name="author" content="BRB-TRAVEL" />
     <meta name="theme-color" content="#009999" />
 
-    <!-- Open Graph (Facebook, WhatsApp etc.) -->
+    <!-- Open Graph -->
     <meta
       property="og:title"
-      content="Curse BRB-Travel | Transport persoane și colete"
+      content="Curse BRB-TRAVEL | Transport persoane și colete"
     />
     <meta
       property="og:description"
@@ -35,12 +31,13 @@
       content="https://rcb404.github.io/barb-travel/rute/rute.html"
     />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ro_RO" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="BRB-Travel - Transport persoane și colete Europa"
+      content="BRB-TRAVEL — Transport persoane & colete Europa"
     />
     <meta
       name="twitter:description"
@@ -51,16 +48,35 @@
       content="https://rcb404.github.io/barb-travel/barb-travel-logo.jpeg"
     />
 
-    <!-- CSS + Hartă Leaflet -->
+    <!-- Canonical -->
+    <link
+      rel="canonical"
+      href="https://rcb404.github.io/barb-travel/rute/rute.html"
+    />
+
+    <!-- LCP image preload (imaginile sunt în rădăcină) -->
+    <link
+      rel="preload"
+      as="image"
+      href="../slep-1200.webp"
+      imagesrcset="../slep-800.webp 800w, ../slep-1200.webp 1200w"
+      imagesizes="(max-width: 768px) 100vw, 1200px"
+    />
+
+    <!-- CSS global -->
     <link rel="stylesheet" href="../style.css" />
-    <link rel="stylesheet" href="rutestil.css" />
+
+    <!-- Leaflet -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"
     />
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
 
-    <!-- Iconițe (FontAwesome) -->
+    <!-- Iconițe (opțional) -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -71,261 +87,590 @@
     <header>
       <div class="top-bar">
         <div class="logo">
-          <img src="../barb-travel-logo.jpeg" alt="Logo Barb Travel" />
+          <img
+            src="../barb-travel-logo.jpeg"
+            alt="Siglă BRB-TRAVEL"
+            width="96"
+            height="96"
+          />
         </div>
         <div class="brand-center">
-          <h1>Barb Travel</h1>
+          <h1>BRB-TRAVEL</h1>
           <p>
             Transport persoane și colete în Germania, Austria, Olanda și Belgia
           </p>
         </div>
       </div>
-      <nav class="navbar">
+
+      <!-- HERO identic cu index (umple containerul - cover) -->
+      <section class="hero-image">
+        <img
+          src="../slep-1200.webp"
+          srcset="../slep-800.webp 800w, ../slep-1200.webp 1200w"
+          sizes="(max-width: 768px) 100vw, 1200px"
+          alt="Microbuz BRB-Travel cu platformă auto"
+          class="hero-img"
+          width="1200"
+          height="675"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div class="overlay">
+          <h1>Transport persoane de la adresă la adresă</h1>
+          <p>Austria • Germania • Belgia • Olanda</p>
+        </div>
+      </section>
+
+      <nav class="navbar" aria-label="Meniu principal">
         <ul>
           <li><a href="../index.html">Acasă</a></li>
           <li class="dropdown">
-            <a href="#" class="dropbtn">Rute ▾</a>
-            <div class="dropdown-content">
-              <a href="#romania">România</a>
-              <a href="#austria">Austria</a>
-              <a href="#germania">Germania</a>
-              <a href="#belgia">Belgia</a>
-              <a href="#olanda">Olanda</a>
+            <a href="#rute" class="dropbtn" aria-label="Deschide meniul rute"
+              >Rute ▾</a
+            >
+            <div class="dropdown-content" role="menu">
+              <a href="#romania" role="menuitem">România</a>
+              <a href="#austria" role="menuitem">Austria</a>
+              <a href="#germania" role="menuitem">Germania</a>
+              <a href="#belgia" role="menuitem">Belgia</a>
+              <a href="#olanda" role="menuitem">Olanda</a>
             </div>
           </li>
-
-          <li><a href="../contact/contact.html">Contact</a></li>
+          <li><a href="../contact/contact.html" rel="noopener">Contact</a></li>
         </ul>
       </nav>
-      <img src="microbuzbun.png" alt="Microbuz Barb Travel" class="microbuz" />
     </header>
 
-    <main>
+    <!-- HERO unic, cu <picture> -->
+    <section class="hero-image" aria-labelledby="hero-title">
+      <picture>
+        <source
+          type="image/webp"
+          srcset="../slep-800.webp 800w, ../slep-1200.webp 1200w"
+          sizes="(max-width: 768px) 100vw, 1200px"
+        />
+        <img
+          src="../slep-1200.webp"
+          alt="Microbuz BRB-TRAVEL pe traseu european"
+          class="hero-img"
+          width="1200"
+          height="675"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+      </picture>
+
+      <div class="overlay">
+        <h2 id="hero-title" style="margin: 0 0 0.5rem 0">
+          Transport persoane de la adresă la adresă
+        </h2>
+        <p>România ⇄ Germania • Austria • Belgia • Olanda</p>
+        <div class="buttons">
+          <a href="tel:+40759967696" class="btn call">Sună acum</a>
+          <a
+            href="https://wa.me/40759967696"
+            class="btn reserve"
+            target="_blank"
+            rel="noopener"
+            >Rezervă pe WhatsApp</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <main id="rute">
       <section class="rute">
         <h2>Cursele noastre zilnice</h2>
-        <p>
-          Transport Persoane România-Austria | BRB-TRAVEL Călătorește sigur,
-          confortabil și fără griji – zi de zi, cu BRB-TRAVEL! BRB-TRAVEL îți
-          oferă servicii de transport persoane România – Austria, tur-retur, cu
-          plecări zilnice din principalele orașe ale țării: Arad, Timișoara,
-          Lugoj, Deva, Cluj, Sibiu, Brașov, Râmnicu Vâlcea, Pitești, Ploiești și
-          București. Fie că mergi la muncă, în vizită sau în vacanță, te ducem
-          rapid, în siguranță și direct la destinație – oriunde în Austria! ⸻ De
-          ce să alegi BRB-TRAVEL? Cu o experiență solidă în transport
-          internațional de persoane, BRB-TRAVEL îți garantează seriozitate,
-          respect și profesionalism de la primul contact până la sosirea la
-          destinație. Beneficiile tale: Curse zilnice România – Austria
-          tur-retur,de la adresă la adresă, fără stres sau schimburi inutile
-          microbuze moderne, curate și confortabile climă, Wi-Fi și spațiu
-          generos pentru bagaje bagaje incluse în preț masă caldă în Ungaria,
-          pentru o călătorie mai plăcută șoferi profesioniști și atestați, cu
-          experiență pe rute internaționale Respect, punctualitate și siguranță
-          garantate la fiecare drum Plecări zilnice – Toată Austria Operăm curse
-          regulate către toate regiunile din Austria, cu posibilitatea de
-          transport direct la adresa dorită. Fie că destinația ta este Viena,
-          Linz, Graz, Salzburg, Innsbruck, Klagenfurt sau orice alt oraș, echipa
-          noastră te va duce acolo în condiții excelente. Alege confortul și
-          siguranța oferite de BRB-TRAVEL. Călătoria ta spre Austria începe cu
-          un simplu apel sau mesaj WhatsApp BRB-TRAVEL – Drumuri sigure, oameni
-          mulțumiți!
-        </p>
 
-        <section class="tara" id="romania">
-          <h3>Plecări din România</h3>
-          <div class="plecari-grid">
-            <div>
-              <strong>Vest:</strong>
-              <ul>
-                <li class="oras" data-oras="Arad">Arad</li>
-                <li class="oras" data-oras="Timișoara">Timișoara</li>
-                <li class="oras" data-oras="Deta">Deta</li>
-                <li class="oras" data-oras="Lugoj">Lugoj</li>
-                <li class="oras" data-oras="Bocșa">Bocșa</li>
-                <li class="oras" data-oras="Reșița">Reșița</li>
+        <!-- România -->
+        <section class="tara romania-section" id="romania">
+          <div class="romania-header"><h3>România</h3></div>
+
+          <div class="romania-content">
+            <div class="tara-intro">
+              <h4>
+                🇷🇴 Transport persoane din România către Europa | BRB-TRAVEL
+              </h4>
+              <p>
+                🚐 Plecări zilnice către
+                <strong>Germania, Austria, Belgia și Olanda</strong>.
+              </p>
+              <p>
+                Adresă-la-adresă, fără transbordări — sigur, rapid și
+                confortabil.
+              </p>
+            </div>
+
+            <div class="tara-beneficii">
+              <h4>💼 De ce să alegi BRB-TRAVEL?</h4>
+              <ul class="beneficii-lista">
+                <li>Curse zilnice tur–retur DE • AT • BE • NL</li>
+                <li>Ridicare și lăsare la adresă</li>
+                <li>Microbuze moderne: climă, Wi-Fi, spațiu bagaje</li>
+                <li>Bagaje incluse în preț</li>
+                <li>Masă caldă pe traseu (Ungaria)</li>
+                <li>Șoferi profesioniști, atestați internațional</li>
               </ul>
             </div>
-            <div>
-              <strong>Centru &amp; Nord:</strong>
-              <ul>
-                <li class="oras" data-oras="Deva">Deva</li>
-                <li class="oras" data-oras=" Alba Iulia">Alba Iulia</li>
-                <li class="oras" data-oras="Sibiu">Sibiu</li>
-              </ul>
+
+            <div class="romania-orase">
+              <h4>🕒 Plecări zilnice — Toată România</h4>
+              <p>Selectează orașul pentru detalii/rezervare:</p>
+              <div class="orase-grid">
+                <!-- Vest -->
+                <div class="oras-card" data-oras="Arad">Arad</div>
+                <div class="oras-card" data-oras="Timișoara">Timișoara</div>
+                <div class="oras-card" data-oras="Deta">Deta</div>
+                <div class="oras-card" data-oras="Lugoj">Lugoj</div>
+                <div class="oras-card" data-oras="Bocșa">Bocșa</div>
+                <div class="oras-card" data-oras="Reșița">Reșița</div>
+                <!-- Centru & Nord -->
+                <div class="oras-card" data-oras="Deva">Deva</div>
+                <div class="oras-card" data-oras="Alba Iulia">Alba Iulia</div>
+                <div class="oras-card" data-oras="Sibiu">Sibiu</div>
+                <!-- Sud & Sud-Vest -->
+                <div class="oras-card" data-oras="Orșova">Orșova</div>
+                <div class="oras-card" data-oras="Drobeta Turnu Severin">
+                  Drobeta T. Severin
+                </div>
+                <div class="oras-card" data-oras="Târgu Jiu">Târgu Jiu</div>
+                <div class="oras-card" data-oras="Craiova">Craiova</div>
+                <!-- Sud & Est -->
+                <div class="oras-card" data-oras="Pitești">Pitești</div>
+                <div class="oras-card" data-oras="Ploiești">Ploiești</div>
+                <div class="oras-card" data-oras="București">București</div>
+              </div>
             </div>
-            <div>
-              <strong>Sud &amp; Sud-Vest:</strong>
-              <ul>
-                <li class="oras" data-oras="Orșova">Orșova</li>
-                <li class="oras" data-oras="Drobeta Turnu Severin">
-                  Drobeta Turnu Severin
-                </li>
-                <li class="oras" data-oras="Târgu Jiu">Târgu Jiu</li>
-                <li class="oras" data-oras="Craiova">Craiova</li>
-              </ul>
-            </div>
-            <div>
-              <strong>Sud &amp; Est:</strong>
-              <ul>
-                <li class="oras" data-oras="Pitești">Pitești</li>
-                <li class="oras" data-oras="Ploiești">Ploiești</li>
-                <li class="oras" data-oras="București">București</li>
-              </ul>
+
+            <div
+              id="harta-romania"
+              class="map-section"
+              aria-label="Harta România"
+            ></div>
+
+            <div class="tara-cta">
+              <p><strong>📞 Rezervă-ți locul acum!</strong></p>
+              <p>
+                📱 Telefon / WhatsApp:
+                <a
+                  href="https://wa.me/40759967696"
+                  target="_blank"
+                  rel="noopener"
+                  >+40 759 967 696</a
+                ><br />
+                💬 Facebook:
+                <a
+                  href="https://www.facebook.com/TRANSPORTBRB"
+                  target="_blank"
+                  rel="noopener"
+                  >pagina oficială BRB-TRAVEL</a
+                >
+              </p>
+              <strong>🚐 BRB-TRAVEL — Drumuri sigure, oameni mulțumiți!</strong>
             </div>
           </div>
 
-          <div id="harta-romania" class="map-section"></div>
           <div class="buttons">
-            <a href="tel:+40759967696" class="btn call" target="_blank"
+            <a
+              href="tel:+40759967696"
+              class="btn call"
+              target="_blank"
+              rel="noopener"
               >Sună acum</a
             >
             <a
               href="https://wa.me/40759967696"
               class="btn reserve"
               target="_blank"
+              rel="noopener"
               >Rezervă acum</a
             >
           </div>
         </section>
 
-        <section class="tara" id="austria">
-          <h3>Austria</h3>
-          <div class="plecari-grid">
-            <div>
-              <ul>
-                <li class="oras" data-oras="Viena">Viena</li>
-                <li class="oras" data-oras="St. Pölten">St. Pölten</li>
-                <li class="oras" data-oras="Linz">Linz</li>
-                <li class="oras" data-oras="Graz">Graz</li>
-                <li class="oras" data-oras="Localități limitrofe">
-                  Localități limitrofe
-                </li>
+        <!-- Austria -->
+        <section class="tara austria-section" id="austria">
+          <div class="austria-header"><h3>Austria</h3></div>
+
+          <div class="austria-content">
+            <div class="austria-intro">
+              <h4>🇦🇹 Transport Persoane România – Austria | BRB-TRAVEL</h4>
+              <p>
+                🚐 Călătorește zilnic în siguranță și confort cu
+                <strong>BRB-TRAVEL</strong>!
+              </p>
+              <p>
+                Plecări zilnice din: Arad, Timișoara, Lugoj, Deva, Cluj, Sibiu,
+                Brașov, Râmnicu Vâlcea, Pitești, Ploiești și București.
+              </p>
+              <p>Te ducem direct la destinația dorită — oriunde în Austria.</p>
+            </div>
+
+            <div class="austria-beneficii">
+              <h4>De ce să alegeți BRB-TRAVEL?</h4>
+              <ul class="beneficii-lista">
+                <li>Curse zilnice tur-retur România–Austria</li>
+                <li>Transport de la ușă la ușă</li>
+                <li>Microbuze moderne cu climatizare și Wi-Fi</li>
+                <li>Spațiu generos pentru bagaje inclus în preț</li>
+                <li>Masă caldă asigurată în traseu</li>
+                <li>Șoferi experimentați și atestați internațional</li>
+                <li>Asistență 24/7</li>
               </ul>
             </div>
+
+            <div class="austria-orase">
+              <h4>Orașe deservite în Austria</h4>
+              <div class="orase-grid">
+                <div class="oras-card" data-oras="Viena">Viena</div>
+                <div class="oras-card" data-oras="Linz">Linz</div>
+                <div class="oras-card" data-oras="Graz">Graz</div>
+                <div class="oras-card" data-oras="Salzburg">Salzburg</div>
+                <div class="oras-card" data-oras="Innsbruck">Innsbruck</div>
+                <div class="oras-card" data-oras="Klagenfurt">Klagenfurt</div>
+                <div class="oras-card" data-oras="St. Pölten">St. Pölten</div>
+                <div class="oras-card" data-oras="Localități limitrofe">
+                  Zonele înconjurătoare
+                </div>
+              </div>
+            </div>
+
+            <div class="austria-cta">
+              <p><strong>📞 Rezervă-ți locul acum!</strong></p>
+              <p>
+                📱 Telefon / WhatsApp:
+                <a
+                  href="https://wa.me/40759967696"
+                  target="_blank"
+                  rel="noopener"
+                  >+40 759 967 696</a
+                ><br />
+                💬 Facebook:
+                <a
+                  href="https://www.facebook.com/TRANSPORTBRB"
+                  target="_blank"
+                  rel="noopener"
+                  >pagina oficială BRB-TRAVEL</a
+                >
+              </p>
+              <strong>🚐 BRB-TRAVEL — Drumuri sigure, oameni mulțumiți!</strong>
+            </div>
           </div>
-          <div id="harta-austria" class="map-section"></div>
+
+          <div
+            id="harta-austria"
+            class="map-section"
+            aria-label="Harta Austria"
+          ></div>
+
           <div class="buttons">
-            <a href="tel:+40759967696" class="btn call" target="_blank"
+            <a
+              href="tel:+40759967696"
+              class="btn call"
+              target="_blank"
+              rel="noopener"
               >Sună acum</a
             >
             <a
               href="https://wa.me/40759967696"
               class="btn reserve"
               target="_blank"
+              rel="noopener"
               >Rezervă acum</a
             >
           </div>
         </section>
 
-        <section class="tara" id="germania">
-          <h3>Germania</h3>
-          <div class="plecari-grid">
-            <div>
-              <strong>Sud:</strong>
-              <ul>
-                <li class="oras" data-oras="Munchen">Munchen</li>
-                <li class="oras" data-oras="Stuttgart">Stuttgart</li>
-                <li class="oras" data-oras="Nurenberg">Nurenberg</li>
-                <li class="oras" data-oras="Freiburg">Freiburg</li>
-                <li class="oras" data-oras="Konstanz">Konstanz</li>
-                <li class="oras" data-oras="Passau">Passau</li>
-                <li class="oras" data-oras="Heilbronn">Heilbronn</li>
+        <!-- Germania -->
+        <section class="tara germania-section" id="germania">
+          <div class="germania-header"><h3>Germania</h3></div>
+
+          <div class="germania-content">
+            <div class="germania-intro">
+              <h4>Transport Persoane România – Germania</h4>
+              <p>
+                🚐 Călătorește zilnic în siguranță și confort cu
+                <strong>BRB-TRAVEL</strong>!
+              </p>
+              <p>
+                Plecări zilnice din: Arad, Timișoara, Lugoj, Deva, Cluj, Sibiu,
+                Brașov, Râmnicu Vâlcea, Pitești, Ploiești și București.
+              </p>
+              <p>Te ducem direct la destinația dorită — oriunde în Germania.</p>
+            </div>
+
+            <div class="germania-beneficii">
+              <h4>💼 De ce să alegi BRB-TRAVEL pentru Germania?</h4>
+              <ul class="beneficii-lista">
+                <li>Curse zilnice România–Germania (tur-retur)</li>
+                <li>Transport adresă–la–adresă, fără transbordări</li>
+                <li>Microbuze moderne, climatizare, Wi-Fi și spațiu generos</li>
+                <li>Bagaje incluse în preț</li>
+                <li>Masă caldă pe traseu (Ungaria)</li>
+                <li>Șoferi profesioniști, atestați internațional</li>
+                <li>Seriozitate, punctualitate și confort garantat</li>
               </ul>
             </div>
-            <div>
-              <strong>Vest:</strong>
-              <ul>
-                <li class="oras" data-oras="Frankfurt">Frankfurt</li>
-                <li class="oras" data-oras="Dortmund">Dortmund</li>
-                <li class="oras" data-oras="Köln">Köln</li>
-                <li class="oras" data-oras="Essen">Essen</li>
-                <li class="oras" data-oras="Duisburg">Duisburg</li>
-                <li class="oras" data-oras="Düsseldorf">Düsseldorf</li>
-                <li class="oras" data-oras="Saarbrücken">Saarbrücken</li>
-                <li class="oras" data-oras="Mannheim">Mannheim</li>
-                <li class="oras" data-oras="Mainz">Mainz</li>
-              </ul>
+
+            <div class="germania-orase">
+              <h4>🕒 Plecări zilnice — Toată Germania</h4>
+              <p>Transport către principalele orașe din Germania:</p>
+              <div class="orase-grid">
+                <div class="oras-card" data-oras="Berlin">Berlin</div>
+                <div class="oras-card" data-oras="München">München</div>
+                <div class="oras-card" data-oras="Hamburg">Hamburg</div>
+                <div class="oras-card" data-oras="Frankfurt am Main">
+                  Frankfurt
+                </div>
+                <div class="oras-card" data-oras="Stuttgart">Stuttgart</div>
+                <div class="oras-card" data-oras="Köln">Köln</div>
+                <div class="oras-card" data-oras="Düsseldorf">Düsseldorf</div>
+                <div class="oras-card" data-oras="Dortmund">Dortmund</div>
+                <div class="oras-card" data-oras="Nürnberg">Nürnberg</div>
+                <div class="oras-card" data-oras="Hannover">Hannover</div>
+                <div class="oras-card" data-oras="Leipzig">Leipzig</div>
+                <div class="oras-card" data-oras="Dresden">Dresden</div>
+                <div class="oras-card" data-oras="Bremen">Bremen</div>
+                <div class="oras-card" data-oras="Essen">Essen</div>
+                <div class="oras-card" data-oras="Mannheim">Mannheim</div>
+                <div class="oras-card" data-oras="Karlsruhe">Karlsruhe</div>
+                <div class="oras-card" data-oras="Freiburg">Freiburg</div>
+                <div class="oras-card" data-oras="Ulm">Ulm</div>
+              </div>
             </div>
-            <div>
-              <strong>Nord &amp; Est:</strong>
-              <ul>
-                <li class="oras" data-oras="Hamburg">Hamburg</li>
-                <li class="oras" data-oras="Bremen">Bremen</li>
-                <li class="oras" data-oras="Hannover">Hannover</li>
-                <li class="oras" data-oras="Berlin">Berlin</li>
-                <li class="oras" data-oras="Leipzig">Leipzig</li>
-                <li class="oras" data-oras="Magdeburg">Magdeburg</li>
-                <li class="oras" data-oras="Halle">Halle</li>
-                <li class="oras" data-oras="Jena">Jena</li>
-                <li class="oras" data-oras="Erfurt">Erfurt</li>
-                <li class="oras" data-oras="Oldenburg">Oldenburg</li>
-              </ul>
+
+            <div class="germania-cta">
+              <p><strong>📞 Rezervă-ți locul acum!</strong></p>
+              <p>
+                📱 Telefon / WhatsApp:
+                <a
+                  href="https://wa.me/40759967696"
+                  target="_blank"
+                  rel="noopener"
+                  >+40 759 967 696</a
+                ><br />
+                💬 Facebook:
+                <a
+                  href="https://www.facebook.com/TRANSPORTBRB"
+                  target="_blank"
+                  rel="noopener"
+                  >pagina oficială BRB-TRAVEL</a
+                >
+              </p>
+              <strong>🚐 BRB-TRAVEL — Drumuri sigure, oameni mulțumiți!</strong>
             </div>
           </div>
-          <div id="harta-germania" class="map-section"></div>
+
+          <div
+            id="harta-germania"
+            class="map-section"
+            aria-label="Harta Germania"
+          ></div>
+
           <div class="buttons">
-            <a href="tel:+40759967696" class="btn call" target="_blank"
+            <a
+              href="tel:+40759967696"
+              class="btn call"
+              target="_blank"
+              rel="noopener"
               >Sună acum</a
             >
             <a
               href="https://wa.me/40759967696"
               class="btn reserve"
               target="_blank"
+              rel="noopener"
               >Rezervă acum</a
             >
           </div>
         </section>
 
-        <section class="tara" id="belgia">
-          <h3>Belgia</h3>
-          <div class="plecari-grid">
-            <div>
-              <ul>
-                <li class="oras" data-oras="Bruxelles">Bruxelles</li>
-                <li class="oras" data-oras="Anvers">Anvers</li>
-                <li class="oras" data-oras="Gent">Gent</li>
-                <li class="oras" data-oras="Charleroi">Charleroi</li>
-                <li class="oras" data-oras="Liège">Liège</li>
-                <li class="oras" data-oras="Bruges">Bruges</li>
+        <!-- Belgia -->
+        <section class="tara belgia-section" id="belgia">
+          <div class="belgia-header"><h3>Belgia</h3></div>
+
+          <div class="belgia-content">
+            <div class="belgia-intro">
+              <p>
+                <strong
+                  >🇧🇪 Transport Persoane România – Belgia | BRB-TRAVEL</strong
+                >
+              </p>
+              <p>
+                Confort, siguranță și seriozitate — zi de zi, cu BRB-TRAVEL.
+              </p>
+            </div>
+
+            <div class="belgia-highlight">
+              <h4>De ce să alegi BRB-TRAVEL pentru Belgia?</h4>
+              <ul class="beneficii-lista">
+                <li>Curse zilnice România–Belgia (tur-retur)</li>
+                <li>Adresă–la–adresă</li>
+                <li>Microbuze cu climă și Wi-Fi</li>
+                <li>Bagaje incluse</li>
+                <li>Masă caldă în Ungaria</li>
+                <li>Șoferi profesioniști, atestați</li>
               </ul>
             </div>
+
+            <div class="belgia-orase">
+              <h4>Plecări zilnice — Toată Belgia</h4>
+              <div class="orase-grid">
+                <div class="oras-card" data-oras="Bruxelles">Bruxelles</div>
+                <div class="oras-card" data-oras="Anvers">Anvers</div>
+                <div class="oras-card" data-oras="Gent">Gent</div>
+                <div class="oras-card" data-oras="Brugge">Brugge</div>
+                <div class="oras-card" data-oras="Liège">Liège</div>
+                <div class="oras-card" data-oras="Charleroi">Charleroi</div>
+                <div class="oras-card" data-oras="Leuven">Leuven</div>
+                <div class="oras-card" data-oras="Namur">Namur</div>
+              </div>
+            </div>
+
+            <div class="belgia-cta">
+              <p><strong>📞 Rezervă-ți locul acum!</strong></p>
+              <p>
+                📱 Telefon / WhatsApp:
+                <a
+                  href="https://wa.me/40759967696"
+                  target="_blank"
+                  rel="noopener"
+                  >+40 759 967 696</a
+                ><br />
+                💬 Facebook:
+                <a
+                  href="https://www.facebook.com/TRANSPORTBRB"
+                  target="_blank"
+                  rel="noopener"
+                  >pagina oficială BRB-TRAVEL</a
+                >
+              </p>
+              <strong>🚐 BRB-TRAVEL — Drumuri sigure, oameni mulțumiți!</strong>
+            </div>
           </div>
-          <div id="harta-belgia" class="map-section"></div>
+
+          <div
+            id="harta-belgia"
+            class="map-section"
+            aria-label="Harta Belgia"
+          ></div>
+
           <div class="buttons">
-            <a href="tel:+40759967696" class="btn call" target="_blank"
-              >Sună acum</a
+            <a
+              href="tel:+40759967696"
+              class="btn call"
+              target="_blank"
+              rel="noopener"
+              >📞 Sună acum</a
             >
             <a
               href="https://wa.me/40759967696"
               class="btn reserve"
               target="_blank"
-              >Rezervă acum</a
+              rel="noopener"
+              >💬 Rezervă pe WhatsApp</a
             >
           </div>
         </section>
 
-        <section class="tara" id="olanda">
-          <h3>Olanda</h3>
-          <div class="plecari-grid">
-            <div>
-              <ul>
-                <li class="oras" data-oras="Amsterdam">Amsterdam</li>
-                <li class="oras" data-oras="Rotterdam">Rotterdam</li>
-                <li class="oras" data-oras="Haga">Haga</li>
-                <li class="oras" data-oras="Utrecht">Utrecht</li>
-                <li class="oras" data-oras="Eindhoven">Eindhoven</li>
-                <li class="oras" data-oras="Groningen">Groningen</li>
+        <!-- Olanda -->
+        <section class="tara olanda-section" id="olanda">
+          <div class="olanda-header"><h3>Olanda</h3></div>
+
+          <div class="olanda-content">
+            <div class="olanda-intro">
+              <h4>🇳🇱 Transport Persoane România – Olanda | BRB-TRAVEL</h4>
+              <p>
+                🚐 Călătorește sigur, confortabil și fără stres cu
+                <strong>BRB-TRAVEL</strong>!
+              </p>
+              <p>
+                <strong>BRB-TRAVEL</strong> îți oferă transport persoane
+                <strong>România – Olanda</strong>, tur-retur, cu plecări
+                zilnice.
+              </p>
+              <p>
+                Fie că mergi la muncă, în vizită sau în vacanță, te ducem direct
+                la destinație — în condiții sigure și confortabile.
+              </p>
+            </div>
+
+            <div class="olanda-beneficii">
+              <h4>💼 De ce să alegi BRB-TRAVEL pentru Olanda?</h4>
+              <ul class="beneficii-lista">
+                <li>Curse zilnice România–Olanda (tur-retur)</li>
+                <li>Transport de la adresă la adresă</li>
+                <li>Microbuze moderne, cu climă, Wi-Fi și spațiu generos</li>
+                <li>Bagaje incluse în preț</li>
+                <li>Masă caldă în Ungaria, pe traseu</li>
+                <li>Șoferi profesioniști și atestați</li>
+                <li>Seriozitate, punctualitate și confort garantat</li>
               </ul>
             </div>
+
+            <div class="olanda-orase">
+              <h4>🕒 Plecări zilnice — Toată Olanda</h4>
+              <p>Asigurăm transport către toate orașele importante:</p>
+              <div class="orase-grid">
+                <div class="oras-card" data-oras="Amsterdam">Amsterdam</div>
+                <div class="oras-card" data-oras="Rotterdam">Rotterdam</div>
+                <div class="oras-card" data-oras="Eindhoven">Eindhoven</div>
+                <div class="oras-card" data-oras="Utrecht">Utrecht</div>
+                <div class="oras-card" data-oras="'s-Hertogenbosch">
+                  ’s-Hertogenbosch
+                </div>
+                <div class="oras-card" data-oras="Den Haag">
+                  Haga (Den Haag)
+                </div>
+                <div class="oras-card" data-oras="Groningen">Groningen</div>
+                <div class="oras-card" data-oras="Arnhem">Arnhem</div>
+                <div class="oras-card" data-oras="Tilburg">Tilburg</div>
+                <div class="oras-card" data-oras="Breda">Breda</div>
+              </div>
+            </div>
+
+            <div class="olanda-cta">
+              <p><strong>📞 Rezervă-ți locul acum!</strong></p>
+              <p>
+                📱 Telefon / WhatsApp:
+                <a
+                  href="https://wa.me/40759967696"
+                  target="_blank"
+                  rel="noopener"
+                  >+40 759 967 696</a
+                ><br />
+                💬 Facebook:
+                <a
+                  href="https://www.facebook.com/TRANSPORTBRB"
+                  target="_blank"
+                  rel="noopener"
+                  >pagina oficială BRB-TRAVEL</a
+                >
+              </p>
+              <strong>🚐 BRB-TRAVEL — Drumuri sigure, oameni mulțumiți!</strong>
+            </div>
           </div>
-          <div id="harta-olanda" class="map-section"></div>
+
+          <div
+            id="harta-olanda"
+            class="map-section"
+            aria-label="Harta Olanda"
+          ></div>
+
           <div class="buttons">
-            <a href="tel:+40759967696" class="btn call" target="_blank"
+            <a
+              href="tel:+40759967696"
+              class="btn call"
+              target="_blank"
+              rel="noopener"
               >Sună acum</a
             >
             <a
               href="https://wa.me/40759967696"
               class="btn reserve"
               target="_blank"
+              rel="noopener"
               >Rezervă acum</a
             >
           </div>
@@ -333,34 +678,17 @@
       </section>
     </main>
 
-    <style>
-      .map-section {
-        width: 100%;
-        height: 500px;
-        border-radius: 12px;
-        margin: 2rem auto;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      }
-      .leaflet-popup-content a.popup-btn {
-        display: inline-block;
-        margin-top: 5px;
-        padding: 6px 10px;
-        background-color: #009999;
-        color: white;
-        border-radius: 6px;
-        text-decoration: none;
-        font-weight: bold;
-      }
-      .leaflet-popup-content a.popup-btn:hover {
-        background-color: #007777;
-      }
-    </style>
     <footer>
       <div class="footer-content">
-        <p>&copy; 2025 Barb Travel. Toate drepturile rezervate.</p>
+        <p>
+          &copy; 2025 <strong>BRB-TRAVEL</strong>. Toate drepturile rezervate.
+        </p>
         <p>
           E-mail:
-          <a href="mailto:transportbrbtravel@gmail.com" target="_blank"
+          <a
+            href="mailto:transportbrbtravel@gmail.com"
+            target="_blank"
+            rel="noopener"
             >transportbrbtravel@gmail.com</a
           >
         </p>
@@ -368,21 +696,59 @@
           <a
             href="https://www.facebook.com/TRANSPORTBRB"
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener"
             >Facebook</a
           >
         </p>
       </div>
     </footer>
-    <script src="scriptrute.js" defer></script>
-    <div id="popup-oras" class="popup-oras hidden">
+
+    <!-- Scripturile paginii -->
+    <script defer src="scriptrute.js"></script>
+    <script>
+      // Popup oraș
+      document.addEventListener("click", function (e) {
+        const el = e.target.closest(".oras-card, .oras");
+        if (!el) return;
+        const oras = el.dataset.oras;
+        if (!oras) return;
+        const popup = document.getElementById("popup-oras");
+        const title = document.getElementById("oras-nume");
+        if (popup && title) {
+          title.textContent = oras;
+          popup.classList.remove("hidden");
+        }
+      });
+      document.getElementById("close-popup")?.addEventListener("click", () => {
+        document.getElementById("popup-oras")?.classList.add("hidden");
+      });
+    </script>
+
+    <!-- Popup oraș -->
+    <div
+      id="popup-oras"
+      class="popup-oras hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="oras-nume"
+    >
       <div class="popup-content">
-        <span id="close-popup" class="close">&times;</span>
+        <button id="close-popup" class="close" aria-label="Închide fereastra">
+          &times;
+        </button>
         <h4 id="oras-nume">Oraș</h4>
-        <a href="tel:+40759967696" class="btn call" target="_blank"
+        <a
+          href="tel:+40759967696"
+          class="btn call"
+          target="_blank"
+          rel="noopener"
           >Sună acum</a
         >
-        <a href="https://wa.me/40759967696" class="btn reserve" target="_blank"
+        <a
+          href="https://wa.me/40759967696"
+          class="btn reserve"
+          target="_blank"
+          rel="noopener"
           >Scrie pe WhatsApp</a
         >
       </div>

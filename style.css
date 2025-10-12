@@ -1096,3 +1096,33 @@ body::after {
   pointer-events: none;
   z-index: -1;
 }
+/* === FIX DROPDOWN "Rute" care nu se vede sub navbar === */
+.navbar {
+  contain: none !important;     /* scoate paint containment-ul care taie dropdownul */
+  overflow: visible !important; /* permite conținutului absolut să iasă în jos */
+  z-index: 999 !important;      /* ține-l peste hero/imagini */
+  position: sticky;             /* păstrează comportamentul tău */
+  top: 0;
+}
+
+/* Asigură contextul de poziționare corect pentru dropdown */
+.navbar .dropdown {
+  position: relative;
+  overflow: visible;
+}
+
+/* Dropdownul stă deasupra tuturor și nu e tăiat */
+.navbar .dropdown-content {
+  z-index: 10000 !important;
+  overflow: visible;
+  /* păstrăm poziționarea ta */
+}
+
+/* Pe mobil: centru + width sigur, fără să fie tăiat */
+@media (max-width: 640px) {
+  .navbar .dropdown-content {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    max-width: calc(100vw - 24px) !important;
+  }
+}

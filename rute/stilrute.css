@@ -616,3 +616,14 @@ body:not(:has(.tara:target)) .tara {
 body:not(:has(.tara:target)) #romania {
   display: block;
 }
+/* Forțează închiderea dropdown-ului după ce ai navigat la o țintă (#romania etc.) */
+html:has(.tara:target) .navbar .dropdown .dropdown-content {
+  display: none !important;
+}
+
+/* Pe mobil, dropdownul NU se ține deschis pe :hover */
+@media (hover: none) and (pointer: coarse) {
+  .dropdown:hover .dropdown-content {
+    display: none !important;
+  }
+}

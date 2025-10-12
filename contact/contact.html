@@ -2,23 +2,27 @@
 <html lang="ro">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact | BRB-Travel - Transport persoane și colete</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact | BRB-TRAVEL - Transport persoane și colete</title>
     <meta
       name="description"
-      content="Contactează-ne pentru transport persoane și colete în Germania, Austria, Olanda și Belgia. Sună acum sau trimite mesaj pe WhatsApp."
+      content="Contactează BRB-TRAVEL pentru transport persoane și colete în Germania, Austria, Belgia și Olanda. Sună sau scrie pe WhatsApp – răspundem rapid."
     />
     <meta name="theme-color" content="#009999" />
-    <link rel="stylesheet" href="../style.css" />
+
+    <!-- Stil general site -->
+    <link rel="stylesheet" href="contactstil.css" />
+
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
   </head>
 
@@ -26,35 +30,53 @@
     <header>
       <div class="top-bar">
         <div class="logo">
-          <img src="../barb-travel-logo.jpeg" alt="Logo BRB-Travel" />
+          <img
+            src="../barb-travel-logo.jpeg"
+            alt="Logo BRB-TRAVEL"
+            width="96"
+            height="96"
+          />
         </div>
         <div class="brand-center">
-          <h1><strong>BRB-Travel</strong></h1>
+          <h1><strong>BRB-TRAVEL</strong></h1>
           <p>
             Transport persoane și colete în Austria, Germania, Belgia și Olanda.
           </p>
         </div>
       </div>
 
-      <nav class="navbar">
+      <nav class="navbar" aria-label="Meniu principal">
         <ul>
           <li><a href="../index.html">Acasă</a></li>
           <li class="dropdown">
-            <button class="dropbtn" type="button">Rute ▾</button>
-            <div class="dropdown-content">
-              <a href="../rute/rute.html#romania">România</a>
-              <a href="../rute/rute.html#austria">Austria</a>
-              <a href="../rute/rute.html#germania">Germania</a>
-              <a href="../rute/rute.html#belgia">Belgia</a>
-              <a href="../rute/rute.html#olanda">Olanda</a>
+            <button
+              class="dropbtn"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="menu-rute"
+            >
+              Rute ▾
+            </button>
+            <div id="menu-rute" class="dropdown-content" role="menu">
+              <a href="../rute/rute.html#romania" role="menuitem">România</a>
+              <a href="../rute/rute.html#austria" role="menuitem">Austria</a>
+              <a href="../rute/rute.html#germania" role="menuitem">Germania</a>
+              <a href="../rute/rute.html#belgia" role="menuitem">Belgia</a>
+              <a href="../rute/rute.html#olanda" role="menuitem">Olanda</a>
             </div>
           </li>
-          <li><a href="contact.html" class="active">Contact</a></li>
+          <li>
+            <a href="contact.html" class="active" aria-current="page"
+              >Contact</a
+            >
+          </li>
         </ul>
       </nav>
     </header>
 
     <main class="contact-page">
+      <!-- HERO -->
       <section class="hero">
         <h2>Contactează-ne acum</h2>
         <p>
@@ -63,26 +85,31 @@
         </p>
       </section>
 
+      <!-- CARDURI DE CONTACT -->
       <section class="contact-methods">
-        <div class="contact-card">
+        <article class="contact-card">
           <i class="fas fa-phone-alt"></i>
           <div>
             <h3>Telefon direct</h3>
             <p><a href="tel:+40759967696">+40 759 967 696</a></p>
             <small>Apel non-stop</small>
           </div>
-        </div>
+        </article>
 
-        <div class="contact-card">
+        <article class="contact-card">
           <i class="fab fa-whatsapp"></i>
           <div>
             <h3>WhatsApp</h3>
-            <p><a href="https://wa.me/40759967696">Trimite mesaj</a></p>
-            <small>Răspundem în maxim 5 minute</small>
+            <p>
+              <a href="https://wa.me/40759967696" target="_blank"
+                >Trimite mesaj</a
+              >
+            </p>
+            <small>Răspundem în câteva minute</small>
           </div>
-        </div>
+        </article>
 
-        <div class="contact-card">
+        <article class="contact-card">
           <i class="fas fa-envelope"></i>
           <div>
             <h3>Email</h3>
@@ -93,9 +120,9 @@
             </p>
             <small>Răspuns în 24 de ore</small>
           </div>
-        </div>
+        </article>
 
-        <div class="contact-card">
+        <article class="contact-card">
           <i class="fab fa-facebook-f"></i>
           <div>
             <h3>Facebook</h3>
@@ -106,14 +133,15 @@
             </p>
             <small>Mesaje și recenzii</small>
           </div>
-        </div>
+        </article>
       </section>
     </main>
 
-    <!-- footer -->
     <footer>
       <div class="footer-content">
-        <p>&copy; 2025 BRB-Travel. Toate drepturile rezervate.</p>
+        <p>
+          &copy; 2025 <strong>BRB-TRAVEL</strong>. Toate drepturile rezervate.
+        </p>
         <p>
           E-mail:
           <a href="mailto:transportbrbtravel@gmail.com"
@@ -121,33 +149,59 @@
           >
         </p>
         <p>
-          <a
-            href="https://www.facebook.com/TRANSPORTBRB"
-            target="_blank"
-            rel="noopener noreferrer"
+          <a href="https://www.facebook.com/TRANSPORTBRB" target="_blank"
             >Facebook</a
           >
         </p>
       </div>
     </footer>
 
+    <a
+      class="floating-btn call"
+      href="tel:+40759967696"
+      aria-label="Sună BRB-TRAVEL"
+    >
+      <i class="fas fa-phone-alt"></i>
+    </a>
+    <a
+      class="floating-btn whatsapp"
+      href="https://wa.me/40759967696"
+      target="_blank"
+      aria-label="Scrie pe WhatsApp BRB-TRAVEL"
+    >
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const dropBtn = document.querySelector(".dropbtn");
         const dropdown = document.querySelector(".dropdown");
+        const dropBtn = dropdown?.querySelector(".dropbtn");
+        const menu = dropdown?.querySelector(".dropdown-content");
 
-        if (dropBtn && dropdown) {
+        if (dropBtn && menu) {
           dropBtn.addEventListener("click", function (e) {
             e.stopPropagation();
             dropdown.classList.toggle("active");
+            dropBtn.setAttribute(
+              "aria-expanded",
+              dropdown.classList.contains("active")
+            );
           });
-
-          window.addEventListener("click", function (e) {
+          document.addEventListener("click", function (e) {
             if (!e.target.closest(".dropdown")) {
               dropdown.classList.remove("active");
+              dropBtn.setAttribute("aria-expanded", "false");
             }
           });
         }
+      });
+
+      document.addEventListener("click", (e) => {
+        const a = e.target.closest(".contact-card a");
+        if (!a) return;
+        const r = a.getBoundingClientRect();
+        a.style.setProperty("--x", `${e.clientX - r.left}px`);
+        a.style.setProperty("--y", `${e.clientY - r.top}px`);
       });
     </script>
   </body>

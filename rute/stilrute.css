@@ -1,0 +1,883 @@
+/* ======================================================
+   ===============  BRB-TRAVEL • STIL RUTE  =============
+   =====================================================*/
+
+/* -------------------- VARIABILE ---------------------- */
+:root {
+  --primary: #009999;
+  --primary-dark: #007777;
+  --text: #222;
+  --muted: #6b7280;
+  --bg: #ffffff;
+  --bg-soft: #f6f8f9;
+  --card: #ffffff;
+  --border: #e6e8eb;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --radius: 14px;
+  --transition: 0.25s ease;
+  --container: 1120px;
+}
+
+/* ---------------------- RESET ------------------------ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+}
+body {
+  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial,
+    sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+button {
+  font: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* -------- utilitare -------- */
+.container {
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+.section {
+  padding: 40px 0;
+}
+.hidden {
+  display: none !important;
+}
+[id] {
+  scroll-margin-top: 88px;
+} /* ancore vizibile sub navbar sticky */
+
+/* ================= HEADER (ca pe index) ================ */
+header {
+  background: linear-gradient(135deg, #008585, #00a3a3);
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+.top-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 16px;
+}
+.logo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  margin-bottom: 10px;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.brand-center h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
+}
+.brand-center p {
+  font-size: 1rem;
+  color: #d8fffb;
+}
+@media (min-width: 768px) {
+  .brand-center h1 {
+    font-size: 2rem;
+  }
+}
+
+/* ================= NAVBAR (ca pe index) ================ */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 55;
+  background: #006d6d;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 16px;
+  max-width: var(--container);
+  margin: auto;
+}
+.navbar > ul > li > a,
+.navbar > ul > li > .dropbtn {
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 500;
+  transition: background 0.25s, color 0.25s, box-shadow 0.25s;
+}
+.navbar > ul > li > a:hover,
+.navbar > ul > li > .dropbtn:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 153, 153, 0.4),
+    rgba(0, 255, 180, 0.4)
+  );
+  box-shadow: inset 0 0 8px rgba(0, 255, 200, 0.3);
+}
+.navbar a[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.28);
+  font-weight: 600;
+}
+
+.dropdown {
+  position: relative;
+}
+.dropdown-content {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  display: none;
+  background: #fff;
+  color: #0f172a;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  min-width: 220px;
+  padding: 6px;
+  z-index: 60;
+}
+.dropdown.active .dropdown-content {
+  display: block;
+}
+.dropdown-content a {
+  color: #0f172a !important;
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+.dropdown-content a:hover {
+  background: var(--bg-soft);
+  color: #0b3b3b;
+}
+
+/* ===================== HERO ========================= */
+/* Scope strict: overlay doar când e în .hero-image */
+.hero-image {
+  position: relative;
+}
+.hero-image .hero-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.hero-image .overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 16px;
+  color: #fff;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35));
+}
+.hero-image .overlay h1,
+.hero-image .overlay h2 {
+  margin-bottom: 8px;
+}
+@media (min-width: 768px) {
+  .hero-image .overlay h1,
+  .hero-image .overlay h2 {
+    font-size: 2rem;
+  }
+}
+
+/* ========= CTA BUTOANE (gradient albastru → verde) = */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 255, 170, 0.6);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 15px rgba(0, 255, 170, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0, 255, 170, 0);
+  }
+}
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+.btn,
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+  height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #009999, #00c3a3);
+  border: 0;
+  box-shadow: 0 6px 20px rgba(0, 153, 153, 0.25);
+  transition: all 0.25s ease;
+}
+.btn:hover,
+.btn-hero:hover {
+  background: linear-gradient(135deg, #00c3a3, #00e6a8);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0, 230, 168, 0.4);
+}
+.btn.call {
+  background: linear-gradient(135deg, #00a8a8, #00d4a4);
+}
+.btn.call:hover {
+  background: linear-gradient(135deg, #00d4a4, #00f0b5);
+}
+.btn.reserve {
+  background: #25d366;
+}
+.btn.reserve:hover {
+  background: #1ebe5d;
+}
+
+/* ================== SECTIUNI RUTE =================== */
+main .rute {
+  padding: 32px 16px;
+}
+main .rute > h2 {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.tara {
+  max-width: var(--container);
+  margin: 18px auto;
+  padding: 18px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.tara h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+.tara h4 {
+  font-size: 1.05rem;
+  margin: 6px 0 8px;
+}
+
+/* headere de țară (badge colorat) */
+.romania-header h3,
+.austria-header h3,
+.germania-header h3,
+.belgia-header h3,
+.olanda-header h3 {
+  display: inline-block;
+  background: linear-gradient(135deg, #008585, #00a3a3);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 10px;
+  box-shadow: 0 8px 18px rgba(0, 153, 153, 0.25);
+}
+
+/* blocuri de text/beneficii */
+.tara-intro,
+.austria-intro,
+.germania-intro,
+.belgia-intro,
+.olanda-intro,
+.tara-beneficii,
+.austria-beneficii,
+.germania-beneficii,
+.belgia-highlight,
+.olanda-beneficii,
+.romania-orase,
+.austria-orase,
+.germania-orase,
+.belgia-orase,
+.olanda-orase {
+  margin-bottom: 16px;
+}
+
+.beneficii-lista {
+  display: grid;
+  gap: 6px;
+  margin-top: 6px;
+}
+.beneficii-lista li {
+  padding: 6px 10px;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  background: var(--bg-soft);
+}
+
+/* grila de orașe */
+.orase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+@media (min-width: 640px) {
+  .orase-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@media (min-width: 960px) {
+  .orase-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.oras-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  font-weight: 600;
+  color: #0f172a;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease,
+    color 0.2s ease;
+}
+.oras-card:hover {
+  background: linear-gradient(135deg, #00a3a3, #00d4a4);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* CTA info box */
+.tara-cta,
+.austria-cta,
+.germania-cta,
+.belgia-cta,
+.olanda-cta {
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+}
+.tara-cta a,
+.austria-cta a,
+.germania-cta a,
+.belgia-cta a,
+.olanda-cta a {
+  color: #007a7a;
+  text-decoration: underline;
+}
+
+/* ===================== HĂRȚI ======================== */
+.map-section {
+  width: 100%;
+  height: 360px;
+  margin: 14px 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+@media (min-width: 768px) {
+  .map-section {
+    height: 420px;
+  }
+}
+.leaflet-container {
+  font: inherit;
+}
+
+/* ===================== POPUP ORAȘ ==================== */
+.popup-oras {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  z-index: 100;
+}
+.popup-content {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+  width: min(92vw, 520px);
+  padding: 20px;
+}
+.popup-content h4 {
+  font-size: 1.2rem;
+  margin: 6px 0 12px;
+}
+.popup-content .btn {
+  margin-top: 8px;
+}
+.popup-content .close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  line-height: 1;
+  background: #f3f4f6;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.popup-content .close:hover {
+  background: #e5e7eb;
+  transform: scale(1.05);
+}
+
+/* ===================== FOOTER ======================== */
+footer {
+  background: linear-gradient(135deg, #008585, #00a3a3);
+  color: #fff;
+  margin-top: 32px;
+  box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+.footer-content {
+  max-width: var(--container);
+  margin: auto;
+  padding: 22px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+.footer-content a {
+  color: #fff;
+  text-decoration: underline dotted;
+}
+.footer-content a:hover {
+  color: #e0fffb;
+}
+@media (min-width: 640px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+  }
+}
+
+/* ====== Mic „guard” pentru .overlay rătăcite în afara .hero-image ====== */
+body > .overlay {
+  display: none;
+}
+/* Dropdown accesibil + deasupra hero */
+.navbar .dropdown {
+  position: relative;
+}
+.navbar .dropdown-content {
+  z-index: 999;
+}
+
+/* Deschidere și pe focus în interior (bun pentru tastatură) */
+.navbar .dropdown:focus-within .dropdown-content {
+  display: block;
+}
+
+/* Cursor clar pe buton */
+.navbar .dropbtn {
+  cursor: pointer;
+}
+/* === Dropdown corect 100% CSS === */
+.dropdown {
+  position: relative;
+}
+
+.dropbtn {
+  cursor: pointer;
+}
+
+/* ascuns implicit */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background: #fff;
+  color: #0f172a;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  padding: 6px;
+  z-index: 1000;
+}
+
+/* se afișează când meniul are focus sau hover */
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content {
+  display: block;
+}
+
+/* linkurile din meniu */
+.dropdown-content a {
+  display: block;
+  padding: 10px 12px;
+  border-radius: 8px;
+  color: #0f172a !important;
+  transition: background 0.25s;
+}
+.dropdown-content a:hover {
+  background: var(--bg-soft);
+  color: #008585 !important;
+}
+/* ==== ROUTING LOGIC (CSS-only): România implicit, apoi comută pe :target ==== */
+
+/* 1) Bază: toate vizibile (fallback pentru browsere vechi fără :has) */
+.tara {
+  display: block;
+}
+
+/* 2) Dacă există O SECȚIUNE .tara în :target, ascunde-le pe toate... */
+body:has(.tara:target) .tara {
+  display: none;
+}
+/* ... și arată DOAR secțiunea țintă */
+.tara:target {
+  display: block;
+}
+
+/* 3) Dacă NU există nicio .tara în :target (ex: prima încărcare sau #rute),
+      arată România implicit și ascunde restul */
+body:not(:has(.tara:target)) .tara {
+  display: none;
+}
+body:not(:has(.tara:target)) #romania {
+  display: block;
+}
+
+/* 4) Îmbunătățire UX: mică animație la comutare (opțional) */
+.tara {
+  animation: taraFade 0.24s ease;
+}
+@keyframes taraFade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ==== STILURI TEXTE PROMOȚIONALE (ȚĂRILE) ==== */
+
+.tara-intro,
+.austria-intro,
+.germania-intro,
+.belgia-intro,
+.olanda-intro {
+  text-align: center;
+  background: linear-gradient(180deg, #f9ffff, #e8fefe);
+  border: 1px solid #c8f0ee;
+  border-radius: 16px;
+  padding: 24px 18px;
+  margin-bottom: 22px;
+  box-shadow: 0 10px 20px rgba(0, 153, 153, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.tara-intro:hover,
+.austria-intro:hover,
+.germania-intro:hover,
+.belgia-intro:hover,
+.olanda-intro:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 30px rgba(0, 153, 153, 0.15);
+}
+
+/* === Titluri mari și subtitluri clare === */
+.tara-intro h4,
+.austria-intro h4,
+.germania-intro h4,
+.belgia-intro h4,
+.olanda-intro h4 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #006d6d;
+  margin-bottom: 10px;
+}
+.tara-intro p,
+.austria-intro p,
+.germania-intro p,
+.belgia-intro p,
+.olanda-intro p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #004f4f;
+  margin-bottom: 8px;
+}
+
+/* === Emoji/steaguri mai mari pentru vibe vizual === */
+.tara-intro h4::before,
+.austria-intro h4::before,
+.germania-intro h4::before,
+.belgia-intro h4::before,
+.olanda-intro h4::before {
+  content: "🌍 ";
+  font-size: 1.4rem;
+}
+.olanda-intro h4::before {
+  content: "🇳🇱 ";
+}
+.belgia-intro h4::before {
+  content: "🇧🇪 ";
+}
+.germania-intro h4::before {
+  content: "🇩🇪 ";
+}
+.austria-intro h4::before {
+  content: "🇦🇹 ";
+}
+.tara-intro h4::before {
+  content: "🇷🇴 ";
+}
+
+/* === Textul promo să „iasă în ochi” === */
+.tara-intro strong,
+.austria-intro strong,
+.germania-intro strong,
+.belgia-intro strong,
+.olanda-intro strong {
+  color: #007a7a;
+  font-weight: 700;
+}
+
+/* === Versiune responsive (mai mare pe desktop) === */
+@media (min-width: 768px) {
+  .tara-intro h4,
+  .austria-intro h4,
+  .germania-intro h4,
+  .belgia-intro h4,
+  .olanda-intro h4 {
+    font-size: 1.7rem;
+  }
+  .tara-intro p,
+  .austria-intro p,
+  .germania-intro p,
+  .belgia-intro p,
+  .olanda-intro p {
+    font-size: 1.2rem;
+  }
+}
+/* ====== TITLURI ȚĂRI — CENTRATE, MARI, CURATE ====== */
+.romania-header h3,
+.austria-header h3,
+.germania-header h3,
+.belgia-header h3,
+.olanda-header h3 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #008585;
+  margin: 30px auto 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 3px solid #00a3a3;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+/* Versiune mai mare pe ecrane largi */
+@media (min-width: 768px) {
+  .romania-header h3,
+  .austria-header h3,
+  .germania-header h3,
+  .belgia-header h3,
+  .olanda-header h3 {
+    font-size: 2.4rem;
+  }
+}
+
+/* ====== TEXTE PROMO (ALBE, CURATE, CENTRATE) ====== */
+.tara-intro,
+.austria-intro,
+.germania-intro,
+.belgia-intro,
+.olanda-intro {
+  text-align: center;
+  background: #fff; /* fundal alb curat */
+  border: none;
+  border-radius: 0;
+  padding: 24px 18px;
+  margin-bottom: 22px;
+}
+
+.tara-intro h4,
+.austria-intro h4,
+.germania-intro h4,
+.belgia-intro h4,
+.olanda-intro h4 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #006d6d;
+  margin-bottom: 10px;
+}
+
+.tara-intro p,
+.austria-intro p,
+.germania-intro p,
+.belgia-intro p,
+.olanda-intro p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #222;
+  margin-bottom: 8px;
+}
+
+@media (min-width: 768px) {
+  .tara-intro h4,
+  .austria-intro h4,
+  .germania-intro h4,
+  .belgia-intro h4,
+  .olanda-intro h4 {
+    font-size: 1.9rem;
+  }
+
+  .tara-intro p,
+  .austria-intro p,
+  .germania-intro p,
+  .belgia-intro p,
+  .olanda-intro p {
+    font-size: 1.25rem;
+  }
+}
+/* ======== TITLURI ȚĂRI — CENTRAT CURAT, NEGRU ELEGANT ======== */
+.romania-header h3,
+.austria-header h3,
+.germania-header h3,
+.belgia-header h3,
+.olanda-header h3 {
+  text-align: center; /* centrează pe mijloc */
+  font-size: 2.2rem; /* titlu mare și clar */
+  font-weight: 700;
+  color: #222222; /* negru curat, fără tentă turcoaz */
+  margin: 40px auto 25px; /* spațiu aerisit sus-jos */
+  text-transform: uppercase; /* majuscule pentru impact */
+  letter-spacing: 1px; /* spațiere ușoară */
+  width: 100%;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .romania-header h3,
+  .austria-header h3,
+  .germania-header h3,
+  .belgia-header h3,
+  .olanda-header h3 {
+    font-size: 2.6rem; /* și mai vizibil pe desktop */
+  }
+}
+/* ===== Hover pentru beneficiile din liste ===== */
+.beneficii-lista li {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px 10px 44px; /* loc pentru iconiță */
+  transition: transform var(--transition), box-shadow var(--transition),
+    border-color var(--transition), background-color var(--transition);
+}
+
+/* bifa din stânga (pseudo-element, fără HTML suplimentar) */
+.beneficii-lista li::before {
+  content: "✓";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #fff;
+  background: linear-gradient(135deg, #009999, #00c3a3);
+  box-shadow: 0 3px 10px rgba(0, 153, 153, 0.25);
+  transition: transform var(--transition), box-shadow var(--transition),
+    filter var(--transition);
+}
+
+/* efect la hover: mic lift + highlight border + glow bifa */
+@media (hover: hover) {
+  .beneficii-lista li:hover {
+    transform: translateY(-2px);
+    border-color: #cfe9e7;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+    background-color: #fcfefd;
+  }
+  .beneficii-lista li:hover::before {
+    transform: translateY(-50%) scale(1.06);
+    box-shadow: 0 6px 16px rgba(0, 230, 168, 0.35);
+    filter: brightness(1.05);
+  }
+}
+
+/* accesibilitate: dacă ai linkuri/butoane în interior, evidențiază la focus */
+.beneficii-lista li:focus-within {
+  outline: 2px solid rgba(0, 195, 163, 0.6);
+  outline-offset: 2px;
+}
+
+/* respectă preferința de reducere a animațiilor */
+@media (prefers-reduced-motion: reduce) {
+  .beneficii-lista li,
+  .beneficii-lista li::before {
+    transition: none;
+  }
+}
+@media (max-width: 420px) {
+  .beneficii-lista li {
+    padding: 10px 10px 10px 40px;
+  }
+  .beneficii-lista li::before {
+    left: 10px;
+  }
+}

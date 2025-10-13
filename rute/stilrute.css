@@ -721,3 +721,6 @@ footer {
 .hero-image .overlay {
   z-index: 1 !important;
 } /* sub navbar */
+.cookie-banner.is-hidden {
+  display: none !important;
+}

@@ -908,6 +908,9 @@ canvas {
   height: auto;
   display: block;
 }
+:where(h1, h2, h3, h4, h5, h6, p, li, a, button, small) {
+  overflow-wrap: anywhere; /* rupe cuvinte/URL-uri prea lungi */
+}
 
 /* 3) Dropdown „Rute”: rămâne în viewport pe mobil */
 @media (max-width: 640px) {
@@ -1215,195 +1218,24 @@ footer {
 .dropdown:focus-within > .dropdown-content {
   display: block;
 }
-
-/* primul icon stă în col. 1; orice alt SVG (ex: mașina de la final) rămâne cu textul */
-.avantaje li .icon-svg:first-of-type {
-  grid-column: 1;
-  margin-top: 2px;
+.cookie-banner.is-hidden {
+  display: none !important;
 }
-.avantaje li .icon-svg:not(:first-of-type) {
-  grid-column: 2;
-  display: inline-block;
-  vertical-align: text-bottom;
-}
-
-/* textul și elementele inline din card: nu mai rupe cuvintele la întâmplare */
-.avantaje li,
-.avantaje li * {
-  text-align: left !important;
+/* === FIX text care se rupe pe litere === */
+:where(h1, h2, h3, h4, h5, h6, p, li, a, button, small) {
+  overflow-wrap: break-word !important; /* rupe doar la capăt de linie */
   word-break: normal !important;
-  overflow-wrap: break-word !important; /* păstrează doar break-word */
+  hyphens: auto; /* despărțire silabică unde e suportată */
   white-space: normal !important;
-  letter-spacing: normal !important;
 }
 
-/* opțional: același tratament pentru .trust-strip și .how-card dacă vezi efecte similare */
-.trust-strip li,
-.how-card p {
-  word-break: normal;
-  overflow-wrap: break-word;
-  text-align: center;
-}
-/* dacă ai avut în reset ceva de genul:
-:where(h1,h2,h3,h4,h5,h6,p,li,a,button,small){ overflow-wrap:anywhere; }
-   …înlocuiește cu: */
-:where(p, a, small) {
-  overflow-wrap: break-word;
-} /* fără li/hX aici */
-/* =============================
-   🔧 FIX TEXTURI DECALATE iOS
-   ============================= */
-
-/* Cardurile de beneficii / servicii */
-.feature-item,
-.benefit {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  text-align: left;
-  line-height: 1.5;
-  word-break: normal;
-  overflow-wrap: normal;
-  white-space: normal;
-}
-
-/* Icon + text separat corect */
-.feature-item svg,
-.benefit svg {
-  flex-shrink: 0;
-  width: 22px;
-  height: 22px;
-  color: var(--primary);
-}
-
-/* Textul din card */
-.feature-item span,
-.feature-item p,
-.benefit span,
-.benefit p {
-  display: inline;
-  font-size: 15px;
-  font-weight: 400;
-  color: var(--text);
-  letter-spacing: normal;
-  text-align: left;
-  word-break: keep-all;
-  overflow-wrap: normal;
-  white-space: normal;
-}
-
-/* Fix Safari: elimină moștenirea de flex sau column */
-.feature-item * {
-  display: inline !important;
-  flex: none !important;
-  width: auto !important;
-  max-width: 100% !important;
-}
-/* ===== iOS text-splitting hard fix ===== */
-
-/* Cardurile cu icon + text (avantaje/beneficii/contact) */
+/* Pentru cardurile din Avantaje – asigură lățimea corectă internă */
 .avantaje li,
-.feature-item,
-.benefit,
-.contact-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-/* Icon fix – lățime fixă, nu împinge textul */
-.avantaje li .icon-svg,
-.feature-item .icon,
-.benefit .icon,
-.contact-card > i {
-  flex: 0 0 28px;
-  line-height: 1;
-}
-
-/* Text fix – nu mai rupe cuvinte în litere */
-.avantaje li *,
-.feature-item *,
-.benefit *,
-.contact-card * {
-  text-align: left !important;
-  word-break: normal !important;
-  overflow-wrap: break-word !important; /* NU 'anywhere' */
-  white-space: normal !important;
-  letter-spacing: normal !important;
-  hyphens: manual !important; /* permite despărțiri corecte dacă e cazul */
-}
-
-/* Titlurile și paragrafele redevin inline/block normale
-   (evită bug-ul Safari când <p>/<span> moștenesc flex) */
-.avantaje li p,
-.avantaje li span,
-.avantaje li strong,
-.feature-item p,
-.feature-item span,
-.feature-item strong,
-.benefit p,
-.benefit span,
-.benefit strong,
-.contact-card h3,
-.contact-card p,
-.contact-card small,
-.contact-card a {
-  display: inline;
-}
-
-/* Container text din contact-card ia lățimea liberă */
-.contact-card > div {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-/* ===== BRB-TRAVEL • Avantaje – hard normalize (iOS/Safari safe) ===== */
-
-/* 1) Icon + text pe un singur rând, fără grid & fără surprize */
-.avantaje li {
-  display: flex !important;
-  align-items: flex-start;
-  gap: 10px;
-}
-
-/* 2) Icon fix, nu împinge textul */
-.avantaje li .icon-svg {
-  flex: 0 0 24px;
-  width: 24px;
-  height: 24px;
-  margin-top: 2px;
-}
-
-/* 3) Tot conținutul textual curge într-un singur “bloc” flexibil */
-.avantaje li > :not(.icon-svg) {
-  display: block; /* foarte important pe Safari */
-  flex: 1 1 auto;
+.avantaje .li-text {
   min-width: 0;
 }
 
-/* 4) Nu mai forța display inline/block pe descendenți; doar normalizează wrap-ul */
-.avantaje li * {
-  white-space: normal !important;
-  word-break: normal !important;
-  overflow-wrap: break-word !important;
-  letter-spacing: normal !important;
-}
-
-/* 5) Fragmente care trebuie să stea împreună (ex: “Masă caldă”, “și”) */
-.avantaje .nb {
-  white-space: nowrap;
-}
-
-/* 6) Variantele cu 2 SVG-uri în același <li> (ex: “autoturisme” + icon mașină) */
-.avantaje li .icon-svg + .icon-svg {
-  margin-left: 0.25rem;
-}
-
-/* 7) Siguranță: elimină orice moștenire de grid de mai sus (în caz că rămâne ceva în cache) */
-.avantaje li {
-  grid-template-columns: none !important;
-}
-
-/* 8) (opțional) mic polish vizual */
-.avantaje li strong {
-  font-weight: 600;
+/* (opțional) grilele pe desktop – mai robuste la shrink */
+.avantaje ul {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }

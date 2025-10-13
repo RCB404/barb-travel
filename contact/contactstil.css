@@ -380,3 +380,6 @@ body:has(.tara:target) .navbar .dropbtn {
   outline: none !important;
   box-shadow: none !important;
 }
+.cookie-banner.is-hidden {
+  display: none !important;
+}

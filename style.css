@@ -908,9 +908,6 @@ canvas {
   height: auto;
   display: block;
 }
-:where(h1, h2, h3, h4, h5, h6, p, li, a, button, small) {
-  overflow-wrap: anywhere; /* rupe cuvinte/URL-uri prea lungi */
-}
 
 /* 3) Dropdown „Rute”: rămâne în viewport pe mobil */
 @media (max-width: 640px) {
@@ -1308,4 +1305,61 @@ footer {
   flex: none !important;
   width: auto !important;
   max-width: 100% !important;
+}
+/* ===== iOS text-splitting hard fix ===== */
+
+/* Cardurile cu icon + text (avantaje/beneficii/contact) */
+.avantaje li,
+.feature-item,
+.benefit,
+.contact-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* Icon fix – lățime fixă, nu împinge textul */
+.avantaje li .icon-svg,
+.feature-item .icon,
+.benefit .icon,
+.contact-card > i {
+  flex: 0 0 28px;
+  line-height: 1;
+}
+
+/* Text fix – nu mai rupe cuvinte în litere */
+.avantaje li *,
+.feature-item *,
+.benefit *,
+.contact-card * {
+  text-align: left !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important; /* NU 'anywhere' */
+  white-space: normal !important;
+  letter-spacing: normal !important;
+  hyphens: manual !important; /* permite despărțiri corecte dacă e cazul */
+}
+
+/* Titlurile și paragrafele redevin inline/block normale
+   (evită bug-ul Safari când <p>/<span> moștenesc flex) */
+.avantaje li p,
+.avantaje li span,
+.avantaje li strong,
+.feature-item p,
+.feature-item span,
+.feature-item strong,
+.benefit p,
+.benefit span,
+.benefit strong,
+.contact-card h3,
+.contact-card p,
+.contact-card small,
+.contact-card a {
+  display: inline;
+}
+
+/* Container text din contact-card ia lățimea liberă */
+.contact-card > div {
+  flex: 1 1 auto;
+  min-width: 0;
 }

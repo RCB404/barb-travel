@@ -1215,13 +1215,6 @@ footer {
 .dropdown:focus-within > .dropdown-content {
   display: block;
 }
-/* === FIX cardurile de avantaje (iOS text-splitting) === */
-.avantaje li {
-  display: grid !important;
-  grid-template-columns: 28px 1fr; /* icon + text */
-  align-items: start;
-  gap: 10px;
-}
 
 /* primul icon stă în col. 1; orice alt SVG (ex: mașina de la final) rămâne cu textul */
 .avantaje li .icon-svg:first-of-type {
@@ -1362,4 +1355,55 @@ footer {
 .contact-card > div {
   flex: 1 1 auto;
   min-width: 0;
+}
+/* ===== BRB-TRAVEL • Avantaje – hard normalize (iOS/Safari safe) ===== */
+
+/* 1) Icon + text pe un singur rând, fără grid & fără surprize */
+.avantaje li {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* 2) Icon fix, nu împinge textul */
+.avantaje li .icon-svg {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  margin-top: 2px;
+}
+
+/* 3) Tot conținutul textual curge într-un singur “bloc” flexibil */
+.avantaje li > :not(.icon-svg) {
+  display: block; /* foarte important pe Safari */
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* 4) Nu mai forța display inline/block pe descendenți; doar normalizează wrap-ul */
+.avantaje li * {
+  white-space: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  letter-spacing: normal !important;
+}
+
+/* 5) Fragmente care trebuie să stea împreună (ex: “Masă caldă”, “și”) */
+.avantaje .nb {
+  white-space: nowrap;
+}
+
+/* 6) Variantele cu 2 SVG-uri în același <li> (ex: “autoturisme” + icon mașină) */
+.avantaje li .icon-svg + .icon-svg {
+  margin-left: 0.25rem;
+}
+
+/* 7) Siguranță: elimină orice moștenire de grid de mai sus (în caz că rămâne ceva în cache) */
+.avantaje li {
+  grid-template-columns: none !important;
+}
+
+/* 8) (opțional) mic polish vizual */
+.avantaje li strong {
+  font-weight: 600;
 }

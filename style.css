@@ -1218,3 +1218,45 @@ footer {
 .dropdown:focus-within > .dropdown-content {
   display: block;
 }
+/* === FIX cardurile de avantaje (iOS text-splitting) === */
+.avantaje li {
+  display: grid !important;
+  grid-template-columns: 28px 1fr; /* icon + text */
+  align-items: start;
+  gap: 10px;
+}
+
+/* primul icon stă în col. 1; orice alt SVG (ex: mașina de la final) rămâne cu textul */
+.avantaje li .icon-svg:first-of-type {
+  grid-column: 1;
+  margin-top: 2px;
+}
+.avantaje li .icon-svg:not(:first-of-type) {
+  grid-column: 2;
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+/* textul și elementele inline din card: nu mai rupe cuvintele la întâmplare */
+.avantaje li,
+.avantaje li * {
+  text-align: left !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important; /* păstrează doar break-word */
+  white-space: normal !important;
+  letter-spacing: normal !important;
+}
+
+/* opțional: același tratament pentru .trust-strip și .how-card dacă vezi efecte similare */
+.trust-strip li,
+.how-card p {
+  word-break: normal;
+  overflow-wrap: break-word;
+  text-align: center;
+}
+/* dacă ai avut în reset ceva de genul:
+:where(h1,h2,h3,h4,h5,h6,p,li,a,button,small){ overflow-wrap:anywhere; }
+   …înlocuiește cu: */
+:where(p, a, small) {
+  overflow-wrap: break-word;
+} /* fără li/hX aici */

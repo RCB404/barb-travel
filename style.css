@@ -1260,3 +1260,52 @@ footer {
 :where(p, a, small) {
   overflow-wrap: break-word;
 } /* fără li/hX aici */
+/* =============================
+   🔧 FIX TEXTURI DECALATE iOS
+   ============================= */
+
+/* Cardurile de beneficii / servicii */
+.feature-item,
+.benefit {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  line-height: 1.5;
+  word-break: normal;
+  overflow-wrap: normal;
+  white-space: normal;
+}
+
+/* Icon + text separat corect */
+.feature-item svg,
+.benefit svg {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  color: var(--primary);
+}
+
+/* Textul din card */
+.feature-item span,
+.feature-item p,
+.benefit span,
+.benefit p {
+  display: inline;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: normal;
+  text-align: left;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  white-space: normal;
+}
+
+/* Fix Safari: elimină moștenirea de flex sau column */
+.feature-item * {
+  display: inline !important;
+  flex: none !important;
+  width: auto !important;
+  max-width: 100% !important;
+}

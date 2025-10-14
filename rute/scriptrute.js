@@ -27,6 +27,13 @@
     initCityPopup();
     return;
   }
+  if (window.L) {
+    L.Icon.Default.mergeOptions({
+      iconUrl: "/vendor/leaflet/marker-icon.png",
+      iconRetinaUrl: "/vendor/leaflet/marker-icon-2x.png",
+      shadowUrl: "/vendor/leaflet/marker-shadow.png",
+    });
+  }
 
   // ---------- afișare secțiuni + fix Leaflet ----------
   function showOnly(id) {

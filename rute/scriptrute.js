@@ -138,6 +138,20 @@
   window.addEventListener("hashchange", onNavigate);
 
   // ---------- hărți Leaflet ----------
+  // === Iconuri Leaflet: setează global, fără să mai depindă de căi relative ===
+if (window.L) {
+  const DefaultPin = L.icon({
+    iconUrl: '/vendor/leaflet/images/marker-icon.png',
+    iconRetinaUrl: '/vendor/leaflet/images/marker-icon-2x.png',
+    shadowUrl: '/vendor/leaflet/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41],
+  });
+  L.Marker.prototype.options.icon = DefaultPin; // <- se aplică tuturor L.marker(...)
+}
+
   function initMap(mapId, coords, zoom, locations) {
     const el = document.getElementById(mapId);
     if (!el || !window.L) return;

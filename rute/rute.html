@@ -3,15 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#009999" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="BRB-TRAVEL" />
 
     <title>Curse BRB-TRAVEL | Transport persoane și colete</title>
     <meta
       name="description"
       content="BRB-TRAVEL oferă transport persoane și colete în Germania, Austria, Olanda și Belgia. Plecări zilnice din România, siguranță și confort garantat."
     />
-    <meta name="robots" content="index, follow" />
-    <meta name="author" content="BRB-TRAVEL" />
-    <meta name="theme-color" content="#009999" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://brb-travel.ro/rute/rute.html" />
 
     <!-- Open Graph -->
     <meta
@@ -22,22 +25,19 @@
       property="og:description"
       content="Transport internațional din România în Germania, Austria, Belgia și Olanda. Microbuze moderne, plecări zilnice."
     />
-    <meta
-      property="og:image"
-      content="https://rcb404.github.io/barb-travel/barb-travel-logo.jpeg"
-    />
-    <meta
-      property="og:url"
-      content="https://rcb404.github.io/barb-travel/rute/rute.html"
-    />
+    <meta property="og:url" content="https://brb-travel.ro/rute/rute.html" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ro_RO" />
+    <meta
+      property="og:image"
+      content="https://brb-travel.ro/assets/og-cover.jpg"
+    />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="BRB-TRAVEL — Transport persoane & colete Europa"
+      content="Curse BRB-TRAVEL | Transport persoane și colete"
     />
     <meta
       name="twitter:description"
@@ -45,26 +45,27 @@
     />
     <meta
       name="twitter:image"
-      content="https://rcb404.github.io/barb-travel/barb-travel-logo.jpeg"
+      content="https://brb-travel.ro/assets/og-cover.jpg"
     />
 
-    <!-- Canonical -->
-    <link
-      rel="canonical"
-      href="https://rcb404.github.io/barb-travel/rute/rute.html"
-    />
-
-    <!-- LCP image preload (imaginile sunt în rădăcină) -->
+    <!-- LCP image preload (fișiere în root) -->
     <link
       rel="preload"
       as="image"
-      href="../slep-1200.webp"
-      imagesrcset="../slep-800.webp 800w, ../slep-1200.webp 1200w"
+      href="https://brb-travel.ro/slep-1200.webp"
+      imagesrcset="https://brb-travel.ro/slep-800.webp 800w, https://brb-travel.ro/slep-1200.webp 1200w"
       imagesizes="(max-width: 768px) 100vw, 1200px"
     />
 
-    <!-- CSS global -->
-    <link rel="stylesheet" href="stilrute.css" />
+    <!-- CSS global (non-blocking) -->
+    <link rel="preload" href="/rute/stilrute.css" as="style" />
+    <link
+      rel="stylesheet"
+      href="/rute/stilrute.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript><link rel="stylesheet" href="/rute/stilrute.css" /></noscript>
 
     <!-- Leaflet -->
     <link
@@ -81,24 +82,35 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <!-- gtag: blocat implicit până la consimțământ -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
-    ></script>
+
+    <!-- (opțional) Preconnect pentru resurse externe -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+
+    <!-- Consent Mode v2: implicit denied; pornești după ACCEPT -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag("js", new Date());
       gtag("consent", "default", {
+        ad_user_data: "denied",
+        ad_personalization: "denied",
         ad_storage: "denied",
         analytics_storage: "denied",
-        personalization_storage: "denied",
       });
-      // Exemplu: pornești mai târziu Analytics/Ads după accept
-      // gtag('config', 'G-XXXXXXX', { 'anonymize_ip': true });
+    </script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
+    ></script>
+    <script>
+      gtag("js", new Date());
+      // după accept în banner:
+      // gtag('consent','update',{ ad_user_data:'granted', ad_personalization:'granted', ad_storage:'granted', analytics_storage:'granted' });
+      // gtag('config','G-XXXXXXX', { anonymize_ip:true });
     </script>
   </head>
 

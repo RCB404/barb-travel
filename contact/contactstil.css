@@ -383,3 +383,14 @@ body:has(.tara:target) .navbar .dropbtn {
 .cookie-banner.is-hidden {
   display: none !important;
 }
+.contact-card svg {
+  flex-shrink: 0;
+  color: var(--primary, #009999);
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  transition: transform 0.2s ease;
+}
+.contact-card:hover svg {
+  transform: scale(1.08);
+}

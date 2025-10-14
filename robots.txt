@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /js/
+Disallow: /css/
+Disallow: /gdpr.js
+Sitemap: https://brb-travel.ro/sitemap.xml

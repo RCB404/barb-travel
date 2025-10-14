@@ -3,321 +3,187 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#009999" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="BRB-TRAVEL" />
 
-    <title>BRB-Travel — Transport persoane & colete în Europa</title>
+    <title>BRB-TRAVEL — Transport persoane & colete în Europa</title>
     <meta
       name="description"
-      content="BRB-Travel oferă transport persoane și colete din România spre Germania, Austria, Belgia și Olanda. Plecări zilnice, siguranță și confort."
+      content="BRB-TRAVEL oferă transport persoane și colete din România spre Germania, Austria, Belgia și Olanda. Plecări zilnice, siguranță și confort."
     />
-    <meta name="robots" content="index, follow" />
-    <meta name="author" content="BRB-Travel" />
-    <meta name="theme-color" content="#009999" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://brb-travel.ro/" />
+
+    <!-- Favicon / Touch icon (ajustează căile dacă ai altă structură) -->
+    <link rel="icon" type="image/jpeg" href="/barb-travel-logo.jpeg" />
+    <link rel="apple-touch-icon" href="/barb-travel-logo.jpeg" />
 
     <!-- Open Graph -->
     <meta
       property="og:title"
-      content="BRB-Travel — Transport persoane & colete Europa"
+      content="BRB-TRAVEL — Transport persoane & colete Europa"
     />
     <meta
       property="og:description"
       content="Transport rapid și sigur de persoane și colete către Germania, Austria, Belgia și Olanda. Plecări zilnice din România."
     />
-    <meta
-      property="og:image"
-      content="https://rcb404.github.io/barb-travel/barb-travel-logo.jpeg"
-    />
-    <meta
-      property="og:url"
-      content="https://rcb404.github.io/barb-travel/index.html"
-    />
+    <meta property="og:url" content="https://brb-travel.ro/" />
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ro_RO" />
+    <meta
+      property="og:image"
+      content="https://brb-travel.ro/assets/og-cover.jpg"
+    />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="BRB-Travel — Transport persoane & colete Europa"
+      content="BRB-TRAVEL — Transport persoane & colete Europa"
     />
     <meta
       name="twitter:description"
-      content="Transport zilnic de la adresă la adresă. WhatsApp +40759967696"
+      content="Transport zilnic de la adresă la adresă. WhatsApp +40 759 967 696"
     />
     <meta
       name="twitter:image"
-      content="https://rcb404.github.io/barb-travel/barb-travel-logo.jpeg"
-    />
-
-    <!-- Canonical -->
-    <link
-      rel="canonical"
-      href="https://rcb404.github.io/barb-travel/index.html"
-    />
-
-    <link rel="icon" type="image/png" href="barb-travel-logo.jpeg" />
-
-    <!-- Fonts: preconnect + swap -->
-    <!-- Font local Poppins 400/600 (no render-block, no CLS) -->
-    <link
-      rel="preload"
-      href="fonts/poppins-400.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="fonts/poppins-600.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-
-    <!-- LCP image preload (păstrat) -->
-    <link
-      rel="preload"
-      as="image"
-      href="slep-1200.webp"
-      imagesrcset="slep-800.webp 800w, slep-1200.webp 1200w"
-      imagesizes="(max-width: 768px) 100vw, 1200px"
+      content="https://brb-travel.ro/assets/og-cover.jpg"
     />
 
     <!-- Preload local fonts (no render-block, no CLS) -->
     <link
       rel="preload"
-      href="fonts/poppins-400.woff2"
+      href="/fonts/poppins-400.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
     <link
       rel="preload"
-      href="fonts/poppins-600.woff2"
+      href="/fonts/poppins-600.woff2"
       as="font"
       type="font/woff2"
       crossorigin
     />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- Preload LCP image (as responsive). NOTE: ensure slep-800.webp / slep-1200.webp exist -->
+    <!-- Preload LCP image (as responsive) — asigură-te că fișierele există -->
     <link
       rel="preload"
       as="image"
-      href="slep-1200.webp"
-      imagesrcset="slep-800.webp 800w, slep-1200.webp 1200w"
+      href="/slep-1200.webp"
+      imagesrcset="/slep-800.webp 800w, /slep-1200.webp 1200w"
       imagesizes="(max-width: 768px) 100vw, 1200px"
     />
 
-    <!-- CSS non-blocking + versioning via query param -->
-    <link rel="preload" href="style.css" as="style" />
+    <!-- CSS non-blocking -->
+    <link rel="preload" href="/style.css" as="style" />
     <link
       rel="stylesheet"
-      href="style.css?v=1"
+      href="/style.css"
       media="print"
       onload="this.media='all'"
     />
-    <noscript><link rel="stylesheet" href="style.css?v=1" /></noscript>
+    <noscript><link rel="stylesheet" href="/style.css" /></noscript>
 
-    <!-- JSON-LD -->
+    <!-- (opțional) Preconnect pentru gtag dacă îl folosești -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+
+    <!-- Consent Mode v2 (implicit denied; actualizezi la ACCEPT) -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("consent", "default", {
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        ad_storage: "denied",
+        analytics_storage: "denied",
+      });
+    </script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
+    ></script>
+    <script>
+      gtag("js", new Date());
+      // PORNEȘTI după accept:
+      // gtag('config','G-XXXXXXX', { anonymize_ip: true });
+    </script>
+
+    <!-- JSON-LD minim: WebSite + Organization + WebPage -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
           {
             "@type": "WebSite",
-            "@id": "https://rcb404.github.io/barb-travel/#website",
-            "url": "https://rcb404.github.io/barb-travel/",
-            "name": "BRB-Travel",
-            "publisher": { "@id": "https://rcb404.github.io/barb-travel/#org" },
+            "@id": "https://brb-travel.ro/#website",
+            "url": "https://brb-travel.ro/",
+            "name": "BRB-TRAVEL",
+            "publisher": { "@id": "https://brb-travel.ro/#org" },
             "inLanguage": "ro-RO"
           },
           {
-            "@type": ["Organization", "TravelAgency"],
-            "@id": "https://rcb404.github.io/barb-travel/#org",
-            "name": "BRB-Travel",
-            "url": "https://rcb404.github.io/barb-travel/",
+            "@type": ["Organization", "LocalBusiness"],
+            "@id": "https://brb-travel.ro/#org",
+            "name": "BRB-TRAVEL",
+            "url": "https://brb-travel.ro/",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://rcb404.github.io/barb-travel/barb-travel-logo.jpeg"
+              "url": "https://brb-travel.ro/barb-travel-logo.jpeg"
             },
-            "description": "Transport persoane, colete și autoturisme în Europa",
             "sameAs": ["https://www.facebook.com/TRANSPORTBRB"],
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+40-759-967-696",
-              "contactType": "customer service",
-              "areaServed": ["RO", "DE", "AT", "BE", "NL"],
-              "availableLanguage": ["ro", "de"]
-            }
+            "telephone": "+40 759 967 696",
+            "areaServed": ["RO", "DE", "AT", "BE", "NL"]
           },
           {
             "@type": "WebPage",
-            "@id": "https://rcb404.github.io/barb-travel/index.html#webpage",
-            "url": "https://rcb404.github.io/barb-travel/index.html",
-            "isPartOf": {
-              "@id": "https://rcb404.github.io/barb-travel/#website"
-            },
-            "about": { "@id": "https://rcb404.github.io/barb-travel/#org" },
-            "name": "BRB-Travel — Transport persoane & colete în Europa",
+            "@id": "https://brb-travel.ro/#webpage",
+            "url": "https://brb-travel.ro/",
+            "isPartOf": { "@id": "https://brb-travel.ro/#website" },
+            "about": { "@id": "https://brb-travel.ro/#org" },
+            "name": "BRB-TRAVEL — Transport persoane & colete în Europa",
             "datePublished": "2025-01-01",
-            "dateModified": "2025-10-09",
-            "breadcrumb": {
-              "@id": "https://rcb404.github.io/barb-travel/#breadcrumb"
-            },
-            "inLanguage": "ro-RO"
+            "dateModified": "2025-10-14",
+            "inLanguage": "ro-RO",
+            "breadcrumb": { "@id": "https://brb-travel.ro/#breadcrumb" }
           },
           {
             "@type": "BreadcrumbList",
-            "@id": "https://rcb404.github.io/barb-travel/#breadcrumb",
+            "@id": "https://brb-travel.ro/#breadcrumb",
             "itemListElement": [
               {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Acasă",
-                "item": "https://rcb404.github.io/barb-travel/"
+                "item": "https://brb-travel.ro/"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Rute",
-                "item": "https://rcb404.github.io/barb-travel/rute/rute.html"
-              }
-            ]
-          },
-          {
-            "@type": "OfferCatalog",
-            "name": "Servicii de transport",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Transport România – Germania",
-                  "areaServed": "DE",
-                  "provider": {
-                    "@id": "https://rcb404.github.io/barb-travel/#org"
-                  }
-                },
-                "priceCurrency": "EUR",
-                "price": 100,
-                "availability": "https://schema.org/InStock"
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Transport România – Austria",
-                  "areaServed": "AT",
-                  "provider": {
-                    "@id": "https://rcb404.github.io/barb-travel/#org"
-                  }
-                },
-                "priceCurrency": "EUR",
-                "price": 100,
-                "availability": "https://schema.org/InStock"
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Transport România – Belgia",
-                  "areaServed": "BE",
-                  "provider": {
-                    "@id": "https://rcb404.github.io/barb-travel/#org"
-                  }
-                },
-                "priceCurrency": "EUR",
-                "price": 100,
-                "availability": "https://schema.org/InStock"
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Transport România – Olanda",
-                  "areaServed": "NL",
-                  "provider": {
-                    "@id": "https://rcb404.github.io/barb-travel/#org"
-                  }
-                },
-                "priceCurrency": "EUR",
-                "price": 100,
-                "availability": "https://schema.org/InStock"
+                "item": "https://brb-travel.ro/rute/rute.html"
               }
             ]
           }
         ]
       }
     </script>
-    <!-- gtag: blocat implicit până la consimțământ -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("consent", "default", {
-        ad_storage: "denied",
-        analytics_storage: "denied",
-        personalization_storage: "denied",
-      });
-      // Exemplu: pornești mai târziu Analytics/Ads după accept
-      // gtag('config', 'G-XXXXXXX', { 'anonymize_ip': true });
-    </script>
 
-    <!-- Icon styling (Lucide-like) -->
-    <style>
-      .avantaje .icon,
-      .avantaje .icon-svg {
-        display: inline-block;
-      }
-      .avantaje li {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.6rem;
-        margin: 0.4rem 0;
-      }
-      .avantaje li .icon-svg {
-        width: 26px;
-        height: 26px;
-        stroke: #009999;
-        fill: none;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-        flex: 0 0 26px;
-        transition: transform 0.18s ease;
-        margin-top: 2px;
-      }
-      .avantaje li:hover .icon-svg {
-        transform: scale(1.08);
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .avantaje li:hover .icon-svg {
-          transition: none;
-        }
-      }
-
-      /* Floating buttons use SVG now */
-      .floating-btn .icon-svg {
-        width: 20px;
-        height: 20px;
-        stroke: currentColor;
-      }
-    </style>
+    <!-- Mic fix anti-FOUC pentru prima pagină (opțional) -->
     <style>
       body.index-wait {
         visibility: hidden;
       }
     </style>
     <script>
-      window.addEventListener("load", () => {
-        document.body.classList.remove("index-wait");
-      });
+      window.addEventListener("load", () =>
+        document.body.classList.remove("index-wait")
+      );
     </script>
   </head>
 

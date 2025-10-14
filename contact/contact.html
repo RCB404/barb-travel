@@ -3,45 +3,136 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Contact | BRB-TRAVEL - Transport persoane și colete</title>
+    <meta name="theme-color" content="#009999" />
+
+    <title>Contact | BRB-TRAVEL – Transport persoane și colete</title>
     <meta
       name="description"
       content="Contactează BRB-TRAVEL pentru transport persoane și colete în Germania, Austria, Belgia și Olanda. Sună sau scrie pe WhatsApp – răspundem rapid."
     />
-    <meta name="theme-color" content="#009999" />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="BRB-TRAVEL" />
 
-    <!-- Stil general site -->
-    <link rel="stylesheet" href="contactstil.css" />
+    <!-- Canonical -->
+    <link rel="canonical" href="https://brb-travel.ro/contact/contact.html" />
 
-    <!-- Fonts & Icons -->
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="Contact | BRB-TRAVEL – Transport persoane și colete"
+    />
+    <meta
+      property="og:description"
+      content="Suntem disponibili 24/7 pentru rezervări și informații. Contactează-ne pe telefon, WhatsApp, email sau Facebook."
+    />
+    <meta
+      property="og:url"
+      content="https://brb-travel.ro/contact/contact.html"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ro_RO" />
+    <meta
+      property="og:image"
+      content="https://brb-travel.ro/assets/og-cover.jpg"
+    />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Contact | BRB-TRAVEL – Transport persoane și colete"
+    />
+    <meta
+      name="twitter:description"
+      content="Plecări zilnice. Răspundem rapid la telefon, WhatsApp și email."
+    />
+    <meta
+      name="twitter:image"
+      content="https://brb-travel.ro/assets/og-cover.jpg"
+    />
+
+    <!-- CSS: non-blocking -->
+    <link rel="preload" href="/contact/contactstil.css" as="style" />
+    <link
+      rel="stylesheet"
+      href="/contact/contactstil.css"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript
+      ><link rel="stylesheet" href="/contact/contactstil.css"
+    /></noscript>
+
+    <!-- Fonts (Google) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <!-- gtag: blocat implicit până la consimțământ -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
-    ></script>
+
+    <!-- (Opțional) Iconițe. Dacă vrei scor maxim, renunță și pune 3-4 SVG inline pentru pictograme. -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+
+    <!-- Consent Mode v2: implicit denied; actualizezi pe ACCEPT în gdpr.js -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag("js", new Date());
       gtag("consent", "default", {
+        ad_user_data: "denied",
+        ad_personalization: "denied",
         ad_storage: "denied",
         analytics_storage: "denied",
-        personalization_storage: "denied",
       });
-      // Exemplu: pornești mai târziu Analytics/Ads după accept
-      // gtag('config', 'G-XXXXXXX', { 'anonymize_ip': true });
+    </script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
+    ></script>
+    <script>
+      gtag("js", new Date());
+      // după accept în bannerul tău:
+      // gtag('consent','update',{ ad_user_data:'granted', ad_personalization:'granted', ad_storage:'granted', analytics_storage:'granted' });
+      // gtag('config','G-XXXXXXX', { anonymize_ip:true });
+    </script>
+
+    <!-- JSON-LD: ContactPage + LocalBusiness -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://brb-travel.ro/#org",
+            "name": "BRB-TRAVEL",
+            "url": "https://brb-travel.ro/",
+            "telephone": "+40 759 967 696",
+            "logo": "https://brb-travel.ro/barb-travel-logo.jpeg",
+            "areaServed": ["RO", "DE", "AT", "BE", "NL"],
+            "sameAs": ["https://www.facebook.com/TRANSPORTBRB"]
+          },
+          {
+            "@type": "ContactPage",
+            "@id": "https://brb-travel.ro/contact/contact.html#contact",
+            "url": "https://brb-travel.ro/contact/contact.html",
+            "name": "Contact BRB-TRAVEL",
+            "description": "Contactează BRB-TRAVEL pentru rezervări și întrebări.",
+            "isPartOf": { "@id": "https://brb-travel.ro/#website" },
+            "about": { "@id": "https://brb-travel.ro/#org" },
+            "inLanguage": "ro-RO"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://brb-travel.ro/#website",
+            "url": "https://brb-travel.ro/",
+            "name": "BRB-TRAVEL",
+            "publisher": { "@id": "https://brb-travel.ro/#org" },
+            "inLanguage": "ro-RO"
+          }
+        ]
+      }
     </script>
   </head>
 
@@ -107,7 +198,30 @@
       <!-- CARDURI DE CONTACT -->
       <section class="contact-methods">
         <article class="contact-card">
-          <i class="fas fa-phone-alt"></i>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="28"
+            height="28"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2
+               19.79 19.79 0 0 1-8.63-3.07
+               19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18
+               2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72
+               12.44 12.44 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11l-1.27 1.27
+               a16 16 0 0 0 6 6l1.27-1.27
+               a2 2 0 0 1 2.11-.45 12.44 12.44 0 0 0 2.81.7
+               A2 2 0 0 1 22 16.92z"
+            />
+          </svg>
           <div>
             <h3>Telefon direct</h3>
             <p><a href="tel:+40759967696">+40 759 967 696</a></p>
@@ -116,7 +230,22 @@
         </article>
 
         <article class="contact-card">
-          <i class="fab fa-whatsapp"></i>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="28"
+            height="28"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M20.52 3H3.48A1.48 1.48 0 0 0 2 4.48v15.04A1.48 1.48 0 0 0 3.48 21h17.04A1.48 1.48 0 0 0 22 19.52V4.48A1.48 1.48 0 0 0 20.52 3ZM6 8.11l6 3.89 6-3.89"
+            />
+          </svg>
           <div>
             <h3>WhatsApp</h3>
             <p>
@@ -129,7 +258,21 @@
         </article>
 
         <article class="contact-card">
-          <i class="fas fa-envelope"></i>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="28"
+            height="28"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M4 4h16v16H4z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
           <div>
             <h3>Email</h3>
             <p>
@@ -142,7 +285,23 @@
         </article>
 
         <article class="contact-card">
-          <i class="fab fa-facebook-f"></i>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="28"
+            height="28"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7
+               a1 1 0 0 1 1-1h3z"
+            />
+          </svg>
           <div>
             <h3>Facebook</h3>
             <p>

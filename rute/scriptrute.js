@@ -1,6 +1,4 @@
-// BRB-TRAVEL • RUTE – JS complet (drop-down + secțiuni + hărți + popup)
-// Funcționează cu <a class="dropbtn" href="#rute"> ... </a> în navbar.
-
+// BRB-TRAVEL • RUTE – JS (dropdown, secțiuni, hărți, popup)
 (function () {
   "use strict";
 
@@ -13,27 +11,8 @@
   const navbar = $(".navbar");
   const dropdown = $(".navbar .dropdown");
   const dropbtn = dropdown ? dropdown.querySelector(".dropbtn") : null;
-  const dropdownMenu = dropdown
-    ? dropdown.querySelector(".dropdown-content")
-    : null;
-  const sectionNodes = $$("section.tara");
-  const sections = sectionNodes;
-
-  // dacă nu avem meniul, ieșim curat
-  if (!navbar || !dropdown || !dropbtn || !dropdownMenu) {
-    // totuși inițializăm secțiunea din hash, dacă există
-    initFromHash();
-    initMaps();
-    initCityPopup();
-    return;
-  }
-  if (window.L) {
-    L.Icon.Default.mergeOptions({
-      iconUrl: "/vendor/leaflet/marker-icon.png",
-      iconRetinaUrl: "/vendor/leaflet/marker-icon-2x.png",
-      shadowUrl: "/vendor/leaflet/marker-shadow.png",
-    });
-  }
+  const dropdownMenu = dropdown ? dropdown.querySelector(".dropdown-content") : null;
+  const sections = $$("section.tara");
 
   // ---------- afișare secțiuni + fix Leaflet ----------
   function showOnly(id) {
@@ -44,9 +23,7 @@
     // revalidează harta secțiunii vizibile (dacă există)
     const harta = document.getElementById(`harta-${id}`);
     if (harta && harta._leaflet_map) {
-      setTimeout(() => {
-        harta._leaflet_map.invalidateSize();
-      }, 120);
+      setTimeout(() => harta._leaflet_map.invalidateSize(), 120);
     }
   }
 
@@ -57,9 +34,7 @@
     } else {
       const ro = document.getElementById("romania");
       if (ro) {
-        sections.forEach(
-          (s) => (s.style.display = s === ro ? "block" : "none")
-        );
+        sections.forEach((s) => (s.style.display = s === ro ? "block" : "none"));
       } else {
         sections.forEach((s) => (s.style.display = "block"));
       }
@@ -67,90 +42,92 @@
   }
 
   // ---------- dropdown logic (anchor as button) ----------
-  let justOpened = false;
+  function initDropdown() {
+    if (!navbar || !dropdown || !dropbtn || !dropdownMenu) return;
 
-  dropbtn.addEventListener("click", (e) => {
-    // e <a href="#rute"> → nu navigăm nicăieri
-    e.preventDefault();
-    e.stopPropagation();
+    let justOpened = false;
 
-    const open = dropdown.classList.toggle("active");
-    dropbtn.setAttribute("aria-expanded", open ? "true" : "false");
-
-    if (open) {
-      // fereastră scurtă ca scroll-ul de pe mobil să nu-l închidă instant
-      justOpened = true;
-      setTimeout(() => {
-        justOpened = false;
-      }, 350);
-    }
-  });
-
-  // click pe link-urile din meniu (#romania/#germania etc.)
-  $$(".dropdown-content a", dropdown).forEach((a) => {
-    a.addEventListener("click", (e) => {
-      const href = a.getAttribute("href") || "";
-      const hash = href.split("#")[1];
-
-      // ignorăm #rute sau lipsa hash-ului
-      if (!hash || hash.toLowerCase() === "rute") return;
-
+    dropbtn.addEventListener("click", (e) => {
       e.preventDefault();
-      showOnly(hash);
-      // actualizăm URL-ul fără scroll “săritură”
-      history.pushState(null, "", `#${hash}`);
+      e.stopPropagation();
 
-      dropdown.classList.remove("active");
-      dropbtn.setAttribute("aria-expanded", "false");
+      const open = dropdown.classList.toggle("active");
+      dropbtn.setAttribute("aria-expanded", open ? "true" : "false");
+
+      if (open) {
+        justOpened = true;
+        setTimeout(() => {
+          justOpened = false;
+        }, 350);
+      }
     });
-  });
 
-  // click în afara dropdown-ului → închide
-  window.addEventListener(
-    "click",
-    (e) => {
-      if (!e.target.closest(".dropdown")) {
+    // click pe link-urile din dropdown (#romania/#germania etc.)
+    $$(".dropdown-content a", dropdown).forEach((a) => {
+      a.addEventListener("click", (e) => {
+        const href = a.getAttribute("href") || "";
+        const hash = href.split("#")[1];
+        if (!hash || hash.toLowerCase() === "rute") return;
+
+        e.preventDefault();
+        showOnly(hash);
+        history.pushState(null, "", `#${hash}`);
+
         dropdown.classList.remove("active");
         dropbtn.setAttribute("aria-expanded", "false");
-      }
-    },
-    { passive: true }
-  );
+      });
+    });
 
-  // scroll → închide doar dacă nu tocmai s-a deschis (fix pe mobil)
-  window.addEventListener(
-    "scroll",
-    () => {
-      if (!justOpened) {
-        dropdown.classList.remove("active");
-        dropbtn.setAttribute("aria-expanded", "false");
-      }
-    },
-    { passive: true }
-  );
+    // click în afara dropdown-ului → închide
+    window.addEventListener(
+      "click",
+      (e) => {
+        if (!e.target.closest(".dropdown")) {
+          dropdown.classList.remove("active");
+          dropbtn.setAttribute("aria-expanded", "false");
+        }
+      },
+      { passive: true }
+    );
 
-  // navigare din butoanele back/forward sau schimbare manuală a hash-ului
-  const onNavigate = () => {
-    const id = getHashId();
-    if (id) showOnly(id);
-  };
-  window.addEventListener("popstate", onNavigate);
-  window.addEventListener("hashchange", onNavigate);
+    // scroll → închide, dar nu imediat după deschidere (fix mobil)
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!justOpened) {
+          dropdown.classList.remove("active");
+          dropbtn.setAttribute("aria-expanded", "false");
+        }
+      },
+      { passive: true }
+    );
+  }
+
+  // back/forward sau schimbare manuală a hash-ului
+  function initHistoryNavigation() {
+    const onNavigate = () => {
+      const id = getHashId();
+      if (id) showOnly(id);
+    };
+    window.addEventListener("popstate", onNavigate);
+    window.addEventListener("hashchange", onNavigate);
+  }
 
   // ---------- hărți Leaflet ----------
-  // === Iconuri Leaflet: setează global, fără să mai depindă de căi relative ===
-if (window.L) {
-  const DefaultPin = L.icon({
-    iconUrl: '/vendor/leaflet/images/marker-icon.png',
-    iconRetinaUrl: '/vendor/leaflet/images/marker-icon-2x.png',
-    shadowUrl: '/vendor/leaflet/images/marker-shadow.png',
-    iconSize: [25, 41],
-    iconAnchor: [12, 41],
-    popupAnchor: [1, -34],
-    shadowSize: [41, 41],
-  });
-  L.Marker.prototype.options.icon = DefaultPin; // <- se aplică tuturor L.marker(...)
-}
+  // setare globală icon (blindată)
+  function setupLeafletIcons() {
+    if (!window.L) return;
+    const DefaultPin = L.icon({
+      iconUrl: "/vendor/leaflet/images/marker-icon.png",
+      iconRetinaUrl: "/vendor/leaflet/images/marker-icon-2x.png",
+      shadowUrl: "/vendor/leaflet/images/marker-shadow.png",
+      iconSize: [25, 41],
+      iconAnchor: [12, 41],
+      popupAnchor: [1, -34],
+      shadowSize: [41, 41],
+    });
+    L.Marker.prototype.options.icon = DefaultPin;
+  }
 
   function initMap(mapId, coords, zoom, locations) {
     const el = document.getElementById(mapId);
@@ -163,18 +140,22 @@ if (window.L) {
 
     locations.forEach(({ nume, lat, lon }) => {
       L.marker([lat, lon]).addTo(map).bindPopup(`
-        <b>${nume}</b><br/>
-        <a href="tel:+40759967696" class="popup-btn">Sună acum</a><br/>
-        <a href="https://wa.me/40759967696" class="popup-btn">WhatsApp</a>
+        <div class="popup-actions">
+          <b>${nume}</b><br/>
+          <a href="tel:+40759967696" class="btn call" target="_blank" rel="noopener">Sună acum</a>
+          <a href="https://wa.me/40759967696" class="btn reserve" target="_blank" rel="noopener">WhatsApp</a>
+        </div>
       `);
     });
 
-    // păstrăm referința pe element pentru invalidateSize la reafișare
+    // referință pe element pentru invalidateSize la reafișare
     el._leaflet_map = map;
     setTimeout(() => map.invalidateSize(), 300);
   }
 
   function initMaps() {
+    setupLeafletIcons();
+
     // ROMÂNIA
     initMap("harta-romania", [45.9, 24.9], 7, [
       { nume: "București", lat: 44.4268, lon: 26.1025 },
@@ -254,13 +235,14 @@ if (window.L) {
     ]);
   }
 
-  // ---------- popup oraș ----------
+  // ---------- popup oraș (overlay personal) ----------
   function initCityPopup() {
     const popup = $("#popup-oras");
     const popupTitle = $("#oras-nume");
     const closeBtn = $("#close-popup");
 
-    $$(".oras").forEach((item) => {
+    // suport atât pentru .oras-card, cât și pentru .oras
+    $$(".oras-card, .oras").forEach((item) => {
       item.style.cursor = "pointer";
       item.addEventListener("click", () => {
         const oras = item.getAttribute("data-oras") || "Oraș";
@@ -279,8 +261,36 @@ if (window.L) {
     }
   }
 
-  // ---------- init ----------
-  initFromHash();
-  initMaps();
-  initCityPopup();
+  // ---------- bootstrap sincron/asincron ----------
+  function boot() {
+    initFromHash();
+    initDropdown();
+    initHistoryNavigation();
+    initMaps();
+    initCityPopup();
+  }
+
+  // dacă DOM e gata și Leaflet e încărcat cu defer, rulăm direct;
+  // altfel, așteptăm puțin (retry scurt, max 2s)
+  function startWhenReady() {
+    const ready = () => document.readyState !== "loading" && !!window.L;
+    if (ready()) return boot();
+
+    let tries = 0;
+    const t = setInterval(() => {
+      if (ready()) {
+        clearInterval(t);
+        boot();
+      } else if (++tries > 20) {
+        clearInterval(t);
+        // încercăm măcar restul fără hărți
+        initFromHash();
+        initDropdown();
+        initHistoryNavigation();
+        initCityPopup();
+      }
+    }, 100);
+  }
+
+  startWhenReady();
 })();

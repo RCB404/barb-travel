@@ -742,3 +742,10 @@ footer {
 /* (opțional) spațiere în popup pentru butoanele tale */
 .leaflet-popup-content { margin: 10px 12px; }
 .leaflet-popup-content .btn { display: block; margin-top: 8px; min-width: 150px; }
+.popup-actions .btn {
+  display:inline-block; padding:6px 10px; margin-top:6px;
+  text-decoration:none; border-radius:10px; border:1px solid #e6e8eb;
+  font-size:13px; line-height:1; transition:.2s; user-select:none;
+}
+.popup-actions .btn.call { margin-right:6px; }
+.popup-actions .btn:hover { transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,.08); }

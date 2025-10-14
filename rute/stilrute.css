@@ -724,3 +724,5 @@ footer {
 .cookie-banner.is-hidden {
   display: none !important;
 }
+/* Ascunde secțiunile neactive fără să le forțezi display:block */
+section.tara.is-hidden { display: none !important; }

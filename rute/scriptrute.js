@@ -220,7 +220,7 @@
   /**
    * Creează o singură instanță Leaflet.
    */
-  function createMap() {
+  function createMap(countryId = "romania") {
     if (!window.L || routeMap) return;
 
     const mapElement = document.getElementById("route-map");
@@ -232,11 +232,20 @@
       return;
     }
 
-    routeMap = L.map("route-map", {
-      center: mapConfigs.romania.view,
-      zoom: mapConfigs.romania.zoom,
-      scrollWheelZoom: false,
-    });
+    const config =
+  mapConfigs[countryId] || mapConfigs.romania;
+
+currentCountry =
+  mapConfigs[countryId] ? countryId : "romania";
+
+routeMap = L.map("route-map", {
+  center: config.view,
+  zoom: config.zoom,
+  scrollWheelZoom: false,
+  zoomAnimation: false,
+  fadeAnimation: false,
+  markerZoomAnimation: false,
+});
 
     L.tileLayer(
       "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
@@ -574,14 +583,18 @@
   // =====================================================
 
   function boot() {
-    setupLeafletIcons();
-    createMap();
-    initDropdown();
-    initHistoryNavigation();
-    initCityPopup();
-    initMapResize();
-    initFromHash();
-  }
+  const initialCountry =
+    getValidSectionId(getHashId());
+
+  setupLeafletIcons();
+  createMap(initialCountry);
+  initDropdown();
+  initHistoryNavigation();
+  initCityPopup();
+  initMapResize();
+  showOnly(initialCountry);
+}
+  
 
   /**
    * Așteaptă încărcarea DOM-ului și a bibliotecii Leaflet.

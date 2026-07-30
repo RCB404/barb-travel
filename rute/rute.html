@@ -55,6 +55,7 @@
       href="https://brb-travel.ro/slep-1200.webp"
       imagesrcset="https://brb-travel.ro/slep-800.webp 800w, https://brb-travel.ro/slep-1200.webp 1200w"
       imagesizes="(max-width: 768px) 100vw, 1200px"
+      fetchpriority="high"
     />
 
     <!-- CSS global (non-blocking) -->
@@ -62,10 +63,9 @@
     <link
       rel="stylesheet"
       href="/rute/stilrute.css"
-      media="print"
-      onload="this.media='all'"
+
     />
-    <noscript><link rel="stylesheet" href="/rute/stilrute.css" /></noscript>
+    <noscript><link rel="preload" href="/rute/stilrute.css" as="style" /></noscript>
 
     <!-- Leaflet -->
     <!-- Leaflet local -->
@@ -73,16 +73,9 @@
     <script defer src="/vendor/leaflet/leaflet.js"></script>
 
     <!-- Iconițe (opțional) -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
+    
 
-    <!-- (opțional) Preconnect pentru resurse externe -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://www.google-analytics.com" />
+
 
     <!-- Cookiebot CMP -->
     <script
@@ -99,7 +92,7 @@
       <div class="top-bar">
         <div class="logo">
           <img
-            src="../barb-travel-logo.jpeg"
+            src="barb-travel-logo.webp"
             alt="Siglă BRB-TRAVEL"
             width="96"
             height="96"

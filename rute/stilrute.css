@@ -749,3 +749,63 @@ footer {
 }
 .popup-actions .btn.call { margin-right:6px; }
 .popup-actions .btn:hover { transform:translateY(-1px); box-shadow:0 4px 12px rgba(0,0,0,.08); }
+/* ================= BUTOANE FLOTANTE ================= */
+
+.floating-buttons {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 99999;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.floating-button {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.floating-button svg {
+  display: block;
+  width: 28px;
+  height: 28px;
+}
+
+.floating-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.32);
+}
+
+.floating-call {
+  background: linear-gradient(135deg, #009999, #00bfa6);
+}
+
+.floating-whatsapp {
+  background: #25d366;
+}
+
+@media (max-width: 640px) {
+  .floating-buttons {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .floating-button {
+    width: 54px;
+    height: 54px;
+  }
+}

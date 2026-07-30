@@ -84,29 +84,14 @@
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" />
 
-    <!-- Consent Mode v2: implicit denied; pornești după ACCEPT -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("consent", "default", {
-        ad_user_data: "denied",
-        ad_personalization: "denied",
-        ad_storage: "denied",
-        analytics_storage: "denied",
-      });
-    </script>
+    <!-- Cookiebot CMP -->
     <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
+      id="Cookiebot"
+      src="https://consent.cookiebot.com/uc.js"
+      data-cbid="0ac41d77-225f-4cc2-8430-35d1b4c50907"
+      data-blockingmode="auto"
+      type="text/javascript"
     ></script>
-    <script>
-      gtag("js", new Date());
-      // după accept în banner:
-      // gtag('consent','update',{ ad_user_data:'granted', ad_personalization:'granted', ad_storage:'granted', analytics_storage:'granted' });
-      // gtag('config','G-XXXXXXX', { anonymize_ip:true });
-    </script>
   </head>
 
   <body>
@@ -681,7 +666,7 @@
     <footer>
       <div class="footer-content">
         <p>
-          &copy; 2025 <strong>BRB-TRAVEL</strong>. Toate drepturile rezervate.
+          &copy; 2026 <strong>BRB-TRAVEL</strong>. Toate drepturile rezervate.
         </p>
         <p>
           E-mail:
@@ -698,6 +683,11 @@
             target="_blank"
             rel="noopener"
             >Facebook</a
+          >
+        </p>
+        <p>
+          <a href="../politica-confidentialitate.html"
+            >Politica de confidențialitate</a
           >
         </p>
       </div>
@@ -752,54 +742,49 @@
           >Scrie pe WhatsApp</a
         >
       </div>
+      
     </div>
-    <script src="gdpr.js"></script>
-  </body>
-  <!-- ====== COOKIE BANNER GDPR ====== -->
+    <!-- Butoane flotante -->
+<div class="floating-buttons" aria-label="Contact rapid">
+  <a
+    href="tel:+40759967696"
+    class="floating-button floating-call"
+    aria-label="Sună BRB-TRAVEL"
+  >
+    <svg
+      viewBox="0 0 24 24"
+      width="28"
+      height="28"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        fill="currentColor"
+        d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"
+      />
+    </svg>
+  </a>
 
-  <style>
-    .cookie-banner {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: rgba(0, 0, 0, 0.85);
-      color: #fff;
-      padding: 14px 16px;
-      font-size: 14px;
-      font-family: "Poppins", sans-serif;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 9999;
-    }
-    .cookie-banner p {
-      margin: 0;
-      flex: 1 1 70%;
-    }
-    .cookie-buttons {
-      display: flex;
-      gap: 10px;
-    }
-    .cookie-buttons button {
-      background: #009999;
-      border: none;
-      color: #fff;
-      padding: 8px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .cookie-buttons button:hover {
-      background: #007777;
-    }
-    @media (max-width: 600px) {
-      .cookie-banner {
-        flex-direction: column;
-        text-align: center;
-        gap: 8px;
-      }
-    }
-  </style>
+  <a
+    href="https://wa.me/40759967696"
+    class="floating-button floating-whatsapp"
+    target="_blank"
+    rel="noopener"
+    aria-label="Scrie pe WhatsApp"
+  >
+    <svg
+      viewBox="0 0 32 32"
+      width="30"
+      height="30"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        fill="currentColor"
+        d="M16.04 3C8.85 3 3 8.76 3 15.84c0 2.27.61 4.49 1.77 6.43L3 29l6.96-1.79a13.1 13.1 0 0 0 6.07 1.48h.01C23.23 28.69 29 22.93 29 15.84 29 8.76 23.23 3 16.04 3Zm0 23.52h-.01a10.9 10.9 0 0 1-5.55-1.51l-.4-.23-4.13 1.06 1.1-4-.26-.41a10.59 10.59 0 0 1-1.66-5.59c0-5.91 4.89-10.72 10.91-10.72 6.01 0 10.83 4.81 10.83 10.72 0 5.9-4.82 10.68-10.83 10.68Zm5.94-8.02c-.33-.16-1.93-.94-2.23-1.05-.3-.11-.52-.16-.74.16-.22.32-.85 1.05-1.04 1.27-.19.22-.38.24-.71.08-.33-.16-1.38-.5-2.63-1.6a9.83 9.83 0 0 1-1.82-2.23c-.19-.32-.02-.49.14-.65.15-.14.33-.38.49-.57.16-.19.22-.32.33-.54.11-.22.05-.41-.03-.57-.08-.16-.74-1.76-1.01-2.41-.27-.64-.54-.55-.74-.56h-.63c-.22 0-.57.08-.87.41-.3.32-1.14 1.1-1.14 2.68s1.17 3.11 1.33 3.33c.16.22 2.3 3.46 5.57 4.85.78.33 1.38.53 1.85.68.78.24 1.49.21 2.05.13.63-.09 1.93-.78 2.2-1.53.27-.76.27-1.4.19-1.53-.08-.14-.3-.22-.63-.38Z"
+      />
+    </svg>
+  </a>
+</div>
+  </body>
 </html>

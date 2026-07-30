@@ -632,8 +632,6 @@ footer {
 /* Dacă există hash (#germania etc.), lasă JS-ul să schimbe clasa/scrollul.
    Dacă vrei pur CSS și browserul suportă :target, decomentează mai jos:
 
-:target.tara { display: block; }
-body:has(.tara:target) #romania { display: none; }
 
 */
 
@@ -863,4 +861,21 @@ footer {
 .route-map-section h2 {
     text-align: center;
     margin-bottom: 20px;
+}
+/* =====================================================
+   COOKIEBOT
+   ===================================================== */
+
+#CookiebotWidget,
+.CookiebotWidget,
+.CookiebotWidget-logo {
+  bottom: 92px !important;
+}
+
+@media (max-width: 640px) {
+  #CookiebotWidget,
+  .CookiebotWidget,
+  .CookiebotWidget-logo {
+    bottom: 82px !important;
+  }
 }

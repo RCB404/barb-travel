@@ -754,64 +754,101 @@ footer {
    ===================================================== */
 
 .floating-buttons {
-  position: static;
+  position: static !important;
+  inset: auto !important;
+  width: 0 !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .floating-buttons .floating-button {
-  position: fixed;
-  bottom: 20px;
+  position: fixed !important;
+  bottom: 20px !important;
+  top: auto !important;
 
-  width: 58px;
-  height: 58px;
+  width: 58px !important;
+  height: 58px !important;
+  min-width: 58px !important;
+  min-height: 58px !important;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 
-  border-radius: 50%;
-  color: #fff;
-  text-decoration: none;
+  margin: 0 !important;
+  padding: 0 !important;
 
-  box-shadow: 0 8px 24px rgba(0,0,0,.28);
-  transition: transform .2s ease, box-shadow .2s ease;
+  border: 0 !important;
+  border-radius: 50% !important;
+  color: #fff !important;
+  text-decoration: none !important;
 
-  z-index: 99999;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28) !important;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease !important;
+
+  z-index: 99999 !important;
 }
 
 .floating-buttons .floating-button:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 12px 30px rgba(0,0,0,.35);
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35) !important;
 }
 
 .floating-buttons .floating-button svg {
-  width: 28px;
-  height: 28px;
-  fill: currentColor;
+  display: block !important;
+  width: 28px !important;
+  height: 28px !important;
+  max-width: none !important;
+  fill: currentColor !important;
+  color: #fff !important;
 }
 
-.floating-call {
-  left: 20px;
-  background: linear-gradient(135deg,#009999,#00bfa6);
+.floating-buttons .floating-button.floating-call {
+  left: 20px !important;
+  right: auto !important;
+  background: linear-gradient(135deg, #009999, #00bfa6) !important;
 }
 
-.floating-whatsapp {
-  right: 20px;
-  background: #25d366;
+.floating-buttons .floating-button.floating-whatsapp {
+  right: 20px !important;
+  left: auto !important;
+  background: #25d366 !important;
 }
 
-@media (max-width:640px){
+.floating-buttons .floating-button.floating-call:hover {
+  background: linear-gradient(135deg, #00aaaa, #00cfb2) !important;
+}
 
-  .floating-buttons .floating-button{
-    width:54px;
-    height:54px;
-    bottom:14px;
+.floating-buttons .floating-button.floating-whatsapp:hover {
+  background: #1ebe5d !important;
+}
+
+@media (max-width: 640px) {
+  .floating-buttons .floating-button {
+    bottom: 14px !important;
+
+    width: 54px !important;
+    height: 54px !important;
+    min-width: 54px !important;
+    min-height: 54px !important;
   }
 
-  .floating-call{
-    left:14px;
+  .floating-buttons .floating-button.floating-call {
+    left: 14px !important;
+    right: auto !important;
   }
 
-  .floating-whatsapp{
-    right:14px;
+  .floating-buttons .floating-button.floating-whatsapp {
+    right: 14px !important;
+    left: auto !important;
+  }
+
+  .floating-buttons .floating-button svg {
+    width: 27px !important;
+    height: 27px !important;
   }
 }

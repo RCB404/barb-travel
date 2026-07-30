@@ -87,32 +87,17 @@
     />
     <noscript><link rel="stylesheet" href="/style.css" /></noscript>
 
-    <!-- (opțional) Preconnect pentru gtag dacă îl folosești -->
+    <!-- Preconnect pentru serviciile Google folosite ulterior prin GTM/GA4 -->
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <link rel="preconnect" href="https://www.google-analytics.com" />
-
-    <!-- Consent Mode v2 (implicit denied; actualizezi la ACCEPT) -->
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("consent", "default", {
-        ad_user_data: "denied",
-        ad_personalization: "denied",
-        ad_storage: "denied",
-        analytics_storage: "denied",
-      });
-    </script>
+    <!-- Cookiebot CMP -->
     <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"
+      id="Cookiebot"
+      src="https://consent.cookiebot.com/uc.js"
+      data-cbid="0ac41d77-225f-4cc2-8430-35d1b4c50907"
+      data-blockingmode="auto"
+      type="text/javascript"
     ></script>
-    <script>
-      gtag("js", new Date());
-      // PORNEȘTI după accept:
-      // gtag('config','G-XXXXXXX', { anonymize_ip: true });
-    </script>
 
     <!-- JSON-LD minim: WebSite + Organization + WebPage -->
     <script type="application/ld+json">
@@ -148,7 +133,7 @@
             "about": { "@id": "https://brb-travel.ro/#org" },
             "name": "BRB-TRAVEL — Transport persoane & colete în Europa",
             "datePublished": "2025-01-01",
-            "dateModified": "2025-10-14",
+            "dateModified": "2026-07-30",
             "inLanguage": "ro-RO",
             "breadcrumb": { "@id": "https://brb-travel.ro/#breadcrumb" }
           },
@@ -192,24 +177,24 @@
       <div class="top-bar">
         <div class="logo">
           <img
-            src="barb-travel-logo.jpeg"
+            src="/barb-travel-logo.jpeg"
             alt="Siglă BRB-TRAVEL"
             width="96"
             height="96"
           />
         </div>
         <div class="brand-center">
-          <h1>BRB-TRAVEL</h1>
+          <p class="bradn-title"></p>BRB-TRAVEL</p>
           <p>
-            Transport persoane și colete în Germania, Austria, Olanda și Belgia
+            Transport persoane și colete, tur-retur, în Germania, Austria, Olanda și Belgia
           </p>
         </div>
       </div>
       <section class="hero-image">
-        <!-- LCP image: ensure slep-800.webp / slep-1200.webp exist. Keep old slep.webp as last-resort fallback if vrei -->
+        <!-- Imagine principală optimizată pentru LCP -->
         <img
-          src="slep-1200.webp"
-          srcset="slep-800.webp 800w, slep-1200.webp 1200w"
+          src="/slep-1200.webp"
+          srcset="/slep-800.webp 800w, /slep-1200.webp 1200w"
           sizes="(max-width: 768px) 100vw, 1200px"
           alt="Microbuz BRB-Travel cu platformă auto"
           class="hero-img"
@@ -219,14 +204,14 @@
           fetchpriority="high"
         />
         <div class="overlay">
-          <h1>Transport persoane de la adresă la adresă</h1>
+          <h1>Transport persoane, tur-retur, de la adresă la adresă</h1>
           <p>Austria • Germania • Belgia • Olanda</p>
         </div>
       </section>
 
       <nav class="navbar" aria-label="Navigare principală">
         <ul>
-          <li><a href="index.html" aria-current="page">Acasă</a></li>
+          <li><a href="/" aria-current="page">Acasă</a></li>
           <li class="dropdown">
             <button
               class="dropbtn"
@@ -237,14 +222,14 @@
               Rute ▾
             </button>
             <div class="dropdown-content" role="menu">
-              <a role="menuitem" href="rute/rute.html#romania">România</a>
-              <a role="menuitem" href="rute/rute.html#austria">Austria</a>
-              <a role="menuitem" href="rute/rute.html#germania">Germania</a>
-              <a role="menuitem" href="rute/rute.html#belgia">Belgia</a>
-              <a role="menuitem" href="rute/rute.html#olanda">Olanda</a>
+              <a role="menuitem" href="/rute/rute.html#romania">România</a>
+              <a role="menuitem" href="/rute/rute.html#austria">Austria</a>
+              <a role="menuitem" href="/rute/rute.html#germania">Germania</a>
+              <a role="menuitem" href="/rute/rute.html#belgia">Belgia</a>
+              <a role="menuitem" href="/rute/rute.html#olanda">Olanda</a>
             </div>
           </li>
-          <li><a href="contact/contact.html">Contact</a></li>
+          <li><a href="/contact/contact.html">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -438,14 +423,13 @@
       <section class="rute-populare" aria-labelledby="rute-title">
         <h2 id="rute-title">Rutele populare</h2>
         <div class="rute-container">
-          <a href="rute/rute.html#germania" class="rute">
+          <a href="/rute/rute.html#germania" class="rute">
             <h3>Germania</h3>
-            <!-- NOTE: pregătește romania-germania-360.webp și -720.webp -->
             <img
-              src="romania-germania-360.webp"
+              src="/romania-germania-360.webp"
               srcset="
-                romania-germania-360.webp 360w,
-                romania-germania-720.webp 720w
+                /romania-germania-360.webp 360w,
+                /romania-germania-720.webp 720w
               "
               sizes="(max-width: 600px) 48vw, (max-width: 1024px) 33vw, 360px"
               alt="Transport persoane în Germania"
@@ -458,13 +442,13 @@
             </p>
           </a>
 
-          <a href="rute/rute.html#austria" class="rute">
+          <a href="/rute/rute.html#austria" class="rute">
             <h3>Austria</h3>
             <img
-              src="romania-austria-360.webp"
+              src="/romania-austria-360.webp"
               srcset="
-                romania-austria-360.webp 360w,
-                romania-austria-720.webp 720w
+                /romania-austria-360.webp 360w,
+                /romania-austria-720.webp 720w
               "
               sizes="(max-width: 600px) 48vw, (max-width: 1024px) 33vw, 360px"
               alt="Transport persoane în Austria"
@@ -475,13 +459,13 @@
             <p>Transport persoane și colete din România în Austria și retur.</p>
           </a>
 
-          <a href="rute/rute.html#belgia" class="rute">
+          <a href="/rute/rute.html#belgia" class="rute">
             <h3>Belgia</h3>
             <img
-              src="romania-belgia-360.webp"
+              src="/romania-belgia-360.webp"
               srcset="
-                romania-belgia-360.webp 360w,
-                romania-belgia-720.webp 720w
+                /romania-belgia-360.webp 360w,
+                /romania-belgia-720.webp 720w
               "
               sizes="(max-width: 600px) 48vw, (max-width: 1024px) 33vw, 360px"
               alt="Transport persoane în Belgia"
@@ -492,13 +476,13 @@
             <p>Transport persoane și colete din România în Belgia și retur.</p>
           </a>
 
-          <a href="rute/rute.html#olanda" class="rute">
+          <a href="/rute/rute.html#olanda" class="rute">
             <h3>Olanda</h3>
             <img
-              src="romania-olanda-360.webp"
+              src="/romania-olanda-360.webp"
               srcset="
-                romania-olanda-360.webp 360w,
-                romania-olanda-720.webp 720w
+                /romania-olanda-360.webp 360w,
+                /romania-olanda-720.webp 720w
               "
               sizes="(max-width: 600px) 48vw, (max-width: 1024px) 33vw, 360px"
               alt="Transport persoane în Olanda"
@@ -546,7 +530,7 @@
             <svg class="icon-svg" aria-hidden="true">
               <use href="#lucide-euro"></use>
             </svg>
-            Prețuri accesibile — începând de la <strong>100€</strong>
+            Prețuri accesibile-începând de la <strong>100€</strong>
           </li>
           <li id="adresa_la_adresa">
             <svg class="icon-svg" aria-hidden="true">
@@ -648,70 +632,70 @@
               „Foarte serioși! Șoferii au fost punctuali, iar microbuzul curat
               și confortabil. Recomand cu drag!”
             </p>
-            <span>— Cristina M., Timișoara</span>
+            <span>-Cristina M., Timișoara</span>
           </article>
           <article class="testimonial">
             <p>
               „Claudiu e un om de nota 10. Am trimis pachet în Belgia și a ajuns
               mai repede decât prin curier.”
             </p>
-            <span>— Andrei C., Reșița</span>
+            <span>-Andrei C., Reșița</span>
           </article>
           <article class="testimonial">
             <p>
               „Călătoresc lunar spre Germania. Nu schimb BRB-Travel pentru
               nimic. Totul merge ca pe roate!”
             </p>
-            <span>— Monica D., Craiova</span>
+            <span>-Monica D., Craiova</span>
           </article>
           <article class="testimonial">
             <p>
               „Băiatul meu a plecat prima oară cu ei spre Olanda. A fost în
               siguranță și totul a decurs perfect.”
             </p>
-            <span>— Elena P., Lugoj</span>
+            <span>-Elena P., Lugoj</span>
           </article>
           <article class="testimonial">
             <p>
               „Foarte buni pe partea de comunicare. Am știut în fiecare moment
               unde e coletul trimis.”
             </p>
-            <span>— Alin V., Târgu Jiu</span>
+            <span>-Alin V., Târgu Jiu</span>
           </article>
           <article class="testimonial">
             <p>
               „M-au preluat din fața casei și m-au lăsat la ușa firmei în
               Germania. Nici nu visam la așa tratament.”
             </p>
-            <span>— Daniel T., Deta</span>
+            <span>-Daniel T., Deta</span>
           </article>
           <article class="testimonial">
             <p>
               „O echipă de șoferi profesioniști și oameni cu bun simț. Se vede
               că le pasă.”
             </p>
-            <span>— Roxana G., Deva</span>
+            <span>-Roxana G., Deva</span>
           </article>
           <article class="testimonial">
             <p>
               „Am trimis două bagaje în Austria. Totul ambalat cu grijă și
               livrat în stare impecabilă.”
             </p>
-            <span>— Marius H., Arad</span>
+            <span>-Marius H., Arad</span>
           </article>
           <article class="testimonial">
             <p>
               „Tanti Maria din Buziaș merge doar cu BRB-Travel. Și dacă ea e
               mulțumită, toți suntem!”
             </p>
-            <span>— Violeta L., Buziaș</span>
+            <span>-Violeta L., Buziaș</span>
           </article>
           <article class="testimonial">
             <p>
               „Într-un cuvânt: profesioniști. Seriozitate, siguranță și respect
               față de client.”
             </p>
-            <span>— Cosmin N., Hunedoara</span>
+            <span>-Cosmin N., Hunedoara</span>
           </article>
         </div>
       </section>
@@ -742,8 +726,11 @@
     </a>
 
     <footer>
+      <a href="/politica-confidentialitate.html">
+Politica de confidențialitate
+</a>
       <div class="footer-content">
-        <p>© 2025 <strong>BRB-Travel</strong>. Toate drepturile rezervate.</p>
+        <p>© 2026 <strong>BRB-Travel</strong>. Toate drepturile rezervate.</p>
         <p>
           E-mail:
           <a href="mailto:transportbrbtravel@gmail.com"
@@ -784,65 +771,5 @@
         }
       });
     </script>
-    <!-- ====== COOKIE BANNER GDPR ====== -->
-    <div id="cookie-banner" class="cookie-banner">
-      <p>
-        Folosim cookie-uri pentru a îmbunătăți experiența ta și pentru a afișa
-        reclame relevante (Google Ads).
-        <a href="/politica-confidentialitate.html">Află mai multe</a>.
-      </p>
-      <div class="cookie-buttons">
-        <button id="accept-cookies">Accept</button>
-        <button id="reject-cookies">Refuz</button>
-      </div>
-    </div>
-
-    <style>
-      .cookie-banner {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: rgba(0, 0, 0, 0.85);
-        color: #fff;
-        padding: 14px 16px;
-        font-size: 14px;
-        font-family: "Poppins", sans-serif;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 9999;
-      }
-      .cookie-banner p {
-        margin: 0;
-        flex: 1 1 70%;
-      }
-      .cookie-buttons {
-        display: flex;
-        gap: 10px;
-      }
-      .cookie-buttons button {
-        background: #009999;
-        border: none;
-        color: #fff;
-        padding: 8px 14px;
-        border-radius: 6px;
-        cursor: pointer;
-        transition: 0.2s;
-      }
-      .cookie-buttons button:hover {
-        background: #007777;
-      }
-      @media (max-width: 600px) {
-        .cookie-banner {
-          flex-direction: column;
-          text-align: center;
-          gap: 8px;
-        }
-      }
-    </style>
-
-    <script src="gdpr.js"></script>
   </body>
 </html>

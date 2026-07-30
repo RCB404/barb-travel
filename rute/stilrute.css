@@ -620,12 +620,13 @@ footer {
 
 /* ============== LOGICA DE AFIȘARE A ȚĂRILOR ============== */
 /* Implicit afișăm România dacă nu e hash */
+/* ============== LOGICA DE AFIȘARE A ȚĂRILOR ============== */
 .tara {
-  display: none;
+  display: none !important;
 }
 
 .tara.active {
-  display: block;
+  display: block !important;
 }
 
 /* Dacă există hash (#germania etc.), lasă JS-ul să schimbe clasa/scrollul.

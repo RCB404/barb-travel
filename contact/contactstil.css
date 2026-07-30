@@ -394,3 +394,20 @@ body:has(.tara:target) .navbar .dropbtn {
 .contact-card:hover svg {
   transform: scale(1.08);
 }
+/* =====================================================
+   COOKIEBOT
+   ===================================================== */
+
+#CookiebotWidget,
+.CookiebotWidget,
+.CookiebotWidget-logo {
+  bottom: 92px !important;
+}
+
+@media (max-width: 640px) {
+  #CookiebotWidget,
+  .CookiebotWidget,
+  .CookiebotWidget-logo {
+    bottom: 82px !important;
+  }
+}

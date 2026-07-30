@@ -856,3 +856,20 @@ footer {
     transform: none;
   }
 }
+/* =====================================================
+   COOKIEBOT
+   ===================================================== */
+
+#CookiebotWidget,
+.CookiebotWidget,
+.CookiebotWidget-logo {
+  bottom: 92px !important;
+}
+
+@media (max-width: 640px) {
+  #CookiebotWidget,
+  .CookiebotWidget,
+  .CookiebotWidget-logo {
+    bottom: 82px !important;
+  }
+}

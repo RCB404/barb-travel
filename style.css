@@ -1,6 +1,6 @@
 /* ======================================================
    ===============  BRB-TRAVEL • STYLE.CSS  =============
-   =====================================================*/
+   ======================================================*/
 
 /* -------------------- VARIABILE ---------------------- */
 :root {
@@ -11,7 +11,7 @@
   --bg: #ffffff;
   --bg-soft: #f6f8f9;
   --card: #ffffff;
-  --border: #e6e8eb;
+  --border: #e5e7eb;
   --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   --radius: 14px;
   --transition: 0.25s ease;
@@ -19,841 +19,645 @@
 }
 
 /* ---------------------- RESET ------------------------ */
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-html,
-body {
-  height: 100%;
+
+html {
   scroll-behavior: smooth;
   text-size-adjust: 100%;
 }
+
 body {
-  font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial,
-    sans-serif;
+  min-height: 100%;
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
 }
-img {
+
+img,
+svg,
+video,
+canvas {
   display: block;
   max-width: 100%;
   height: auto;
 }
+
 ul {
   list-style: none;
 }
+
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
+
 button {
   font: inherit;
   background: none;
   border: 0;
   cursor: pointer;
 }
+
 :focus-visible {
   outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
-/* ---------------------- HEADER ------------------------ */
+/* -------------------- UTILITARE ---------------------- */
+.container {
+  width: min(var(--container), 100%);
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+section,
+main,
+header,
+footer,
+nav {
+  max-width: 100%;
+}
+
+/* ---------------------- HEADER ----------------------- */
 header {
-  background: #fff;
+  position: relative;
   z-index: 20;
-  position: relative;
-}
-.top-bar {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 10px 16px;
-  border-bottom: 1px solid var(--border);
-}
-.logo {
-  width: 80px;
-  height: 80px;
-  border-radius: 16px;
-  background: #fff;
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  display: grid;
-  place-items: center;
-}
-.logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-.brand-center h1 {
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-.brand-center p {
-  font-size: 0.95rem;
-  color: var(--muted);
-}
-
-@media (min-width: 768px) {
-  .logo {
-    width: 96px;
-    height: 96px;
-  }
-  .brand-center h1 {
-    font-size: 1.7rem;
-  }
-}
-
-/* ------------------- HERO ---------------------------- */
-.hero-image {
-  position: relative;
-}
-.hero-image img {
-  width: 100%;
-  height: auto;
-}
-.hero-image .overlay {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35));
-  color: #fff;
-  padding: 16px;
-}
-.hero-image .overlay h1 {
-  font-size: 1.6rem;
-  margin-bottom: 8px;
-}
-.hero-image .overlay p {
-  font-size: 1rem;
-  opacity: 0.95;
-}
-@media (min-width: 768px) {
-  .hero-image .overlay h1 {
-    font-size: 2.1rem;
-  }
-}
-
-/* ------------------- NAVBAR -------------------------- */
-.navbar {
-  position: sticky;
-  top: 0;
-  background: #fff;
-  border-bottom: 1px solid var(--border);
-  z-index: 30;
-}
-.navbar ul {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  max-width: var(--container);
-  margin: auto;
-  padding: 8px 16px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-.navbar a,
-.navbar .dropbtn {
-  padding: 10px 14px;
-  border-radius: 10px;
-  transition: background 0.25s, color 0.25s;
-}
-.navbar a[aria-current="page"] {
-  background: var(--bg-soft);
-  font-weight: 600;
-}
-.navbar a:hover,
-.navbar .dropbtn:hover {
-  background: var(--bg-soft);
-}
-
-.dropdown {
-  position: relative;
-}
-.dropdown-content {
-  position: absolute;
-  top: calc(100% + 6px);
-  left: 0;
-  display: none;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  box-shadow: var(--shadow);
-  padding: 6px;
-  min-width: 200px;
-}
-.dropdown.active .dropdown-content {
-  display: block;
-}
-.dropdown-content a {
-  display: block;
-  padding: 8px 12px;
-  border-radius: 8px;
-}
-.dropdown-content a:hover {
-  background: var(--bg-soft);
-}
-
-/* ------------------- HERO CTA ------------------------ */
-.hero {
-  text-align: center;
-  padding: 28px 16px 10px;
-}
-.hero h2 {
-  font-size: 1.3rem;
-  margin-bottom: 6px;
-}
-.hero p {
-  color: var(--muted);
-  margin-bottom: 16px;
-}
-.btn-hero {
-  display: inline-block;
-  background: var(--primary);
-  color: #fff;
-  padding: 12px 20px;
-  border-radius: 999px;
-  font-weight: 600;
-  box-shadow: 0 8px 20px rgba(0, 153, 153, 0.25);
-  transition: transform 0.25s, background 0.25s;
-}
-.btn-hero:hover {
-  transform: translateY(-2px);
-  background: var(--primary-dark);
-}
-
-/* ------------------- HOW IT WORKS -------------------- */
-.how-it-works {
-  padding: 40px 16px;
-  text-align: center;
-}
-.how-it-works .how-sub {
-  color: var(--muted);
-  margin-bottom: 20px;
-}
-.how-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  max-width: var(--container);
-  margin: 0 auto 20px;
-}
-.how-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  transition: transform 0.25s, box-shadow 0.25s;
-}
-.how-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
-}
-.how-card .icon-svg {
-  width: 28px;
-  height: 28px;
-  stroke: var(--primary);
-  fill: none;
-  stroke-width: 2;
-}
-.how-card h3 {
-  font-size: 1.05rem;
-}
-.how-card p {
-  color: #333;
-}
-@media (min-width: 640px) {
-  .how-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* ------------------- TRUST STRIP --------------------- */
-.trust-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
-}
-.trust-strip li {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--bg-soft);
-  border: 1px solid var(--border);
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-weight: 500;
-}
-.trust-strip .icon-svg {
-  width: 18px;
-  height: 18px;
-  stroke: var(--primary);
-}
-
-/* ------------------- RUTE POPULARE ------------------- */
-.rute-populare {
-  padding: 40px 16px;
-}
-.rute-populare h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-.rute-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  max-width: var(--container);
-  margin: 0 auto;
-}
-.rute {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  text-align: left;
-  transition: transform 0.25s, box-shadow 0.25s;
-}
-.rute:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12);
-}
-.rute h3 {
-  padding: 14px 14px 0;
-  font-weight: 600;
-}
-.rute img {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-}
-.rute p {
-  padding: 0 14px 14px;
-  color: #374151;
-}
-@media (min-width: 600px) {
-  .rute-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (min-width: 900px) {
-  .rute-container {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* ------------------- BUTTONS CTA --------------------- */
-.buttons {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 10px 16px;
-}
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 160px;
-  height: 44px;
-  padding: 0 16px;
-  border-radius: 999px;
-  font-weight: 600;
-  border: 1px solid var(--border);
-  transition: background 0.25s, color 0.25s, transform 0.25s;
-}
-.btn.call {
-  background: #fff;
-  color: #0f172a;
-}
-.btn.call:hover {
-  background: var(--bg-soft);
-}
-.btn.reserve {
-  background: var(--primary);
-  color: #fff;
-  border-color: transparent;
-  box-shadow: 0 8px 18px rgba(0, 153, 153, 0.25);
-}
-.btn.reserve:hover {
-  background: var(--primary-dark);
-  transform: translateY(-1px);
-}
-
-/* ------------------- AVANTAJE ------------------------ */
-.avantaje {
-  padding: 40px 16px;
-}
-.avantaje h2 {
-  text-align: center;
-  margin-bottom: 18px;
-}
-.avantaje ul {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  max-width: var(--container);
-  margin: 0 auto;
-}
-.avantaje li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 12px 14px;
-  box-shadow: var(--shadow);
-}
-.avantaje .icon-svg {
-  width: 24px;
-  height: 24px;
-  stroke: var(--primary);
-  fill: none;
-  margin-top: 2px;
-}
-@media (min-width: 720px) {
-  .avantaje ul {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (min-width: 1024px) {
-  .avantaje ul {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* ------------------- TESTIMONIALE -------------------- */
-.testimoniale {
-  padding: 40px 16px;
-  background: var(--bg-soft);
-  border-top: 1px solid var(--border);
-}
-.testimoniale h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-.testimonial-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-  max-width: var(--container);
-  margin: 0 auto;
-}
-.testimonial {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 14px 16px;
-  text-align: left;
-}
-.testimonial p {
-  font-style: italic;
-}
-.testimonial span {
-  display: block;
-  color: var(--muted);
-  margin-top: 8px;
-}
-@media (min-width: 720px) {
-  .testimonial-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (min-width: 1024px) {
-  .testimonial-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* ------------------- FLOATING BTNS ------------------- */
-.floating-btn {
-  position: fixed;
-  z-index: 40;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  color: #fff;
-  background: var(--primary);
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.24);
-  transition: transform 0.25s, background 0.25s;
-}
-.floating-btn:hover {
-  transform: translateY(-2px);
-  background: var(--primary-dark);
-}
-.floating-btn .icon-svg {
-  width: 22px;
-  height: 22px;
-  stroke: #fff;
-}
-
-/* Call = stânga jos | WhatsApp = dreapta jos */
-.floating-btn.call {
-  left: 16px;
-  bottom: 18px;
-}
-.floating-btn.whatsapp {
-  right: 16px;
-  bottom: 18px;
-}
-
-/* ------------------- FOOTER (ALBASTRU) --------------- */
-footer {
-  background: linear-gradient(135deg, #008585, #00a3a3);
-  color: #ffffff;
-  margin-top: 32px;
-  box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.15);
-}
-.footer-content {
-  max-width: var(--container);
-  margin: auto;
-  padding: 22px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  text-align: center;
-}
-.footer-content p {
-  font-size: 0.95rem;
-}
-.footer-content a {
-  color: #fff;
-  text-decoration: underline dotted;
-}
-.footer-content a:hover {
-  color: #e0fffb;
-}
-@media (min-width: 640px) {
-  .footer-content {
-    flex-direction: row;
-    justify-content: center;
-    gap: 24px;
-  }
-}
-/* ===== UPDATE solicitat: header & navbar albastre, centrat, text alb ===== */
-
-/* Top bar: logo + titlu centrate, pe albastru, text alb */
-header {
   background: linear-gradient(135deg, #008585, #00a3a3);
   color: #fff;
 }
+
 .top-bar {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
   padding: 20px 16px;
+  text-align: center;
 }
+
 .logo {
   width: 96px;
   height: 96px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   margin-bottom: 10px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: var(--shadow);
 }
+
 .logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
+
 .brand-center h1 {
   font-size: 1.8rem;
-  font-weight: 600;
+  font-weight: 700;
   color: #fff;
 }
+
 .brand-center p {
   font-size: 1rem;
   color: #d8fffb;
 }
-@media (min-width: 768px) {
-  .brand-center h1 {
-    font-size: 2rem;
-  }
-}
 
-/* Navbar: albastru închis + text alb, sticky sus */
+/* ---------------------- NAVBAR ----------------------- */
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 9999;
+  overflow: visible;
   background: #006d6d;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
+
 .navbar ul {
   display: flex;
+  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 12px;
+  width: min(var(--container), 100%);
+  margin: 0 auto;
   padding: 10px 16px;
-  max-width: var(--container);
-  margin: auto;
 }
-.navbar a,
-.navbar .dropbtn {
-  color: #fff;
+
+.navbar > ul > li > a,
+.navbar > ul > li > .dropbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   padding: 10px 16px;
   border-radius: 10px;
-  font-weight: 500;
-  transition: background 0.25s, color 0.25s;
-}
-.navbar a:hover,
-.navbar .dropbtn:hover {
-  background: rgba(255, 255, 255, 0.18);
-}
-.navbar a[aria-current="page"] {
-  background: rgba(255, 255, 255, 0.28);
+  color: #fff;
+  font-size: 1rem;
   font-weight: 600;
+  transition: background var(--transition), box-shadow var(--transition);
 }
 
-/* Dropdown: meniu alb peste fundalul albastru */
-.dropdown {
-  position: relative;
-}
-.dropdown-content {
-  position: absolute;
-  top: calc(100% + 8px);
-  left: 0;
-  display: none;
-  background: #fff;
-  color: #000;
-  border-radius: 10px;
-  box-shadow: var(--shadow);
-  min-width: 200px;
-  padding: 6px;
-}
-.dropdown.active .dropdown-content {
-  display: block;
-}
-.dropdown-content a {
-  display: block;
-  padding: 8px 12px;
-  border-radius: 8px;
-}
-.dropdown-content a:hover {
-  background: var(--bg-soft);
-}
-
-/* Butoane plutitoare: stânga/dreapta jos (call stânga, WhatsApp dreapta) */
-.floating-btn.call {
-  left: 16px;
-  right: auto;
-  bottom: 18px;
-}
-.floating-btn.whatsapp {
-  right: 16px;
-  left: auto;
-  bottom: 18px;
-}
-
-/* Footer: albastrul „frumos” BRB-Travel */
-footer {
-  background: linear-gradient(135deg, #008585, #00a3a3);
-  color: #fff;
-  margin-top: 32px;
-  box-shadow: inset 0 3px 10px rgba(0, 0, 0, 0.15);
-}
-.footer-content a {
-  color: #fff;
-  text-decoration: underline dotted;
-}
-.footer-content a:hover {
-  color: #e0fffb;
-}
-/* ===== UPDATE FINAL: butoane colorate, pulsante, hover animat ===== */
-
-/* Pulsare generică */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(0, 255, 170, 0.6);
-  }
-  70% {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 15px rgba(0, 255, 170, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(0, 255, 170, 0);
-  }
-}
-
-/* WhatsApp – verde deschis + efect de puls */
-.floating-btn.whatsapp {
-  background: #25d366;
-  animation: pulse 2.2s infinite;
-}
-.floating-btn.whatsapp:hover {
-  background: #1ebe5d;
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
-}
-
-/* Telefon – turcoaz-verzui + efect de puls ușor */
-.floating-btn.call {
-  background: linear-gradient(135deg, #00a8a8, #00d4a4);
-  animation: pulse 2.5s infinite;
-}
-.floating-btn.call:hover {
-  background: linear-gradient(135deg, #00d4a4, #00ffbb);
-  transform: scale(1.1);
-  box-shadow: 0 0 20px rgba(0, 200, 180, 0.6);
-}
-
-/* Butoanele normale (ex: Rezervă acum, Call, etc.) – gradient + hover luminos */
-.btn,
-.btn-hero {
-  background: linear-gradient(135deg, #009999, #00c3a3);
-  color: #fff;
-  transition: all 0.25s ease;
-  box-shadow: 0 6px 20px rgba(0, 153, 153, 0.25);
-}
-.btn:hover,
-.btn-hero:hover {
-  background: linear-gradient(135deg, #00c3a3, #00e6a8);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(0, 230, 168, 0.4);
-}
-
-/* Navbar links – efect fin de iluminare verde-albastru */
-.navbar a:hover,
-.navbar .dropbtn:hover {
+.navbar > ul > li > a:hover,
+.navbar > ul > li > .dropbtn:hover {
   background: linear-gradient(
     135deg,
     rgba(0, 153, 153, 0.4),
     rgba(0, 255, 180, 0.4)
   );
   box-shadow: inset 0 0 8px rgba(0, 255, 200, 0.3);
-  border-radius: 8px;
 }
 
-/* Butoanele din secțiunea "Cum funcționează" */
-.how-card .btn-hero {
-  background: linear-gradient(135deg, #00a3a3, #00d4a4);
-}
-.how-card .btn-hero:hover {
-  background: linear-gradient(135deg, #00d4a4, #00f0b5);
-}
-/* ==== FIX DROPDOWN "Rute" (text negru pe fundal alb) ==== */
-
-/* 1) Limitează stilul alb DOAR la item-urile de nivel 1 din navbar */
-.navbar > ul > li > a,
-.navbar > ul > li > .dropbtn {
-  color: #ffffff;
+.navbar a.active,
+.navbar a[aria-current="page"],
+.navbar .dropbtn[aria-expanded="true"] {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
-/* 2) Dropdown pe alb cu text închis și hover vizibil */
-.navbar .dropdown-content {
-  background: #ffffff;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  box-shadow: var(--shadow);
+/* --------------------- DROPDOWN ---------------------- */
+.dropdown {
+  position: relative;
+  overflow: visible;
+}
+
+.dropbtn {
+  position: relative;
+}
+
+.dropbtn::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease, margin-top 0.3s ease;
+}
+
+.dropdown.active .dropbtn::after {
+  margin-top: 3px;
+  transform: rotate(-135deg);
+}
+
+.dropdown-content {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 10000;
+  display: none;
   min-width: 220px;
   padding: 6px;
-  z-index: 60; /* peste hero/overlay */
+  overflow: visible;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  color: #0f172a;
+  box-shadow: var(--shadow);
 }
 
-.navbar .dropdown-content a {
-  color: #0f172a !important; /* forțează text închis */
+.dropdown.active > .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
   display: block;
   padding: 10px 12px;
   border-radius: 8px;
-  background: transparent; /* anulează eventuale efecte globale */
-  box-shadow: none;
+  color: #0f172a !important;
+  background: transparent;
+  transition: background var(--transition), color var(--transition);
 }
 
-.navbar .dropdown-content a:hover {
+.dropdown-content a:hover {
   background: var(--bg-soft);
-  color: #0b3b3b; /* nuanță mai închisă la hover */
-  box-shadow: inset 0 0 0 0 transparent; /* fără glow în dropdown */
+  color: #0b3b3b !important;
 }
 
-/* 3) Asigură afișarea dropdown-ului când e activ */
-.navbar .dropdown.active .dropdown-content {
+@media (hover: hover) and (pointer: fine) {
+  .dropdown:hover > .dropdown-content {
+    display: block;
+  }
+}
+
+.dropdown:focus-within > .dropdown-content {
   display: block;
 }
 
-/* 4) (Opțional) ușor spațiu sub navbar ca să nu „lipească” dropdown-ul */
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 55;
+/* -------------------- HERO IMAGE --------------------- */
+.hero-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
-/* ==== FOOTER MODERN BRB-TRAVEL ==== */
 
+.hero-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.hero-image .overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.35)
+  );
+}
+
+.hero-image .overlay h1 {
+  margin-bottom: 8px;
+  font-size: 1.6rem;
+}
+
+.hero-image .overlay p {
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+/* -------------------- HERO CTA ----------------------- */
+.hero {
+  padding: 40px 16px 20px;
+  text-align: center;
+  background: var(--bg);
+}
+
+.hero h2 {
+  margin-bottom: 8px;
+  font-size: 1.5rem;
+  color: var(--primary-dark);
+}
+
+.hero p {
+  max-width: 680px;
+  margin: 0 auto 18px;
+  color: var(--muted);
+}
+
+.btn-hero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0 20px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #009999, #00c3a3);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(0, 153, 153, 0.25);
+  transition: transform var(--transition), background var(--transition),
+    box-shadow var(--transition);
+}
+
+.btn-hero:hover {
+  background: linear-gradient(135deg, #00c3a3, #00e6a8);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0, 230, 168, 0.4);
+}
+
+/* ----------------- CUM FUNCȚIONEAZĂ ----------------- */
+.how-it-works {
+  padding: 40px 16px;
+  text-align: center;
+}
+
+.how-it-works .how-sub {
+  margin-bottom: 20px;
+  color: var(--muted);
+}
+
+.how-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  width: min(var(--container), 100%);
+  margin: 0 auto 20px;
+}
+
+.how-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.how-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
+}
+
+.how-card .icon-svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 2;
+}
+
+.how-card h3 {
+  font-size: 1.05rem;
+}
+
+.how-card p {
+  color: #333;
+}
+
+/* ------------------- TRUST STRIP --------------------- */
+.trust-strip {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: min(var(--container), 100%);
+  margin-inline: auto;
+}
+
+.trust-strip li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-soft);
+  font-weight: 500;
+}
+
+.trust-strip .icon-svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--primary);
+}
+
+/* ------------------ RUTE POPULARE ------------------- */
+.rute-populare {
+  padding: 40px 16px;
+}
+
+.rute-populare h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.rute-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  width: min(var(--container), 100%);
+  margin: 0 auto;
+}
+
+.rute {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+  text-align: left;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.rute:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12);
+}
+
+.rute img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.rute h3 {
+  padding: 14px 14px 0;
+  font-weight: 600;
+}
+
+.rute p {
+  padding: 0 14px 14px;
+  color: #374151;
+}
+
+/* -------------------- BUTTONS CTA -------------------- */
+.buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: min(var(--container), 100%);
+  margin-inline: auto;
+  padding: 10px 16px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #009999, #00c3a3);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 6px 20px rgba(0, 153, 153, 0.25);
+  transition: transform var(--transition), background var(--transition),
+    box-shadow var(--transition);
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #00c3a3, #00e6a8);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0, 230, 168, 0.4);
+}
+
+.btn.call {
+  background: linear-gradient(135deg, #00a8a8, #00d4a4);
+}
+
+.btn.reserve {
+  background: #25d366;
+}
+
+.btn.reserve:hover {
+  background: #1ebe5d;
+}
+
+/* --------------------- AVANTAJE ---------------------- */
+.avantaje {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 16px;
+}
+
+#avantaje-title,
+.avantaje h2 {
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#avantaje-title::after,
+.avantaje h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 80px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  transform: translateX(-50%);
+}
+
+.avantaje ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  width: min(880px, 100%);
+  margin: 0 auto;
+}
+
+.avantaje li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.avantaje .icon-svg {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: var(--primary);
+}
+
+/* ------------------- TESTIMONIALE ------------------- */
+.testimoniale {
+  padding: 40px 16px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-soft);
+}
+
+.testimoniale h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.testimonial-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  width: min(var(--container), 100%);
+  margin: 0 auto;
+}
+
+.testimonial {
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.testimonial p {
+  font-style: italic;
+}
+
+.testimonial span {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+/* ---------------------- FOOTER ----------------------- */
 footer {
-  background: linear-gradient(135deg, #007d7d, #00a8a8);
-  color: #ffffff;
   margin-top: 48px;
   border-top: 3px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #007d7d, #00a8a8);
+  color: #fff;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
 }
 
 .footer-content {
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 32px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 8px;
+  width: min(var(--container), 100%);
+  margin: 0 auto;
+  padding: 32px 20px;
   text-align: center;
 }
 
-/* Text principal */
 .footer-content p {
-  font-size: 1rem;
   color: #e9fffd;
-  transition: color 0.25s ease;
 }
 
-/* Linkuri */
 .footer-content a {
   color: #fff;
   font-weight: 500;
-  text-decoration: none;
-  transition: color 0.25s ease, transform 0.25s ease;
+  text-decoration: underline dotted;
+  transition: color var(--transition);
 }
+
 .footer-content a:hover {
   color: #9effe0;
-  transform: translateY(-1px);
 }
 
-/* Linie de separare subțire */
 .footer-line {
-  width: 80%;
+  width: min(80%, 700px);
   height: 1px;
-  background: rgba(255, 255, 255, 0.3);
   margin: 10px auto;
+  background: rgba(255, 255, 255, 0.3);
 }
 
-/* Iconițe minimaliste */
 .footer-icons {
   display: flex;
   justify-content: center;
   gap: 16px;
   margin-top: 8px;
 }
+
 .footer-icons a {
   display: inline-flex;
   align-items: center;
@@ -862,462 +666,193 @@ footer {
   height: 38px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.15);
-  transition: background 0.25s ease, transform 0.25s ease;
+  text-decoration: none;
+  transition: background var(--transition), transform var(--transition);
 }
+
 .footer-icons a:hover {
   background: rgba(255, 255, 255, 0.25);
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
+
 .footer-icons svg {
   width: 20px;
   height: 20px;
   stroke: #fff;
 }
 
-/* Responsivitate */
+/* ---------------- BUTOANE FLOTANTE ------------------ */
+.floating-btn {
+  position: fixed;
+  bottom: 20px;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  padding: 0;
+  border-radius: 50%;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.floating-btn.call {
+  left: 20px;
+  right: auto;
+  background: linear-gradient(135deg, #009999, #00bfa6);
+}
+
+.floating-btn.whatsapp {
+  right: 20px;
+  left: auto;
+  background: #25d366;
+}
+
+.floating-btn svg,
+.floating-btn .icon-svg,
+.floating-btn i {
+  display: block;
+  width: 28px;
+  height: 28px;
+  max-width: none;
+  color: #fff;
+  fill: currentColor;
+  stroke: currentColor;
+  font-size: 1.4rem;
+}
+
+.floating-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.floating-btn.call:hover {
+  background: linear-gradient(135deg, #00aaaa, #00cfb2);
+}
+
+.floating-btn.whatsapp:hover {
+  background: #1ebe5d;
+}
+
+/* ---------------- COOKIE BANNER --------------------- */
+.cookie-banner.is-hidden {
+  display: none !important;
+}
+
+/* -------------------- RESPONSIVE -------------------- */
+@media (min-width: 600px) {
+  .rute-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 640px) {
+  .how-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (min-width: 720px) {
+  .testimonial-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .footer-content {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
     text-align: left;
     padding: 28px 40px;
   }
+
   .footer-icons {
     margin-top: 0;
   }
 }
-/* =======================
-   MOBILE OVERFLOW FIX PACK
-   (lipeste blocul acesta la FINALUL style.css)
-   ======================= */
 
-/* 1) Garda universală anti-scroll orizontal pe mobil */
-html,
-body {
-  max-width: 100%;
-  overflow-x: clip; /* mai sigur decât hidden pe iOS */
+@media (min-width: 768px) {
+  .brand-center h1 {
+    font-size: 2rem;
+  }
+
+  .hero-image .overlay h1 {
+    font-size: 2.1rem;
+  }
 }
 
-/* 2) Niciun element să nu forțeze lățimea pe X (fără să stricăm layout-ul) */
-img,
-svg,
-video,
-canvas {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-:where(h1, h2, h3, h4, h5, h6, p, li, a, button, small) {
-  overflow-wrap: anywhere; /* rupe cuvinte/URL-uri prea lungi */
+@media (min-width: 900px) {
+  .rute-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
-/* 3) Dropdown „Rute”: rămâne în viewport pe mobil */
+@media (min-width: 1024px) {
+  .testimonial-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 640px) {
-  .navbar .dropdown-content {
-    left: 50% !important;
-    right: auto !important;
-    transform: translateX(-50%) !important;
-    width: max-content;
-    max-width: calc(100vw - 24px); /* 12px margine pe stânga/dreapta */
-    overflow-wrap: anywhere;
-  }
-
-  /* Micșorăm puțin densitatea în navbar ca să nu împingă în lateral */
   .navbar ul {
-    padding-inline: 8px;
     gap: 8px;
+    padding-inline: 8px;
+  }
+
+  .navbar > ul > li > a,
+  .navbar > ul > li > .dropbtn {
+    padding: 9px 11px;
+    font-size: 0.95rem;
+  }
+
+  .dropdown-content {
+    left: 50%;
+    width: max-content;
+    max-width: calc(100vw - 24px);
+    max-height: min(60vh, 420px);
+    overflow-y: auto;
+    transform: translateX(-50%);
+  }
+
+  .hero h2 {
+    font-size: 1.6rem;
+  }
+
+  #avantaje-title,
+  .avantaje h2 {
+    margin-bottom: 24px;
+    font-size: 1.7rem;
+  }
+
+  .floating-btn {
+    bottom: max(14px, env(safe-area-inset-bottom));
+    width: 54px;
+    height: 54px;
+  }
+
+  .floating-btn.call {
+    left: max(14px, env(safe-area-inset-left));
+  }
+
+  .floating-btn.whatsapp {
+    right: max(14px, env(safe-area-inset-right));
+  }
+
+  .floating-btn svg,
+  .floating-btn .icon-svg {
+    width: 27px;
+    height: 27px;
   }
 }
 
-/* 4) Butoanele plutitoare respectă safe-area pe iPhone (nu împing layout-ul) */
-.floating-btn.call {
-  left: max(16px, env(safe-area-inset-left));
-}
-.floating-btn.whatsapp {
-  right: max(16px, env(safe-area-inset-right));
-}
-.floating-btn {
-  bottom: max(18px, env(safe-area-inset-bottom));
-}
-
-/* 5) Hover/scale doar pe dispozitive cu mouse.
-      Pe touch dezactivăm scale ca să nu apară „painting” în afara viewport-ului. */
-@media (hover: hover) and (pointer: fine) {
+@media (hover: none) and (pointer: coarse) {
   .btn:hover,
   .btn-hero:hover,
   .floating-btn:hover,
   .rute:hover,
-  .navbar a:hover,
-  .navbar .dropbtn:hover {
-    /* comportamentul tău existent rămâne valabil pe desktop */
-    /* (nu redefinim nimic aici, doar îi permitem să ruleze pe hover real) */
-  }
-}
-@media (hover: none) and (pointer: coarse) {
-  .btn,
-  .btn-hero,
-  .floating-btn,
-  .rute,
-  .navbar a,
-  .navbar .dropbtn {
-    transition: background 0.25s, color 0.25s; /* fără scale pe touch */
-  }
-}
-
-/* 6) Sticky navbar: eliminăm eventuale „1px jumps” care pot crea scroll */
-.navbar {
-  contain: paint; /* izolează efectele vizuale (shadow/filters) */
-  will-change: transform; /* hint pt. performanță pe mobil */
-}
-
-/* 7) Grilele principale: asigurăm încadrarea perfectă în ecran */
-.how-grid,
-.rute-container,
-.testimonial-container,
-.avantaje ul,
-.trust-strip,
-.buttons {
-  margin-inline: auto;
-  max-width: min(var(--container), 100%);
-  padding-inline: 0; /* deja ai padding în secțiuni */
-}
-
-/* 8) Efecte de puls (box-shadow mare) – prevenim overflow vizual pe mobil */
-@media (max-width: 640px) {
-  .floating-btn.whatsapp,
-  .floating-btn.call {
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
-    /* pulsul rămâne, dar cu „halo” mai mic implicit din animație */
-  }
-}
-
-/* 9) Asigurăm că erorile de calcul 100vw nu apar dacă vei folosi secțiuni full-bleed */
-.full-bleed {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: clip;
-}
-/* ===========================
-   🔧 HARD FIX – NO SIDE SCROLL
-   =========================== */
-
-/* 1️⃣ Blochează tot overflow-ul orizontal */
-html,
-body {
-  overflow-x: hidden !important;
-  width: 100% !important;
-  position: relative;
-}
-
-/* 2️⃣ Elimină glitch-urile provocate de transform / scale */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  transform-origin: center center;
-}
-
-/* 3️⃣ Carduri și secțiuni — forțăm încadrarea în viewport */
-section,
-div,
-header,
-footer,
-main,
-article,
-nav {
-  max-width: 100vw;
-  overflow-x: clip;
-}
-
-/* 4️⃣ Dropdown-ul Rute – centrat 100%, fără să iasă */
-.navbar .dropdown-content {
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  max-width: calc(100vw - 20px) !important;
-  overflow-wrap: anywhere;
-}
-
-/* 5️⃣ Hero / imagini full width – forțăm să nu iasă */
-.hero-image,
-.hero-image img {
-  width: 100vw !important;
-  max-width: 100% !important;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-/* 6️⃣ Efectele hover care folosesc translate/scale nu mai împing layout-ul */
-@media (hover: none) and (pointer: coarse) {
-  .btn:hover,
-  .btn-hero:hover,
-  .floating-btn:hover,
-  .rute:hover {
-    transform: none !important;
-  }
-}
-
-/* 7️⃣ Box-shadow-urile mari (pulse) sunt tăiate la margine pe mobil */
-@media (max-width: 768px) {
-  .floating-btn.whatsapp,
-  .floating-btn.call {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
-  }
-}
-
-/* 8️⃣ Prevenim eroarea tipică 100vw (scrollbar width) pe iOS/Safari */
-body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  position: relative;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* 9️⃣ Asigură-te că toate grilele rămân centrate */
-.how-grid,
-.rute-container,
-.avantaje ul,
-.testimonial-container,
-.trust-strip {
-  margin: 0 auto;
-  max-width: min(var(--container), 100%);
-  padding: 0 8px;
-}
-
-/* ✅ 10️⃣ Verificare finală – absolut nimic nu poate depăși viewport-ul */
-body::after {
-  content: "";
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  z-index: -1;
-}
-/* === FIX DROPDOWN "Rute" care nu se vede sub navbar === */
-.navbar {
-  contain: none !important; /* scoate paint containment-ul care taie dropdownul */
-  overflow: visible !important; /* permite conținutului absolut să iasă în jos */
-  z-index: 999 !important; /* ține-l peste hero/imagini */
-  position: sticky; /* păstrează comportamentul tău */
-  top: 0;
-}
-
-/* Asigură contextul de poziționare corect pentru dropdown */
-.navbar .dropdown {
-  position: relative;
-  overflow: visible;
-}
-
-/* Dropdownul stă deasupra tuturor și nu e tăiat */
-.navbar .dropdown-content {
-  z-index: 10000 !important;
-  overflow: visible;
-  /* păstrăm poziționarea ta */
-}
-
-/* Pe mobil: centru + width sigur, fără să fie tăiat */
-@media (max-width: 640px) {
-  .navbar .dropdown-content {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    max-width: calc(100vw - 24px) !important;
-  }
-}
-/* ==== FIX RUTE DROPDOWN – PUNE-L LA FINALUL style.css ==== */
-
-/* 1) Navbar nu mai taie conținutul absolut poziționat în jos */
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 9999 !important;
-  overflow: visible !important;
-  contain: none !important; /* anulăm orice contain: paint etc. */
-}
-
-/* 2) Context corect pentru dropdown + fără tăieri locale */
-.navbar .dropdown {
-  position: relative;
-  overflow: visible !important;
-}
-
-/* 3) Dropdown-ul stă deasupra tuturor și se poziționează sub buton */
-.navbar .dropdown-content {
-  position: absolute !important;
-  top: calc(100% + 8px) !important;
-  left: 0 !important;
-  display: none; /* JS-ul tău va da .active */
-  z-index: 100000 !important; /* peste hero/imagini/overlay */
-  background: #fff;
-  color: #0f172a;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  box-shadow: var(--shadow);
-  min-width: 220px;
-  padding: 6px;
-}
-.navbar .dropdown.active > .dropdown-content {
-  display: block !important;
-}
-.navbar .dropdown-content a {
-  display: block;
-  padding: 10px 12px;
-  border-radius: 8px;
-  color: #0f172a !important;
-  background: transparent;
-}
-.navbar .dropdown-content a:hover {
-  background: var(--bg-soft);
-}
-
-/* 4) Pe mobil: centru + lățime sigură, fără să iasă din ecran */
-@media (max-width: 640px) {
-  .navbar .dropdown-content {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    max-width: calc(100vw - 24px) !important;
-    width: max-content;
-    overflow-wrap: anywhere;
-  }
-}
-
-/* 5) Overlay-ul din hero nu are voie să calce peste navbar */
-.hero-image {
-  position: relative;
-}
-.hero-image .overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1; /* micșorăm nivelul overlay-ului */
-}
-.navbar {
-  z-index: 9999 !important;
-} /* asigurăm prioritate peste overlay */
-
-/* 6) Fără clipări laterale: niciun container nu forțează ascundere pe X */
-header,
-.top-bar,
-.navbar,
-main,
-section,
-footer {
-  overflow-x: visible !important;
-  max-width: 100vw;
-}
-
-/* 7) (opțional) Hover pe desktop și focus pe mobil – dacă vrei fallback fără JS
-   – poți lăsa, JS-ul are prioritate datorită .active + !important.
-*/
-@media (hover: hover) and (pointer: fine) {
-  .navbar .dropdown:hover > .dropdown-content {
-    display: block;
-  }
-}
-.dropdown:focus-within > .dropdown-content {
-  display: block;
-}
-.cookie-banner.is-hidden {
-  display: none !important;
-}
-/* === FIX NUCLEAR - RESET COMPLET AVANTAJE === */
-.avantaje * {
-  all: unset !important;
-}
-
-.avantaje ul {
-  display: grid !important;
-  grid-template-columns: 1fr !important;
-  gap: 14px !important;
-  max-width: 880px !important;
-  margin: 0 auto !important;
-}
-
-.avantaje li {
-  display: flex !important;
-  align-items: center !important;
-  gap: 12px !important;
-  padding: 14px 16px !important;
-  background: #fff !important;
-  border: 1px solid #e6e8eb !important;
-  border-radius: 14px !important;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08) !important;
-  font-family: "Poppins", sans-serif !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
-  color: #222 !important;
-}
-
-.avantaje .icon-svg {
-  width: 24px !important;
-  height: 24px !important;
-  stroke: #009999 !important;
-  fill: none !important;
-  flex-shrink: 0 !important;
-}
-/* === FIX TITLU AVANTAJE - POZITIONARE CORECTA === */
-
-.avantaje h2 {
-  grid-column: 1 / -1 !important;
-  text-align: center !important;
-  margin-bottom: 18px !important;
-  width: 100% !important;
-}
-
-/* Asigură că titlul este deasupra listei */
-.avantaje {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-}
-/* === STILIZARE TITLU AVANTAJE FRUMOS === */
-
-#avantaje-title {
-  text-align: center !important;
-  font-size: 2.2rem !important;
-  font-weight: 700 !important;
-  color: var(--primary) !important;
-  margin-bottom: 30px !important;
-  position: relative !important;
-  padding-bottom: 15px !important;
-}
-
-/* Linie decorativă sub titlu */
-#avantaje-title::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  border-radius: 2px;
-}
-
-/* Efect de umbră/text highlight */
-#avantaje-title {
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  #avantaje-title {
-    font-size: 1.8rem !important;
-    margin-bottom: 25px !important;
-  }
-}
-
-@media (max-width: 480px) {
-  #avantaje-title {
-    font-size: 1.5rem !important;
-    margin-bottom: 20px !important;
-    padding-bottom: 12px !important;
-  }
-
-  #avantaje-title::after {
-    width: 60px;
-    height: 2px;
+  .how-card:hover {
+    transform: none;
   }
 }

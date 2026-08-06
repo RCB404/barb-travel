@@ -1,6 +1,6 @@
 /* ======================================================
-   ===============  BRB-TRAVEL • CONTACT.CSS  ============
-   =====================================================*/
+   ===============  BRB-TRAVEL • CONTACT.CSS  ===========
+   ====================================================== */
 
 /* -------------------- VARIABILE ---------------------- */
 :root {
@@ -18,104 +18,153 @@
 }
 
 /* ---------------------- RESET ------------------------ */
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-html,
-body {
-  height: 100%;
+
+html {
   scroll-behavior: smooth;
-  font-family: "Poppins", system-ui, sans-serif;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100%;
+  font-family:
+    "Poppins",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
 }
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+}
+
 a {
   color: inherit;
   text-decoration: none;
-  transition: color var(--transition);
-}
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
 }
 
-/* ---------------------- HEADER ------------------------ */
+button {
+  font: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ---------------------- HEADER ----------------------- */
 header {
+  position: relative;
+  z-index: 20;
   background: linear-gradient(135deg, #008585, #00a3a3);
   color: #fff;
 }
+
 .top-bar {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 20px 16px;
   text-align: center;
 }
+
 .logo {
   width: 96px;
   height: 96px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: #fff;
   margin-bottom: 10px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #fff;
   box-shadow: var(--shadow);
 }
+
 .logo img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
+
 .brand-center h1 {
+  color: #fff;
   font-size: 1.8rem;
   font-weight: 700;
-  color: #fff;
-}
-.brand-center p {
-  font-size: 1rem;
-  color: #d8fffb;
 }
 
-/* ---------------------- NAVBAR ------------------------ */
+.brand-center p {
+  color: #d8fffb;
+  font-size: 1rem;
+}
+
+/* ---------------------- NAVBAR ----------------------- */
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 9999;
+  overflow: visible;
   background: #006d6d;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
+
 .navbar ul {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 12px;
-  max-width: var(--container);
+  width: min(var(--container), 100%);
   margin: 0 auto;
   padding: 10px 16px;
 }
-.navbar a,
-.navbar .dropbtn {
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 1rem;
-  background: transparent;
-  padding: 10px 16px;
-  border-radius: 10px;
-  transition: all 0.25s ease;
-  border: none;
-  cursor: pointer;
+
+.navbar > ul > li {
+  position: relative;
 }
 
-/* Hover & active states */
-.navbar a:hover,
-.navbar .dropbtn:hover {
+.navbar > ul > li > a,
+.navbar > ul > li > .dropbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  transition:
+    background var(--transition),
+    box-shadow var(--transition);
+}
+
+.navbar > ul > li > a:hover,
+.navbar > ul > li > .dropbtn:hover {
   background: linear-gradient(
     135deg,
     rgba(0, 153, 153, 0.4),
@@ -123,87 +172,108 @@ header {
   );
   box-shadow: inset 0 0 8px rgba(0, 255, 200, 0.3);
 }
+
 .navbar a.active,
 .navbar a[aria-current="page"],
-.navbar .dropbtn:focus,
 .navbar .dropbtn[aria-expanded="true"] {
   background: rgba(255, 255, 255, 0.25);
   box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
-/* ======== SĂGEATĂ ANIMATĂ "Rute" ======== */
-.navbar .dropbtn {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.navbar .dropbtn::after {
-  content: "";
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-right: 2px solid #ffffff;
-  border-bottom: 2px solid #ffffff;
-  transform: rotate(45deg);
-  transition: transform 0.3s ease, margin-top 0.3s ease;
-  margin-top: 2px;
-}
-.dropdown.active .dropbtn::after {
-  transform: rotate(-135deg);
-  margin-top: -2px;
-}
-
-/* Dropdown-ul propriu-zis */
+/* --------------------- DROPDOWN ---------------------- */
 .dropdown {
   position: relative;
+  overflow: visible;
 }
+
+.dropbtn {
+  position: relative;
+}
+
+.dropbtn::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-top: -3px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg);
+  transition:
+    transform 0.3s ease,
+    margin-top 0.3s ease;
+}
+
+.dropdown.active .dropbtn::after {
+  margin-top: 3px;
+  transform: rotate(-135deg);
+}
+
 .dropdown-content {
   position: absolute;
   top: calc(100% + 8px);
   left: 0;
+  z-index: 10000;
   display: none;
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  box-shadow: var(--shadow);
   min-width: 220px;
   padding: 6px;
-  z-index: 60;
+  overflow: visible;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  color: #0f172a;
+  box-shadow: var(--shadow);
 }
-.dropdown.active .dropdown-content {
+
+.dropdown.active > .dropdown-content {
   display: block;
 }
+
 .dropdown-content a {
-  color: #0f172a !important;
   display: block;
   padding: 10px 12px;
   border-radius: 8px;
-  transition: background 0.2s ease, color 0.2s ease;
+  background: transparent;
+  color: #0f172a !important;
+  transition:
+    background var(--transition),
+    color var(--transition);
 }
+
 .dropdown-content a:hover {
   background: var(--bg-soft);
-  color: #0b3b3b;
+  color: #0b3b3b !important;
 }
 
-/* ---------------------- HERO -------------------------- */
+@media (hover: hover) and (pointer: fine) {
+  .dropdown:hover > .dropdown-content {
+    display: block;
+  }
+}
+
+.dropdown:focus-within > .dropdown-content {
+  display: block;
+}
+
+/* ---------------------- HERO ------------------------- */
 .hero {
-  text-align: center;
   padding: 60px 16px 40px;
   background: var(--bg-soft);
-}
-.hero h2 {
-  font-size: 2rem;
-  color: var(--primary-dark);
-  margin-bottom: 10px;
-}
-.hero p {
-  color: var(--muted);
-  max-width: 600px;
-  margin: 0 auto;
+  text-align: center;
 }
 
-/* ------------------- CONTACT CARDS -------------------- */
+.hero h2 {
+  margin-bottom: 10px;
+  color: var(--primary-dark);
+  font-size: 2rem;
+}
+
+.hero p {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--muted);
+}
+
+/* ------------------- CONTACT CARDS ------------------- */
 .contact-methods {
   display: grid;
   gap: 20px;
@@ -211,192 +281,153 @@ header {
   margin: 0 auto 60px;
   padding: 0 16px;
 }
+
 .contact-card {
-  background: #fff;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
   display: flex;
   align-items: center;
   gap: 20px;
   padding: 20px 24px;
-  transition: transform 0.25s, box-shadow 0.25s;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: #fff;
+  box-shadow: var(--shadow);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
 }
+
 .contact-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 16px 34px rgba(0, 0, 0, 0.1);
 }
+
 .contact-card i {
-  font-size: 2rem;
-  color: var(--primary);
   min-width: 48px;
+  color: var(--primary);
+  font-size: 2rem;
   text-align: center;
 }
-.contact-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 6px;
+
+.contact-card svg {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  color: var(--primary);
+  transition: transform 0.2s ease;
 }
+
+.contact-card:hover svg {
+  transform: scale(1.08);
+}
+
+.contact-card h3 {
+  margin-bottom: 6px;
+  font-size: 1.2rem;
+}
+
 .contact-card p a {
   color: var(--primary-dark);
   font-weight: 600;
-  position: relative;
 }
-.contact-card p a::after {
-  content: "";
-  position: absolute;
-  left: var(--x, 0);
-  top: var(--y, 0);
-  width: 0;
-  height: 0;
-  background: rgba(0, 153, 153, 0.2);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.4s ease, height 0.4s ease;
-}
-.contact-card p a:active::after {
-  width: 200px;
-  height: 200px;
-}
+
 .contact-card small {
   color: var(--muted);
   font-size: 0.9rem;
 }
 
-/* ------------------- FOOTER --------------------------- */
+/* ---------------------- FOOTER ----------------------- */
 footer {
-  background: linear-gradient(135deg, #007d7d, #00a8a8);
-  color: #ffffff;
   margin-top: 48px;
   border-top: 3px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(135deg, #007d7d, #00a8a8);
+  color: #fff;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
 }
+
 .footer-content {
-  max-width: var(--container);
-  margin: 0 auto;
-  padding: 32px 20px;
-  text-align: center;
   display: flex;
   flex-direction: column;
   gap: 6px;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 32px 20px 92px;
+  text-align: center;
 }
+
 .footer-content p {
   color: #e9fffd;
 }
+
 .footer-content a {
   color: #fff;
   text-decoration: underline dotted;
-  transition: color 0.25s ease;
+  transition: color var(--transition);
 }
+
 .footer-content a:hover {
   color: #9effe0;
 }
 
-/* ---------------- FLOATING BTNS ----------------------- */
+/* ---------------- BUTOANE FLOTANTE ------------------ */
 .floating-btn {
   position: fixed;
-  bottom: 18px;
-  width: 56px;
-  height: 56px;
+  bottom: 20px;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  padding: 0;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
   color: #fff;
-  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.24);
-  z-index: 40;
-  transition: transform 0.25s, background 0.25s;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
-.floating-btn:hover {
-  transform: scale(1.1);
+
+.floating-btn.call {
+  left: 20px;
+  background: linear-gradient(135deg, #009999, #00bfa6);
 }
+
+.floating-btn.whatsapp {
+  right: 20px;
+  background: #25d366;
+}
+
+.floating-btn svg,
+.floating-btn .icon-svg,
 .floating-btn i {
+  display: block;
+  width: 28px;
+  height: 28px;
+  max-width: none;
+  color: #fff;
+  fill: currentColor;
+  stroke: currentColor;
   font-size: 1.4rem;
 }
 
-/* Pulsare */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(0, 255, 170, 0.6);
-  }
-  70% {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 15px rgba(0, 255, 170, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(0, 255, 170, 0);
-  }
+.floating-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
 }
-.floating-btn.whatsapp {
-  right: 16px;
-  background: #25d366;
-  animation: pulse 2.2s infinite;
+
+.floating-btn.call:hover {
+  background: linear-gradient(135deg, #00aaaa, #00cfb2);
 }
+
 .floating-btn.whatsapp:hover {
   background: #1ebe5d;
 }
-.floating-btn.call {
-  left: 16px;
-  background: linear-gradient(135deg, #00a8a8, #00d4a4);
-  animation: pulse 2.5s infinite;
-}
-.floating-btn.call:hover {
-  background: linear-gradient(135deg, #00d4a4, #00ffbb);
-}
 
-/* ---------------- RESPONSIVE -------------------------- */
-@media (max-width: 600px) {
-  .contact-card {
-    flex-direction: column;
-    text-align: center;
-  }
-  .contact-card i {
-    margin-bottom: 6px;
-  }
-  .hero h2 {
-    font-size: 1.6rem;
-  }
-}
-/* ==== FORCE-CLOSE DROPDOWN după selectarea unei rute (#romania/#austria/#germania/#belgia/#olanda) ==== */
-/* taie absolut TOATE stările posibile (focus-within + hover) și orice eveniment de pointer */
-body:has(.tara:target) .navbar .dropdown .dropdown-content {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-/* redundant defensiv: chiar dacă rămâne :focus-within sau :hover pe buton/meniu */
-body:has(.tara:target) .navbar .dropdown:focus-within .dropdown-content,
-body:has(.tara:target) .navbar .dropdown:hover .dropdown-content {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-/* opțional: elimină highlight-ul butonului după navigare (doar efect vizual) */
-body:has(.tara:target) .navbar .dropbtn {
-  outline: none !important;
-  box-shadow: none !important;
-}
+/* ---------------- COOKIEBOT ------------------------- */
 .cookie-banner.is-hidden {
   display: none !important;
 }
-.contact-card svg {
-  flex-shrink: 0;
-  color: var(--primary, #009999);
-  width: 28px;
-  height: 28px;
-  margin-right: 10px;
-  transition: transform 0.2s ease;
-}
-.contact-card:hover svg {
-  transform: scale(1.08);
-}
-/* =====================================================
-   COOKIEBOT
-   ===================================================== */
 
 #CookiebotWidget,
 .CookiebotWidget,
@@ -404,10 +435,82 @@ body:has(.tara:target) .navbar .dropbtn {
   bottom: 92px !important;
 }
 
+/* ------------------- RESPONSIVE ---------------------- */
+@media (min-width: 720px) {
+  .footer-content {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-bottom: 32px;
+  }
+}
+
 @media (max-width: 640px) {
+  .navbar ul {
+    gap: 8px;
+    padding-inline: 8px;
+  }
+
+  .navbar > ul > li > a,
+  .navbar > ul > li > .dropbtn {
+    padding: 9px 11px;
+    font-size: 0.95rem;
+  }
+
+  .dropdown-content {
+    left: 50%;
+    width: max-content;
+    max-width: calc(100vw - 24px);
+    max-height: min(60vh, 420px);
+    overflow-y: auto;
+    transform: translateX(-50%);
+  }
+
+  .hero {
+    padding: 48px 16px 32px;
+  }
+
+  .hero h2 {
+    font-size: 1.6rem;
+  }
+
+  .contact-card {
+    flex-direction: column;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .floating-btn {
+    bottom: max(14px, env(safe-area-inset-bottom));
+    width: 54px;
+    height: 54px;
+  }
+
+  .floating-btn.call {
+    left: max(14px, env(safe-area-inset-left));
+  }
+
+  .floating-btn.whatsapp {
+    right: max(14px, env(safe-area-inset-right));
+  }
+
+  .floating-btn svg,
+  .floating-btn .icon-svg {
+    width: 27px;
+    height: 27px;
+  }
+
   #CookiebotWidget,
   .CookiebotWidget,
   .CookiebotWidget-logo {
     bottom: 82px !important;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .contact-card:hover,
+  .floating-btn:hover {
+    transform: none;
   }
 }

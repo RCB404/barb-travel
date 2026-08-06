@@ -34,8 +34,15 @@ html {
 
 body {
   min-height: 100%;
-  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, Arial, sans-serif;
+  font-family:
+    "Poppins",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -120,8 +127,6 @@ header {
   object-fit: contain;
 }
 
-
-
 .brand-center p {
   font-size: 1rem;
   color: #d8fffb;
@@ -160,7 +165,9 @@ header {
   color: #fff;
   font-size: 1rem;
   font-weight: 600;
-  transition: background var(--transition), box-shadow var(--transition);
+  transition:
+    background var(--transition),
+    box-shadow var(--transition);
 }
 
 .navbar > ul > li > a:hover,
@@ -198,7 +205,9 @@ header {
   border-right: 2px solid #fff;
   border-bottom: 2px solid #fff;
   transform: rotate(45deg);
-  transition: transform 0.3s ease, margin-top 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    margin-top 0.3s ease;
 }
 
 .dropdown.active .dropbtn::after {
@@ -232,7 +241,9 @@ header {
   border-radius: 8px;
   color: #0f172a !important;
   background: transparent;
-  transition: background var(--transition), color var(--transition);
+  transition:
+    background var(--transition),
+    color var(--transition);
 }
 
 .dropdown-content a:hover {
@@ -272,11 +283,7 @@ header {
   padding: 16px;
   text-align: center;
   color: #fff;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.35),
-    rgba(0, 0, 0, 0.35)
-  );
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35));
 }
 
 .hero-image .overlay h1 {
@@ -319,7 +326,9 @@ header {
   color: #fff;
   font-weight: 600;
   box-shadow: 0 8px 20px rgba(0, 153, 153, 0.25);
-  transition: transform var(--transition), background var(--transition),
+  transition:
+    transform var(--transition),
+    background var(--transition),
     box-shadow var(--transition);
 }
 
@@ -358,7 +367,9 @@ header {
   border-radius: var(--radius);
   background: #fff;
   box-shadow: var(--shadow);
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
 }
 
 .how-card:hover {
@@ -434,7 +445,9 @@ header {
   background: #fff;
   box-shadow: var(--shadow);
   text-align: left;
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition);
 }
 
 .rute:hover {
@@ -482,7 +495,9 @@ header {
   color: #fff;
   font-weight: 600;
   box-shadow: 0 6px 20px rgba(0, 153, 153, 0.25);
-  transition: transform var(--transition), background var(--transition),
+  transition:
+    transform var(--transition),
+    background var(--transition),
     box-shadow var(--transition);
 }
 
@@ -663,7 +678,9 @@ footer {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.15);
   text-decoration: none;
-  transition: background var(--transition), transform var(--transition);
+  transition:
+    background var(--transition),
+    transform var(--transition);
 }
 
 .footer-icons a:hover {
@@ -678,47 +695,48 @@ footer {
 }
 
 /* ---------------- BUTOANE FLOTANTE ------------------ */
+/* ---------------- BUTOANE FLOTANTE ------------------ */
+
 .floating-btn {
   position: fixed;
   bottom: 20px;
   z-index: 99999;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 58px;
   height: 58px;
   padding: 0;
+
   border-radius: 50%;
   color: #fff;
-  text-decoration: none;
+
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
-  transition: transform 0.2s ease, box-shadow 0.2s ease,
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
     background 0.2s ease;
 }
 
 .floating-btn.call {
   left: 20px;
-  right: auto;
   background: linear-gradient(135deg, #009999, #00bfa6);
 }
 
 .floating-btn.whatsapp {
   right: 20px;
-  left: auto;
   background: #25d366;
 }
 
 .floating-btn svg,
-.floating-btn .icon-svg,
-.floating-btn i {
-  display: block;
+.floating-btn .icon-svg {
   width: 28px;
   height: 28px;
-  max-width: none;
   color: #fff;
   fill: currentColor;
-  stroke: currentColor;
-  font-size: 1.4rem;
 }
 
 .floating-btn:hover {
@@ -769,10 +787,8 @@ footer {
   }
 }
 
-
-  .hero-image .overlay h1 {
-    font-size: 2.1rem;
-  }
+.hero-image .overlay h1 {
+  font-size: 2.1rem;
 }
 
 @media (min-width: 900px) {

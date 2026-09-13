@@ -1,6 +1,62 @@
 <!doctype html>
 <html lang="ro">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- =========================================================
+       GOOGLE CONSENT MODE V2 - DEFAULT
+  ========================================================== -->
+    <script data-cookieconsent="ignore">
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag("consent", "default", {
+        ad_personalization: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        analytics_storage: "denied",
+        functionality_storage: "denied",
+        personalization_storage: "denied",
+        security_storage: "granted",
+        wait_for_update: 500,
+      });
+
+      gtag("set", "ads_data_redaction", true);
+      gtag("set", "url_passthrough", false);
+    </script>
+    <!-- End Google Consent Mode v2 -->
+
+    <!-- =========================================================
+       GOOGLE TAG MANAGER
+  ========================================================== -->
+    <script data-cookieconsent="ignore">
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+
+        w[l].push({
+          "gtm.start": new Date().getTime(),
+          event: "gtm.js",
+        });
+
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-N5X9K4KJ");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- =========================================================
+       COOKIEBOT CMP
+       Automatic Cookie Blocking
+  ========================================================== -->
     <script
       id="Cookiebot"
       src="https://consent.cookiebot.com/uc.js"
@@ -8,93 +64,109 @@
       data-blockingmode="auto"
       type="text/javascript"
     ></script>
-    <!-- Google Tag Manager -->
-    <script>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-N5X9K4KJ");
-    </script>
-    <!-- End Google Tag Manager -->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- End Cookiebot CMP -->
+
     <meta name="theme-color" content="#009999" />
 
     <title>Contact | BRB-TRAVEL – Transport persoane și colete</title>
+
     <meta
       name="description"
       content="Contactează BRB-TRAVEL pentru transport persoane și colete în Germania, Austria, Belgia și Olanda. Sună sau scrie pe WhatsApp – răspundem rapid."
     />
+
     <meta name="robots" content="index,follow" />
     <meta name="author" content="BRB-TRAVEL" />
 
-    <!-- Canonical -->
-    <link rel="canonical" href="https://brb-travel.ro/contact/contact.html" />
+    <!-- =========================================================
+       CANONICAL
+  ========================================================== -->
+    <link rel="canonical" href="https://brb-travel.ro/contact/contact" />
 
-    <!-- Open Graph -->
+    <!-- =========================================================
+       OPEN GRAPH
+  ========================================================== -->
     <meta
       property="og:title"
       content="Contact | BRB-TRAVEL – Transport persoane și colete"
     />
+
     <meta
       property="og:description"
       content="Suntem disponibili 24/7 pentru rezervări și informații. Contactează-ne pe telefon, WhatsApp, email sau Facebook."
     />
-    <meta
-      property="og:url"
-      content="https://brb-travel.ro/contact/contact.html"
-    />
+
+    <meta property="og:url" content="https://brb-travel.ro/contact/contact" />
+
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="ro_RO" />
+
     <meta
       property="og:image"
       content="https://brb-travel.ro/assets/og-cover.jpg"
     />
 
-    <!-- Twitter Card -->
+    <!-- =========================================================
+       TWITTER CARD
+  ========================================================== -->
     <meta name="twitter:card" content="summary_large_image" />
+
     <meta
       name="twitter:title"
       content="Contact | BRB-TRAVEL – Transport persoane și colete"
     />
+
     <meta
       name="twitter:description"
       content="Plecări zilnice. Răspundem rapid la telefon, WhatsApp și email."
     />
+
     <meta
       name="twitter:image"
       content="https://brb-travel.ro/assets/og-cover.jpg"
     />
 
-    <!-- CSS: non-blocking -->
+    <!-- =========================================================
+       PRECONNECT
+  ========================================================== -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+
+    <link rel="preconnect" href="https://consent.cookiebot.com" crossorigin />
+
+    <!-- =========================================================
+       CSS
+  ========================================================== -->
     <link rel="preload" href="/contact/contactstil.css" as="style" />
+
     <link
       rel="stylesheet"
       href="/contact/contactstil.css"
       media="print"
       onload="this.media = 'all'"
     />
-    <noscript
-      ><link rel="stylesheet" href="/contact/contactstil.css"
-    /></noscript>
 
-    <!-- Fonts (Google) -->
+    <noscript>
+      <link rel="stylesheet" href="/contact/contactstil.css" />
+    </noscript>
+
+    <!-- =========================================================
+       GOOGLE FONTS
+  ========================================================== -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Cookiebot CMP -->
-
-    <!-- JSON-LD: ContactPage + LocalBusiness -->
+    <!-- =========================================================
+       JSON-LD
+       ContactPage + LocalBusiness + WebSite
+  ========================================================== -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -111,12 +183,16 @@
           },
           {
             "@type": "ContactPage",
-            "@id": "https://brb-travel.ro/contact/contact.html#contact",
-            "url": "https://brb-travel.ro/contact/contact.html",
+            "@id": "https://brb-travel.ro/contact/contact#contact",
+            "url": "https://brb-travel.ro/contact/contact",
             "name": "Contact BRB-TRAVEL",
             "description": "Contactează BRB-TRAVEL pentru rezervări și întrebări.",
-            "isPartOf": { "@id": "https://brb-travel.ro/#website" },
-            "about": { "@id": "https://brb-travel.ro/#org" },
+            "isPartOf": {
+              "@id": "https://brb-travel.ro/#website"
+            },
+            "about": {
+              "@id": "https://brb-travel.ro/#org"
+            },
             "inLanguage": "ro-RO"
           },
           {
@@ -124,14 +200,15 @@
             "@id": "https://brb-travel.ro/#website",
             "url": "https://brb-travel.ro/",
             "name": "BRB-TRAVEL",
-            "publisher": { "@id": "https://brb-travel.ro/#org" },
+            "publisher": {
+              "@id": "https://brb-travel.ro/#org"
+            },
             "inLanguage": "ro-RO"
           }
         ]
       }
     </script>
   </head>
-
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript

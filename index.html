@@ -1,22 +1,79 @@
 <!doctype html>
 <html lang="ro">
   <head>
-    <!-- Cookiebot CMP -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- =========================================================
+       GOOGLE CONSENT MODE V2 - DEFAULT CONSENT
+       Trebuie să fie înainte de Google Tag Manager
+  ========================================================== -->
+    <script data-cookieconsent="ignore">
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag("consent", "default", {
+        ad_personalization: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        analytics_storage: "denied",
+        functionality_storage: "denied",
+        personalization_storage: "denied",
+        security_storage: "granted",
+        wait_for_update: 500,
+      });
+
+      gtag("set", "ads_data_redaction", true);
+      gtag("set", "url_passthrough", false);
+    </script>
+    <!-- End Google Consent Mode v2 -->
+
+    <!-- =========================================================
+       GOOGLE TAG MANAGER
+       Se încarcă și înainte de acceptarea cookie-urilor,
+       dar respectă Consent Mode = denied
+  ========================================================== -->
+    <script data-cookieconsent="ignore">
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          "gtm.start": new Date().getTime(),
+          event: "gtm.js",
+        });
+
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-N5X9K4KJ");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- =========================================================
+       COOKIEBOT CMP
+       Automatic Cookie Blocking
+  ========================================================== -->
     <script
       id="Cookiebot"
       src="https://consent.cookiebot.com/uc.js"
       data-cbid="3300eb4b-a5ef-48c1-a0d6-818ec344807e"
       data-blockingmode="auto"
-      async
       type="text/javascript"
     ></script>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- End Cookiebot CMP -->
+
     <meta name="theme-color" content="#009999" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="BRB-TRAVEL" />
 
     <title>BRB-TRAVEL — Transport persoane & colete în Europa</title>
+
     <meta
       name="description"
       content="BRB-TRAVEL oferă transport persoane și colete din România spre Germania, Austria, Belgia și Olanda. Plecări zilnice, siguranță și confort."
@@ -25,43 +82,58 @@
     <!-- Canonical -->
     <link rel="canonical" href="https://brb-travel.ro/" />
 
-    <!-- Favicon / Touch icon (ajustează căile dacă ai altă structură) -->
+    <!-- Favicon / Touch icon -->
     <link rel="icon" type="image/jpeg" href="/barb-travel-logo.jpeg" />
+
     <link rel="apple-touch-icon" href="/barb-travel-logo.jpeg" />
 
-    <!-- Open Graph -->
+    <!-- =========================================================
+       OPEN GRAPH
+  ========================================================== -->
     <meta
       property="og:title"
       content="BRB-TRAVEL — Transport persoane & colete Europa"
     />
+
     <meta
       property="og:description"
       content="Transport rapid și sigur de persoane și colete către Germania, Austria, Belgia și Olanda. Plecări zilnice din România."
     />
+
     <meta property="og:url" content="https://brb-travel.ro/" />
+
     <meta property="og:type" content="website" />
+
     <meta property="og:locale" content="ro_RO" />
+
     <meta
       property="og:image"
       content="https://brb-travel.ro/assets/og-cover.jpg"
     />
 
-    <!-- Twitter Card -->
+    <!-- =========================================================
+       TWITTER CARD
+  ========================================================== -->
     <meta name="twitter:card" content="summary_large_image" />
+
     <meta
       name="twitter:title"
       content="BRB-TRAVEL — Transport persoane & colete Europa"
     />
+
     <meta
       name="twitter:description"
-      content="Transport zilnic de la adresă la adresă. WhatsApp  +40 741 668 911"
+      content="Transport zilnic de la adresă la adresă. WhatsApp +40 741 668 911"
     />
+
     <meta
       name="twitter:image"
       content="https://brb-travel.ro/assets/og-cover.jpg"
     />
 
-    <!-- Preload local fonts (no render-block, no CLS) -->
+    <!-- =========================================================
+       PRELOAD LOCAL FONTS
+  ========================================================== -->
     <link
       rel="preload"
       href="/fonts/poppins-400.woff2"
@@ -69,6 +141,7 @@
       type="font/woff2"
       crossorigin
     />
+
     <link
       rel="preload"
       href="/fonts/poppins-600.woff2"
@@ -77,7 +150,9 @@
       crossorigin
     />
 
-    <!-- Preload LCP image (as responsive) — asigură-te că fișierele există -->
+    <!-- =========================================================
+       PRELOAD LCP IMAGE
+  ========================================================== -->
     <link
       rel="preload"
       as="image"
@@ -86,31 +161,33 @@
       imagesizes="(max-width: 768px) 100vw, 1200px"
     />
 
-    <!-- CSS non-blocking -->
+    <!-- =========================================================
+       CSS NON-BLOCKING
+  ========================================================== -->
     <link rel="preload" href="/style.css" as="style" />
+
     <link
       rel="stylesheet"
       href="/style.css"
       media="print"
       onload="this.media = 'all'"
     />
-    <noscript><link rel="stylesheet" href="/style.css" /></noscript>
 
-    <!-- Preconnect pentru serviciile Google folosite ulterior prin GTM/GA4 -->
+    <noscript>
+      <link rel="stylesheet" href="/style.css" />
+    </noscript>
+
+    <!-- =========================================================
+       PRECONNECT GOOGLE
+  ========================================================== -->
     <link rel="preconnect" href="https://www.googletagmanager.com" />
+
     <link rel="preconnect" href="https://www.google-analytics.com" />
 
-    <!-- Google Tag Manager -->
-    <!-- Google Tag Manager — activat de Cookiebot după consimțământ -->
-    <script type="text/plain" data-cookieconsent="statistics,marketing">
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-N5X9K4KJ');
-    </script>
-    <!-- End Google Tag Manager -->
-    <!-- JSON-LD minim: WebSite + Organization + WebPage -->
+    <!-- =========================================================
+       JSON-LD
+       WebSite + Organization + WebPage + Breadcrumb
+  ========================================================== -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -120,7 +197,9 @@
             "@id": "https://brb-travel.ro/#website",
             "url": "https://brb-travel.ro/",
             "name": "BRB-TRAVEL",
-            "publisher": { "@id": "https://brb-travel.ro/#org" },
+            "publisher": {
+              "@id": "https://brb-travel.ro/#org"
+            },
             "inLanguage": "ro-RO"
           },
           {
@@ -140,13 +219,19 @@
             "@type": "WebPage",
             "@id": "https://brb-travel.ro/#webpage",
             "url": "https://brb-travel.ro/",
-            "isPartOf": { "@id": "https://brb-travel.ro/#website" },
-            "about": { "@id": "https://brb-travel.ro/#org" },
+            "isPartOf": {
+              "@id": "https://brb-travel.ro/#website"
+            },
+            "about": {
+              "@id": "https://brb-travel.ro/#org"
+            },
             "name": "BRB-TRAVEL — Transport persoane & colete în Europa",
             "datePublished": "2025-01-01",
             "dateModified": "2026-07-30",
             "inLanguage": "ro-RO",
-            "breadcrumb": { "@id": "https://brb-travel.ro/#breadcrumb" }
+            "breadcrumb": {
+              "@id": "https://brb-travel.ro/#breadcrumb"
+            }
           },
           {
             "@type": "BreadcrumbList",
@@ -164,12 +249,15 @@
       }
     </script>
 
-    <!-- Mic fix anti-FOUC pentru prima pagină (opțional) -->
+    <!-- =========================================================
+       ANTI-FOUC
+  ========================================================== -->
     <style>
       body.index-wait {
         visibility: hidden;
       }
     </style>
+
     <script>
       window.addEventListener("load", () =>
         document.body.classList.remove("index-wait"),
